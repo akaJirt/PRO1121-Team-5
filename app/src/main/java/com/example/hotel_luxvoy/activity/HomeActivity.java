@@ -14,20 +14,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hotel_luxvoy.R;
+import com.example.hotel_luxvoy.adapter.ExploreAdaper;
 import com.example.hotel_luxvoy.adapter.MoreAdapter;
 import com.example.hotel_luxvoy.adapter.ViewedAdapter;
+import com.example.hotel_luxvoy.models.Explore;
 import com.example.hotel_luxvoy.models.More;
 import com.example.hotel_luxvoy.models.Viewed;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Home extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
     TextView textView;
 
     ImageView imgBookNow;
 
-    RecyclerView recyclerViewViewed, recyclerViewMore;
+    RecyclerView recyclerViewViewed, recyclerViewMore, recyclerViewExplore;
 
 
     @Override
@@ -48,9 +50,11 @@ public class Home extends AppCompatActivity {
 
         imgBookNow = findViewById(R.id.imgBookNow);
         imgBookNow.setOnClickListener(v -> {
-            Intent intent = new Intent(Home.this, BookCheck.class);
+            Intent intent = new Intent(HomeActivity.this, BookCheckActivity.class);
             startActivity(intent);
         });
+
+//       ======================== Viewed ========================
 
         recyclerViewViewed = findViewById(R.id.rvViewed);
         recyclerViewViewed.setHasFixedSize(true);
@@ -65,6 +69,8 @@ public class Home extends AppCompatActivity {
         ViewedAdapter viewedAdapter = new ViewedAdapter(viewedList, this);
         recyclerViewViewed.setAdapter(viewedAdapter);
 
+//       ======================== More ========================
+
         recyclerViewMore = findViewById(R.id.rvMore);
         recyclerViewMore.setHasFixedSize(true);
         recyclerViewMore.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
@@ -74,8 +80,25 @@ public class Home extends AppCompatActivity {
         moreList.add(new More(R.drawable.img_more, "A rewarded stay at Renaissance Saigon"));
         moreList.add(new More(R.drawable.img_more, "A rewarded stay at Renaissance Saigon"));
         moreList.add(new More(R.drawable.img_more, "A rewarded stay at Renaissance Saigon"));
+
         MoreAdapter moreAdapter = new MoreAdapter(moreList, this);
         recyclerViewMore.setAdapter(moreAdapter);
+
+//       ======================== Explore ========================
+
+        recyclerViewExplore = findViewById(R.id.rvExplore);
+        recyclerViewExplore.setHasFixedSize(true);
+        recyclerViewExplore.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+        List<Explore> exploreList = new ArrayList<>();
+        exploreList.add(new Explore(R.drawable.img_explore, "Ha Noi explore"));
+        exploreList.add(new Explore(R.drawable.img_explore, "Da Nang explore"));
+        exploreList.add(new Explore(R.drawable.img_explore, "Nha Trang explore"));
+        exploreList.add(new Explore(R.drawable.img_explore, "Phu Quoc explore"));
+
+        ExploreAdaper exploreAdaper = new ExploreAdaper(exploreList, this);
+        recyclerViewExplore.setAdapter(exploreAdaper);
+
 
     }
 }

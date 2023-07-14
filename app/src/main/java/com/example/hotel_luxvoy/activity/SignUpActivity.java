@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.example.hotel_luxvoy.R;
 
-public class SignUp extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
 
     TextView tvPasswordLength, tvPasswordUpperCase, tvPasswordNumber, tvPasswordLowerCase, tvPasswordSpecialCharacter, tvSignIn;
 
@@ -47,7 +47,7 @@ public class SignUp extends AppCompatActivity {
         btnSignUp = findViewById(R.id.btnSignUp);
 
         tvSignIn.setOnClickListener(v -> {
-            Intent intent = new Intent(SignUp.this, SignIn.class);
+            Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
             startActivity(intent);
         });
 

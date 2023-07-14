@@ -12,7 +12,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.hotel_luxvoy.R;
 
-public class SplashScreen extends AppCompatActivity {
+public class SplashScreenActivity extends AppCompatActivity {
     private static final int SPLASH_DURATION = 5000;
 
     @Override
@@ -34,7 +34,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 // Chuyển đến màn hình đăng nhập
-                Intent intent = new Intent(SplashScreen.this, OnboardingSlider.class);
+                Intent intent = new Intent(SplashScreenActivity.this, OnboardingSliderActivity.class);
                 startActivity(intent);
                 finish();
             }

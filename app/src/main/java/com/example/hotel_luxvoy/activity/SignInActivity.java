@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.example.hotel_luxvoy.R;
 
-public class SignIn extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity {
     TextView tvSignUp;
 
     EditText edtUsername, edtPassword;
@@ -28,12 +28,12 @@ public class SignIn extends AppCompatActivity {
         btnSignIn = findViewById(R.id.btnSignIn);
 
         tvSignUp.setOnClickListener(v -> {
-            Intent intent = new Intent(SignIn.this, SignUp.class);
+            Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
             startActivity(intent);
         });
 
         btnSignIn.setOnClickListener(v -> {
-            Intent intent = new Intent(SignIn.this, Home.class);
+            Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
             startActivity(intent);
         });
     }
