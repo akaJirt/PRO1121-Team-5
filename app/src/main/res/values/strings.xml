@@ -5,6 +5,6 @@
         <item>Option 2</item>
         <item>Option 3</item>
     </string-array>
-
-
+    <string name="title_text">It’s time to switch off</string>
+    <string name="description_text2">Enjoy breakfast, bonus points and hotel credits.</string>
 </resources>

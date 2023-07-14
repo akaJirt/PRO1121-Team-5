@@ -1,4 +1,4 @@
-package com.example.hotel_luxvoy;
+package com.example.hotel_luxvoy.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.hotel_luxvoy.R;
 
 public class SplashScreen extends AppCompatActivity {
     private static final int SPLASH_DURATION = 5000;

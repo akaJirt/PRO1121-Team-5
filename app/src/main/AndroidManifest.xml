@@ -12,16 +12,25 @@
         android:theme="@style/Theme.HotelLuxvoy"
         tools:targetApi="31">
         <activity
-            android:name=".SignUp"
+            android:name=".activity.BookCheck"
             android:exported="false" />
         <activity
-            android:name=".OnboardingSlider"
+            android:name=".activity.Home"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SignIn"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SignUp"
+            android:exported="false" />
+        <activity
+            android:name=".activity.OnboardingSlider"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".activity.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
