@@ -20,35 +20,27 @@
 
 
         <TextView
+            android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="250dp"
-            android:text="Discover the beauty of"
+            android:text="Discover the beauty of VietNam"
             android:textColor="@color/white"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textStyle="bold" />
 
+
         <TextView
+            android:id="@+id/tvDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="300dp"
-            android:text="Vietnam"
-            android:textColor="@color/white"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="350dp"
             android:text="230+ Hotels to earn and redeem your point."
             android:textColor="@color/white"
             android:textSize="15sp"
             android:textStyle="italic" />
-
 
     </com.denzcoskun.imageslider.ImageSlider>
 
@@ -58,21 +50,20 @@
         android:layout_marginTop="500dp"
         android:background="@android:color/transparent">
 
-        <Button
-            android:id="@+id/buttonJoin"
+        <ImageView
+            android:id="@+id/imgSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_margin="16dp"
-            android:text="Join" />
+            android:layout_margin="26dp"
+            android:src="@drawable/button_signup" />
 
-        <Button
-            android:id="@+id/buttonSignUp"
+        <ImageView
+            android:id="@+id/imgSignIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_margin="16dp"
-            android:text="Sign up" />
+            android:layout_margin="26dp"
+            android:src="@drawable/button_signin" />
 
 
     </RelativeLayout>
