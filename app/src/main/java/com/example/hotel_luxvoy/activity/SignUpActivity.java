@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -61,7 +62,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         //retrofit API
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("172.16.92.242:6969/api/v1/")
+                .baseUrl("http://192.168.1.122:6969/api/v1/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -71,15 +72,23 @@ public class SignUpActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userName = edtUsername.getText().toString();
-                String password = edtPassword.getText().toString();
-                String fullName = edtFullName.getText().toString();
-                String phoneNumber = edtPhoneNumber.getText().toString();
-                String ward = edtWard.getText().toString();
-                String district = edtDistrict.getText().toString();
-                String street = edtStreet.getText().toString();
+                if(isAtLeast8 && hasUppercase && hasLowercase && hasNumber && hasSymbol)
+                {
+                    //get data from edit text (username, password, full name, phone number, ward, district, street
+                    String userName = edtUsername.getText().toString();
+                    String password = edtPassword.getText().toString();
+                    String fullName = edtFullName.getText().toString();
+                    String phoneNumber = edtPhoneNumber.getText().toString();
+                    String ward = edtWard.getText().toString();
+                    String district = edtDistrict.getText().toString();
+                    String street = edtStreet.getText().toString();
 
-                postData(userName, password, fullName, phoneNumber, ward, district, street);
+                    postData(userName, password, fullName, phoneNumber, ward, district, street);
+                }
+                else
+                {
+                    Toast.makeText(SignUpActivity.this, "Mật khẩu không hợp lệ!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -111,7 +120,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void postData(String userName, String password, String fullName, String phoneNumber, String ward, String district, String street) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("172.16.92.242:6969/api/v1/")
+                .baseUrl("http://192.168.1.122:6969/api/v1/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -128,17 +137,19 @@ public class SignUpActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UserPostModel> call, Throwable t) {
-                Toast.makeText(SignUpActivity.this, "Đăng ký Thất Bại!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignUpActivity.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.d("Log>>>>>>>>>>>>>>", "onFailure: "+t.getMessage());
             }
         });
     }
 
     private void checkPasswordConditions(String password) {
-        isAtLeast8 = password.length() >= 8;
-        hasUppercase = !password.equals(password.toLowerCase());
-        hasLowercase = !password.equals(password.toUpperCase());
+        isAtLeast8 = password.matches(".{8,}");
+        hasUppercase = password.matches(".*[A-Z].*");
+        hasLowercase = password.matches(".*[a-z].*");
         hasNumber = password.matches(".*\\d.*");
-        hasSymbol = !password.matches("[A-Za-z\\d ]*");
+//        hasSymbol = !password.matches("[A-Za-z\\d ]*");
+        hasSymbol = password.matches(".*\\W.*");
         // "\d" == [0-9].
     }
 

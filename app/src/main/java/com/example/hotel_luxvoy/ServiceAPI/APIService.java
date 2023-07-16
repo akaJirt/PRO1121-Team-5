@@ -1,5 +1,6 @@
 package com.example.hotel_luxvoy.ServiceAPI;
 
+import com.example.hotel_luxvoy.models.UserLoginModel;
 import com.example.hotel_luxvoy.models.UserModel;
 import com.example.hotel_luxvoy.models.UserPostModel;
 
@@ -16,6 +17,9 @@ public interface APIService {
 
     @GET("users")
     Call<ArrayList<UserModel>> getData();
+
+    @POST("checklogin")
+    Call<UserLoginModel> checkLogin(@Body UserLoginModel userLoginModel);
 
     @POST("users")
     Call<UserPostModel> createUser(@Body UserPostModel user);

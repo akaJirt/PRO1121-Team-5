@@ -62,6 +62,13 @@ public class OnboardingSliderActivity extends AppCompatActivity {
                 startActivity(new Intent(OnboardingSliderActivity.this, SignUpActivity.class));
             }
         });
+
+        imgSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(OnboardingSliderActivity.this, SignInActivity.class));
+            }
+        });
     }
 
     private void updateSlideContent(String title, String description) {
