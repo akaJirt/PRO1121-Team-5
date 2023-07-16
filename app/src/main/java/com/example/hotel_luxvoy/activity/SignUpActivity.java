@@ -72,22 +72,27 @@ public class SignUpActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isAtLeast8 && hasUppercase && hasLowercase && hasNumber && hasSymbol)
-                {
-                    //get data from edit text (username, password, full name, phone number, ward, district, street
-                    String userName = edtUsername.getText().toString();
-                    String password = edtPassword.getText().toString();
-                    String fullName = edtFullName.getText().toString();
-                    String phoneNumber = edtPhoneNumber.getText().toString();
-                    String ward = edtWard.getText().toString();
-                    String district = edtDistrict.getText().toString();
-                    String street = edtStreet.getText().toString();
+                if (edtUsername.getText().toString().equals("") || edtPassword.getText().toString().equals("") || edtFullName.getText().toString().equals("") || edtPhoneNumber.getText().toString().equals("") || edtWard.getText().toString().equals("") || edtDistrict.getText().toString().equals("") || edtStreet.getText().toString().equals("")) {
+                    Toast.makeText(SignUpActivity.this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (isAtLeast8 && hasUppercase && hasLowercase && hasNumber && hasSymbol) {
+                        if (edtPassword.getText().toString().equals(edtConfirmPassword.getText().toString())) {
+                            //get data from edit text (username, password, full name, phone number, ward, district, street
+                            String userName = edtUsername.getText().toString();
+                            String password = edtPassword.getText().toString();
+                            String fullName = edtFullName.getText().toString();
+                            String phoneNumber = edtPhoneNumber.getText().toString();
+                            String ward = edtWard.getText().toString();
+                            String district = edtDistrict.getText().toString();
+                            String street = edtStreet.getText().toString();
 
-                    postData(userName, password, fullName, phoneNumber, ward, district, street);
-                }
-                else
-                {
-                    Toast.makeText(SignUpActivity.this, "Mật khẩu không hợp lệ!", Toast.LENGTH_SHORT).show();
+                            postData(userName, password, fullName, phoneNumber, ward, district, street);
+                        } else {
+                            Toast.makeText(SignUpActivity.this, "Mật khẩu không khớp!", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(SignUpActivity.this, "Mật khẩu không hợp lệ!", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
