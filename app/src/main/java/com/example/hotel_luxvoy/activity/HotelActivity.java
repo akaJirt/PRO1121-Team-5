@@ -61,6 +61,7 @@ public class HotelActivity extends AppCompatActivity {
         hotelList = new ArrayList<>();
         hotelList.add(new Hotel(1, R.drawable.hotel_1, "Luxvoy Luxury Hotel South Sai Gon", "4.5", "120 USD / Night", roomList));
 
+
         hotelAdapter = new HotelAdapter(hotelList, this);
         recyclerView.setAdapter(hotelAdapter);
     }
