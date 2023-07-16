@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.hotel_luxvoy.FullScreenHelper;
 import com.example.hotel_luxvoy.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -18,6 +19,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FullScreenHelper.setFullScreen(this);
         setContentView(R.layout.activity_splash_screen);
         ImageView imageView = findViewById(R.id.splash_image);
 

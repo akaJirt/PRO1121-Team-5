@@ -1,6 +1,7 @@
 package com.example.hotel_luxvoy.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hotel_luxvoy.R;
+import com.example.hotel_luxvoy.activity.RoomActivity;
 import com.example.hotel_luxvoy.models.Hotel;
 
 import org.w3c.dom.Text;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelAdapterViewHolder> {
@@ -43,7 +46,15 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelAdapter
         holder.tvHotelName.setText(hotel.getHotelName());
         holder.tvHotelRating.setText(hotel.getRating());
         holder.tvHotelPrice.setText(hotel.getPrice());
-
+        holder.imgSelectRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, RoomActivity.class);
+                intent.putExtra("roomList", (Serializable) hotel.getRooms());
+                intent.putExtra("hotelName", hotel.getHotelName());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.example.hotel_luxvoy.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -11,21 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hotel_luxvoy.R;
+import com.example.hotel_luxvoy.activity.HotelActivity;
 import com.example.hotel_luxvoy.models.Explore;
 
 import java.util.List;
 
 public class ExploreAdaper extends RecyclerView.Adapter<ExploreAdaper.ExploreViewHolder> {
-    public interface OnItemClickListener {
-        void onItemClick(int position);
-    }
-
-    private OnItemClickListener mListener;
-
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        mListener = listener;
-    }
-
 
     private List<Explore> exploreList;
 
@@ -48,6 +40,14 @@ public class ExploreAdaper extends RecyclerView.Adapter<ExploreAdaper.ExploreVie
         Explore explore = exploreList.get(position);
         holder.imgExplore.setImageResource(explore.getImage());
         holder.tvExplore.setText(explore.getDescription());
+        holder.imgExplore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, HotelActivity.class);
+                intent.putExtra("nameDestination", explore.getDescription());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -55,7 +55,7 @@ public class ExploreAdaper extends RecyclerView.Adapter<ExploreAdaper.ExploreVie
         return exploreList.size();
     }
 
-    public class ExploreViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ExploreViewHolder extends RecyclerView.ViewHolder {
         ImageView imgExplore;
         TextView tvExplore;
 
@@ -63,18 +63,9 @@ public class ExploreAdaper extends RecyclerView.Adapter<ExploreAdaper.ExploreVie
             super(itemView);
             imgExplore = itemView.findViewById(R.id.imgExplore);
             tvExplore = itemView.findViewById(R.id.tvExplore);
-            itemView.setOnClickListener(this);
+
         }
 
-        @Override
-        public void onClick(View view) {
-            if (mListener != null) {
-                int position = getAdapterPosition();
-                if (position != RecyclerView.NO_POSITION) {
-                    mListener.onItemClick(position);
-                }
-            }
-        }
     }
 
 }
