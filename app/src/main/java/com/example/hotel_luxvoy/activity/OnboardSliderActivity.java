@@ -66,7 +66,7 @@ public class OnboardSliderActivity extends AppCompatActivity {
         imgSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(OnboardingSliderActivity.this, SignInActivity.class));
+                startActivity(new Intent(OnboardSliderActivity.this, SignInActivity.class));
             }
         });
     }
