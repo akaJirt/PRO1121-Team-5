@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.hotel_luxvoy.R;
 import com.example.hotel_luxvoy.ServiceAPI.APIService;
+import com.example.hotel_luxvoy.models.UserAfterCheckLG;
 import com.example.hotel_luxvoy.models.UserLoginModel;
 
 import retrofit2.Call;
@@ -43,47 +44,51 @@ public class SignInActivity extends AppCompatActivity {
         });
 
         btnSignIn.setOnClickListener(v -> {
-            if(checklogin(edtUsername.getText().toString(), edtPassword.getText().toString())){
-                Intent intent = new Intent(SignInActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-            else {
-                Toast.makeText(SignInActivity.this, "Sai tên đăng nhập hoặc mật khẩu", Toast.LENGTH_SHORT).show();
-            }
+            checklogin(edtUsername.getText().toString(), edtPassword.getText().toString());
         });
     }
 
 
+
+
     //ngủ dậy sẽ fix lỗi này
-    private boolean checklogin(String toString, String toString1) {
-        final boolean[] check = new boolean[1];
+    private void checklogin(String toString, String toString1) {
+
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://192.168.1.122:6969/api/v1/")
+                .baseUrl("http://192.168.1.122:6969/api/v1/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         APIService apiService = retrofit.create(APIService.class);
         UserLoginModel userLoginModel = new UserLoginModel(toString, toString1);
-        Call<UserLoginModel> call = apiService.checkLogin(userLoginModel);
-        call.enqueue(new Callback<UserLoginModel>() {
+        Call<UserAfterCheckLG> call = apiService.checkLogin(userLoginModel);
+        call.enqueue(new Callback<UserAfterCheckLG>() {
             @Override
-            public void onResponse(Call<UserLoginModel> call, Response<UserLoginModel> response) {
+            public void onResponse(Call<UserAfterCheckLG> call, Response<UserAfterCheckLG> response) {
                 if(response.isSuccessful()){
-                    check[0] = true;
+                    Toast.makeText(SignInActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                    UserAfterCheckLG userAfterCheckLG = response.body();
+
+                    Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("user", userAfterCheckLG);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
                 }
                 else {
-                    check[0] = false;
+                    Toast.makeText(SignInActivity.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
                 }
+
+
             }
 
             @Override
-            public void onFailure(Call<UserLoginModel> call, Throwable t) {
+            public void onFailure(Call<UserAfterCheckLG> call, Throwable t) {
                 Toast.makeText(SignInActivity.this, "Lỗi kết nối", Toast.LENGTH_SHORT).show();
                 Log.d("Log signin", "onFailure: "+t.getMessage());
-                check[0] = false;
+
 
             }
         });
-        return check[0];
     }
 }

@@ -19,13 +19,14 @@ import com.example.hotel_luxvoy.adapter.MoreAdapter;
 import com.example.hotel_luxvoy.adapter.ViewedAdapter;
 import com.example.hotel_luxvoy.models.Explore;
 import com.example.hotel_luxvoy.models.More;
+import com.example.hotel_luxvoy.models.UserAfterCheckLG;
 import com.example.hotel_luxvoy.models.Viewed;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
-    TextView textView;
+    TextView textView, tvNameUser;
 
     ImageView imgBookNow;
 
@@ -37,21 +38,26 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         textView = findViewById(R.id.tvBooking);
+        tvNameUser = findViewById(R.id.tvUsername);
         String fullText = "It's time to switch off";
         String targetText = "switch off";
         int startIndex = fullText.indexOf(targetText);
         int endIndex = startIndex + targetText.length();
+        //lấy dữ liệu từ intent
+        Intent intent = getIntent();
+        UserAfterCheckLG user = (UserAfterCheckLG) intent.getSerializableExtra("user");
 
         SpannableString spannableString = new SpannableString(fullText);
         ForegroundColorSpan colorSpan = new ForegroundColorSpan(Color.parseColor("#FFA500")); // Màu cam
         spannableString.setSpan(colorSpan, startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         textView.setText(spannableString);
+        tvNameUser.setText(user.getFullName());
 
         imgBookNow = findViewById(R.id.imgBookNow);
         imgBookNow.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, BookCheckActivity.class);
-            startActivity(intent);
+            Intent intent1 = new Intent(HomeActivity.this, BookCheckActivity.class);
+            startActivity(intent1);
         });
 
 //       ======================== Viewed ========================
