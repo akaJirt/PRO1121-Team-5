@@ -18,12 +18,8 @@
             android:name=".activity.BookCheckActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.HomeActivity"
-            android:exported="false"
-            
-            >
-
-        </activity>
+            android:name=".activity.MainActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.SignInActivity"
             android:exported="false" />
@@ -31,13 +27,13 @@
             android:name=".activity.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.OnboardingSliderActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.OnboardSliderActivity"
             android:exported="false" />
         <activity
             android:name=".activity.SplashScreenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

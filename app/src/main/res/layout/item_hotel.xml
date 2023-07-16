@@ -102,13 +102,13 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tvLowestRegularRate"
+            android:id="@+id/tvLowestPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="18sp"
             android:layout_marginRight="18sp"
             android:layout_marginBottom="10sp"
-            android:text="Lowest regular rate"
+            android:text="Lowest price"
             android:textSize="15sp" />
 
 

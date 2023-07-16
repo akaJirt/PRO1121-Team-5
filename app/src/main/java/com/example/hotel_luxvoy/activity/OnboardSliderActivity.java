@@ -16,7 +16,7 @@ import com.example.hotel_luxvoy.R;
 
 import java.util.ArrayList;
 
-public class OnboardingSliderActivity extends AppCompatActivity {
+public class OnboardSliderActivity extends AppCompatActivity {
     TextView tvTitle, tvDescription;
 
     ImageView imgSignUp, imgSignIn;
@@ -59,7 +59,7 @@ public class OnboardingSliderActivity extends AppCompatActivity {
         imgSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(OnboardingSliderActivity.this, SignUpActivity.class));
+                startActivity(new Intent(OnboardSliderActivity.this, SignUpActivity.class));
             }
         });
     }

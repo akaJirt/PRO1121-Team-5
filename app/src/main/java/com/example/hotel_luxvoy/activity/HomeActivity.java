@@ -23,6 +23,7 @@ import com.example.hotel_luxvoy.models.Explore;
 import com.example.hotel_luxvoy.models.Hotel;
 import com.example.hotel_luxvoy.models.More;
 import com.example.hotel_luxvoy.models.Viewed;
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -34,6 +35,8 @@ public class HomeActivity extends AppCompatActivity {
     ImageView imgBookNow;
 
     RecyclerView recyclerViewViewed, recyclerViewMore, recyclerViewExplore;
+
+    BottomNavigationItemView bottomNavigationItemView;
 
 
     @Override

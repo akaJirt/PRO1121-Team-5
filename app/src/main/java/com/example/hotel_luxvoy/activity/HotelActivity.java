@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.hotel_luxvoy.R;
 import com.example.hotel_luxvoy.adapter.HotelAdapter;
 import com.example.hotel_luxvoy.models.Hotel;
+import com.example.hotel_luxvoy.models.Room;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,10 +31,15 @@ public class HotelActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         List<Hotel> hotelList = new ArrayList<>();
+        List<Room> roomList = new ArrayList<>();
 
-        hotelList.add(new Hotel(1, R.drawable.hotel_1, "Luxvoy Hotel and Tower Sai Gon", "Thủ Thiêm, Quận 2, Hồ Chí Minh", "Khá ổn: 8/10"));
-        hotelList.add(new Hotel(2, R.drawable.hotel_2, "Luxvoy Hotel and Tower Hà Nội", "Cầu Giấy, Hà Nội", "Khá ổn: 8/10"));
-        hotelList.add(new Hotel(3, R.drawable.hotel_3, "Luxvoy Hotel and Tower Đà Nẵng", "Hải Châu, Đà Nẵng", "Khá ổn: 8/10"));
+        roomList.add(new Room(1, "King Bed", "100 USD", "Trống", "2"));
+        roomList.add(new Room(2, "Queen Bed", "100 USD", "Trống", "2"));
+        roomList.add(new Room(3, "Double Bed", "100 USD", "Trống", "2"));
+
+        hotelList.add(new Hotel(1, R.drawable.hotel_1, "Luxvoy Luxury Hotel South Sai Gon", "4.5", "120 USD / Night", roomList));
+//
+
 
         HotelAdapter hotelAdapter = new HotelAdapter(hotelList, this);
         recyclerView.setAdapter(hotelAdapter);

@@ -40,7 +40,10 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelAdapter
     public void onBindViewHolder(@NonNull HotelAdapterViewHolder holder, int position) {
         Hotel hotel = hotelList.get(position);
         holder.imgHotel.setImageResource(hotel.getImage());
-        holder.txtHotelName.setText(hotel.getHotelName());
+        holder.tvHotelName.setText(hotel.getHotelName());
+        holder.tvHotelRating.setText(hotel.getRating());
+        holder.tvHotelPrice.setText(hotel.getPrice());
+
     }
 
     @Override
@@ -49,14 +52,18 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelAdapter
     }
 
     public class HotelAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        ImageView imgHotel;
+        ImageView imgHotel, imgSelectRoom;
 
-        TextView txtHotelName, txtHotelAddress, txtRating;
+        TextView tvHotelName, tvHotelRating, tvHotelPrice;
+
 
         public HotelAdapterViewHolder(@NonNull View itemView) {
             super(itemView);
             imgHotel = itemView.findViewById(R.id.imgHotel);
-            txtHotelName = itemView.findViewById(R.id.tvHotelName);
+            imgSelectRoom = itemView.findViewById(R.id.imgSelectRoom);
+            tvHotelName = itemView.findViewById(R.id.tvHotelName);
+            tvHotelRating = itemView.findViewById(R.id.tvRating);
+            tvHotelPrice = itemView.findViewById(R.id.tvPrice);
 
         }
 
