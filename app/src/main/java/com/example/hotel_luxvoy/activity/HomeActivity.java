@@ -15,6 +15,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.hotel_luxvoy.FullScreenHelper;
 import com.example.hotel_luxvoy.R;
 import com.example.hotel_luxvoy.adapter.ExploreAdaper;
 import com.example.hotel_luxvoy.adapter.MoreAdapter;
@@ -42,9 +43,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        FullScreenHelper.setFullScreen(this);
         setContentView(R.layout.activity_home);
         textView = findViewById(R.id.tvBooking);
         String fullText = "It's time to switch off";
@@ -107,15 +106,6 @@ public class HomeActivity extends AppCompatActivity {
 
         ExploreAdaper exploreAdaper = new ExploreAdaper(exploreList, this);
         recyclerViewExplore.setAdapter(exploreAdaper);
-
-        exploreAdaper.setOnItemClickListener(new ExploreAdaper.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                // Chuyển sang Activity khác để hiển thị RecyclerView của Hotel
-                Intent intent = new Intent(HomeActivity.this, HotelActivity.class);
-                startActivity(intent);
-            }
-        });
 
 
     }

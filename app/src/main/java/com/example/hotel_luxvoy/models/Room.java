@@ -1,8 +1,10 @@
 package com.example.hotel_luxvoy.models;
 
-public class Room {
+public class Room implements java.io.Serializable{
 
     private int roomId;
+
+    private int image[];
     private String type;
     private String price;
     private String status;
@@ -11,12 +13,22 @@ public class Room {
     public Room() {
     }
 
-    public Room(int roomId, String type, String price, String status, String capacity) {
+
+    public Room(int roomId, int[] image, String type, String price, String status, String capacity) {
         this.roomId = roomId;
+        this.image = image;
         this.type = type;
         this.price = price;
         this.status = status;
         this.capacity = capacity;
+    }
+
+    public int[] getImage() {
+        return image;
+    }
+
+    public void setImage(int[] image) {
+        this.image = image;
     }
 
     public int getRoomId() {

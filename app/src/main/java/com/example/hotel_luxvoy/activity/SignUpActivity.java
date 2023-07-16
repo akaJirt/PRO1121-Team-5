@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.hotel_luxvoy.FullScreenHelper;
 import com.example.hotel_luxvoy.R;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -26,6 +27,7 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FullScreenHelper.setFullScreen(this);
         setContentView(R.layout.activity_sign_up);
 
         tvPasswordLength = findViewById(R.id.tvPasswordLength);

@@ -25,6 +25,14 @@ public class Hotel {
         this.rooms = rooms;
     }
 
+    public Hotel(int hotelId, int image, String hotelName, String rating, String price) {
+        this.hotelId = hotelId;
+        this.image = image;
+        this.hotelName = hotelName;
+        this.rating = rating;
+        this.price = price;
+    }
+
     public int getHotelId() {
         return hotelId;
     }
