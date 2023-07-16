@@ -34,7 +34,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // Chuyển đến màn hình đăng nhập
-                Intent intent = new Intent(SplashScreenActivity.this, OnboardingSliderActivity.class);
+                Intent intent = new Intent(SplashScreenActivity.this, OnboardSliderActivity.class);
                 startActivity(intent);
                 finish();
             }

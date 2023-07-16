@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,10 +20,13 @@ import com.example.hotel_luxvoy.adapter.ExploreAdaper;
 import com.example.hotel_luxvoy.adapter.MoreAdapter;
 import com.example.hotel_luxvoy.adapter.ViewedAdapter;
 import com.example.hotel_luxvoy.models.Explore;
+import com.example.hotel_luxvoy.models.Hotel;
 import com.example.hotel_luxvoy.models.More;
 import com.example.hotel_luxvoy.models.UserAfterCheckLG;
 import com.example.hotel_luxvoy.models.Viewed;
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,10 +37,15 @@ public class HomeActivity extends AppCompatActivity {
 
     RecyclerView recyclerViewViewed, recyclerViewMore, recyclerViewExplore;
 
+    BottomNavigationItemView bottomNavigationItemView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_home);
         textView = findViewById(R.id.tvBooking);
         tvNameUser = findViewById(R.id.tvUsername);
@@ -100,10 +110,18 @@ public class HomeActivity extends AppCompatActivity {
         exploreList.add(new Explore(R.drawable.img_explore, "Ha Noi explore"));
         exploreList.add(new Explore(R.drawable.img_explore, "Da Nang explore"));
         exploreList.add(new Explore(R.drawable.img_explore, "Nha Trang explore"));
-        exploreList.add(new Explore(R.drawable.img_explore, "Phu Quoc explore"));
 
         ExploreAdaper exploreAdaper = new ExploreAdaper(exploreList, this);
         recyclerViewExplore.setAdapter(exploreAdaper);
+
+        exploreAdaper.setOnItemClickListener(new ExploreAdaper.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                // Chuyển sang Activity khác để hiển thị RecyclerView của Hotel
+                Intent intent = new Intent(HomeActivity.this, HotelActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
