@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:layout_margin="20dp"
     android:layout_marginBottom="50sp"
+    android:scrollbars="none"
+
     tools:context=".activity.HomeActivity">
 
     <LinearLayout

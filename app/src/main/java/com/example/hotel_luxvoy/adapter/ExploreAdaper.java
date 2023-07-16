@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,6 +16,16 @@ import com.example.hotel_luxvoy.models.Explore;
 import java.util.List;
 
 public class ExploreAdaper extends RecyclerView.Adapter<ExploreAdaper.ExploreViewHolder> {
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    private OnItemClickListener mListener;
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
+
 
     private List<Explore> exploreList;
 
@@ -44,7 +55,7 @@ public class ExploreAdaper extends RecyclerView.Adapter<ExploreAdaper.ExploreVie
         return exploreList.size();
     }
 
-    public class ExploreViewHolder extends RecyclerView.ViewHolder {
+    public class ExploreViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView imgExplore;
         TextView tvExplore;
 
@@ -52,6 +63,18 @@ public class ExploreAdaper extends RecyclerView.Adapter<ExploreAdaper.ExploreVie
             super(itemView);
             imgExplore = itemView.findViewById(R.id.imgExplore);
             tvExplore = itemView.findViewById(R.id.tvExplore);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            if (mListener != null) {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    mListener.onItemClick(position);
+                }
+            }
         }
     }
+
 }

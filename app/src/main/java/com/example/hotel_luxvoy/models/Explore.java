@@ -1,8 +1,11 @@
 package com.example.hotel_luxvoy.models;
 
+import java.util.List;
+
 public class Explore {
     private int image;
     private String description;
+
 
     public Explore() {
     }

@@ -1,0 +1,69 @@
+package com.example.hotel_luxvoy.adapter;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.hotel_luxvoy.R;
+import com.example.hotel_luxvoy.models.Hotel;
+
+import org.w3c.dom.Text;
+
+import java.util.List;
+
+public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelAdapterViewHolder> {
+
+    private Context context;
+
+    private List<Hotel> hotelList;
+
+
+    public HotelAdapter(List<Hotel> hotelList, Context context) {
+        this.context = context;
+        this.hotelList = hotelList;
+    }
+
+    @NonNull
+    @Override
+    public HotelAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_hotel, parent, false);
+        return new HotelAdapterViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull HotelAdapterViewHolder holder, int position) {
+        Hotel hotel = hotelList.get(position);
+        holder.imgHotel.setImageResource(hotel.getImage());
+        holder.txtHotelName.setText(hotel.getHotelName());
+    }
+
+    @Override
+    public int getItemCount() {
+        return hotelList.size();
+    }
+
+    public class HotelAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        ImageView imgHotel;
+
+        TextView txtHotelName, txtHotelAddress, txtRating;
+
+        public HotelAdapterViewHolder(@NonNull View itemView) {
+            super(itemView);
+            imgHotel = itemView.findViewById(R.id.imgHotel);
+            txtHotelName = itemView.findViewById(R.id.tvHotelName);
+
+        }
+
+
+        @Override
+        public void onClick(View v) {
+
+        }
+    }
+}
