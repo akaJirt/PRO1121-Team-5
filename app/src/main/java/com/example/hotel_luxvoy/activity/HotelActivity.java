@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.hotel_luxvoy.FullScreenHelper;
@@ -24,6 +25,10 @@ public class HotelActivity extends AppCompatActivity {
     private List<Hotel> hotelList;
     private List<Room> roomList;
 
+    private TextView tvHotelName, tvResult;
+
+    private Spinner spSort;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +37,9 @@ public class HotelActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String hotelName = intent.getStringExtra("nameDestination");
-        TextView tvHotelName = findViewById(R.id.tvHotelName);
+        tvHotelName = findViewById(R.id.tvHotelName);
+        tvResult = findViewById(R.id.tvResult);
+        spSort = findViewById(R.id.spSort);
         tvHotelName.setText(hotelName);
 
         ImageView ivBack = findViewById(R.id.ivBack);
@@ -52,7 +59,6 @@ public class HotelActivity extends AppCompatActivity {
         int[] roomImages4 = {R.drawable.room_4, R.drawable.room_2, R.drawable.room_3};
 
 
-
         roomList.add(new Room(1, roomImages, "1 King bed, guest room, Non-smoking", "120 USD", "Trống", "2"));
         roomList.add(new Room(2, roomImages2, "2 Twin/single bed, guest room, Non-smoking", "140 USD", "Trống", "2"));
         roomList.add(new Room(3, roomImages3, "Twin King bed, guest room, Non-smoking", "150 USD", "Trống", "2"));
@@ -60,7 +66,7 @@ public class HotelActivity extends AppCompatActivity {
 
         hotelList = new ArrayList<>();
         hotelList.add(new Hotel(1, R.drawable.hotel_1, "Luxvoy Luxury Hotel South Sai Gon", "4.5", "120 USD / Night", roomList));
-
+        tvResult.setText("Showing " + hotelList.size() + " results");
 
         hotelAdapter = new HotelAdapter(hotelList, this);
         recyclerView.setAdapter(hotelAdapter);

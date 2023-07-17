@@ -22,7 +22,7 @@ public class RoomActivity extends AppCompatActivity {
 
     private List<Room> roomList;
     private RecyclerView recyclerView;
-    private TextView tvHotelName;
+    private TextView tvHotelName, tvRoomAvailable;
 
     private ImageView ivBack;
 
@@ -39,12 +39,14 @@ public class RoomActivity extends AppCompatActivity {
         });
 
         tvHotelName = findViewById(R.id.tvHotelName);
+        tvRoomAvailable = findViewById(R.id.tvRoomAvailable);
         tvHotelName.setText(getIntent().getStringExtra("hotelName"));
 
         recyclerView = findViewById(R.id.rvRoom);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         roomList = (List<Room>) getIntent().getSerializableExtra("roomList");
+        tvRoomAvailable.setText(roomList.size() + " Room types avaiable");
 
         RoomAdapter roomAdapter = new RoomAdapter(roomList, this);
         recyclerView.setAdapter(roomAdapter);
