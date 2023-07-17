@@ -3,6 +3,7 @@ package com.example.hotel_luxvoy;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.denzcoskun.imageslider.ImageSlider;
@@ -25,6 +26,6 @@ public class OnboardingSlider extends AppCompatActivity {
         ImageSlider imageSlider = findViewById(R.id.image_slider);
         imageSlider.setImageList(imageList);
 
-
+        startActivity(new Intent(OnboardingSlider.this, BookActivity.class));
     }
 }
