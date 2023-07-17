@@ -2,6 +2,7 @@ package com.example.hotel_luxvoy.adapter;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -16,6 +17,7 @@ import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.hotel_luxvoy.R;
 import com.example.hotel_luxvoy.models.Room;
+import com.example.hotel_luxvoy.models.imageModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -24,12 +26,12 @@ import java.util.List;
 public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomAdaterViewHolder> {
 
 
-    private List<Room> roomList;
+    private ArrayList<Room> roomList;
 
     private Context context;
 
 
-    public RoomAdapter(List<Room> roomList, Context context) {
+    public RoomAdapter(ArrayList<Room> roomList, Context context) {
         this.roomList = roomList;
         this.context = context;
     }
@@ -43,15 +45,18 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomAdaterView
 
     @Override
     public void onBindViewHolder(@NonNull RoomAdaterViewHolder holder, int position) {
+
         Room room = roomList.get(position);
         holder.tvTypeRoom.setText(room.getType());
         holder.tvRoomPrice.setText(room.getPrice());
-
-        int[] images = room.getImage();
-        List<SlideModel> slideModels = new ArrayList<>();
-        for (int i = 0; i < images.length; i++) {
-            slideModels.add(new SlideModel(images[i], ScaleTypes.FIT));
+        Log.d("TAG", "onBindViewHolder: "+room.getRoomId());
+        ArrayList<imageModel> images = room.getImages();
+        ArrayList<SlideModel> slideModels = new ArrayList<>();
+        for (int i = 0; i < images.size(); i++) {
+            slideModels.add(new SlideModel(images.get(i).getLinkImg(), ScaleTypes.FIT));
         }
+
+
 
         holder.imageSlider.setImageList(slideModels, ScaleTypes.FIT);
 

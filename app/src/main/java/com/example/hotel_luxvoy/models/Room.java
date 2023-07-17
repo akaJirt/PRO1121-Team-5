@@ -1,34 +1,25 @@
 package com.example.hotel_luxvoy.models;
 
+import java.util.ArrayList;
+
 public class Room implements java.io.Serializable{
 
     private int roomId;
 
-    private int image[];
+    private ArrayList<imageModel> images;
     private String type;
     private String price;
     private String status;
     private String capacity;
 
-    public Room() {
-    }
 
-
-    public Room(int roomId, int[] image, String type, String price, String status, String capacity) {
+    public Room(int roomId, ArrayList<imageModel> images, String type, String price, String status, String capacity) {
         this.roomId = roomId;
-        this.image = image;
+        this.images = images;
         this.type = type;
         this.price = price;
         this.status = status;
         this.capacity = capacity;
-    }
-
-    public int[] getImage() {
-        return image;
-    }
-
-    public void setImage(int[] image) {
-        this.image = image;
     }
 
     public int getRoomId() {
@@ -37,6 +28,14 @@ public class Room implements java.io.Serializable{
 
     public void setRoomId(int roomId) {
         this.roomId = roomId;
+    }
+
+    public ArrayList<imageModel> getImages() {
+        return images;
+    }
+
+    public void setImages(ArrayList<imageModel> images) {
+        this.images = images;
     }
 
     public String getType() {

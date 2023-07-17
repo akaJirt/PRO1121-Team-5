@@ -6,21 +6,31 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.hotel_luxvoy.FullScreenHelper;
 import com.example.hotel_luxvoy.R;
+import com.example.hotel_luxvoy.ServiceAPI.APIService;
 import com.example.hotel_luxvoy.adapter.RoomAdapter;
 import com.example.hotel_luxvoy.models.Room;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RoomActivity extends AppCompatActivity {
 
-    private List<Room> roomList;
+    private ArrayList<Room> roomList;
     private RecyclerView recyclerView;
     private TextView tvHotelName;
 
@@ -44,9 +54,13 @@ public class RoomActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rvRoom);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        roomList = (List<Room>) getIntent().getSerializableExtra("roomList");
+        roomList = (ArrayList<Room>)getIntent().getSerializableExtra("roomList");
+
 
         RoomAdapter roomAdapter = new RoomAdapter(roomList, this);
         recyclerView.setAdapter(roomAdapter);
     }
+
+
+
 }

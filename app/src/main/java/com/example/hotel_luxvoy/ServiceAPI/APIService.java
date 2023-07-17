@@ -1,5 +1,7 @@
 package com.example.hotel_luxvoy.ServiceAPI;
 
+import com.example.hotel_luxvoy.models.Hotel;
+import com.example.hotel_luxvoy.models.Room;
 import com.example.hotel_luxvoy.models.UserAfterCheckLG;
 import com.example.hotel_luxvoy.models.UserLoginModel;
 import com.example.hotel_luxvoy.models.UserModel;
@@ -18,6 +20,10 @@ public interface APIService {
 
     @GET("users")
     Call<ArrayList<UserModel>> getData();
+
+    @GET("hotel")
+    Call<ArrayList<Hotel>> getHotel();
+
 
     @POST("checklogin")
     Call<UserAfterCheckLG> checkLogin(@Body UserLoginModel userLoginModel);

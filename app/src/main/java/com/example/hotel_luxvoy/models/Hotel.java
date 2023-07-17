@@ -1,36 +1,29 @@
 package com.example.hotel_luxvoy.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Hotel {
+public class Hotel implements java.io.Serializable{
 
     private int hotelId;
-    private int image;
+    private ArrayList<imageModel1> images;
     private String hotelName;
     private String rating;
 
     private String price;
 
-    private List<Room> rooms;
+    private ArrayList<Room> rooms;
 
     public Hotel() {
     }
 
-    public Hotel(int hotelId, int image, String hotelName, String rating, String price, List<Room> rooms) {
+    public Hotel(int hotelId, ArrayList<imageModel1> images, String hotelName, String rating, String price, ArrayList<Room> rooms) {
         this.hotelId = hotelId;
-        this.image = image;
+        this.images = images;
         this.hotelName = hotelName;
         this.rating = rating;
         this.price = price;
         this.rooms = rooms;
-    }
-
-    public Hotel(int hotelId, int image, String hotelName, String rating, String price) {
-        this.hotelId = hotelId;
-        this.image = image;
-        this.hotelName = hotelName;
-        this.rating = rating;
-        this.price = price;
     }
 
     public int getHotelId() {
@@ -41,12 +34,12 @@ public class Hotel {
         this.hotelId = hotelId;
     }
 
-    public int getImage() {
-        return image;
+    public ArrayList<imageModel1> getImages() {
+        return images;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setImages(ArrayList<imageModel1> images) {
+        this.images = images;
     }
 
     public String getHotelName() {
@@ -73,11 +66,11 @@ public class Hotel {
         this.price = price;
     }
 
-    public List<Room> getRooms() {
+    public ArrayList<Room> getRooms() {
         return rooms;
     }
 
-    public void setRooms(List<Room> rooms) {
+    public void setRooms(ArrayList<Room> rooms) {
         this.rooms = rooms;
     }
 }
