@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.hotel_luxvoy.FullScreenHelper;
 import com.example.hotel_luxvoy.R;
@@ -36,6 +37,7 @@ public class SignInActivity extends AppCompatActivity {
 
         btnSignIn.setOnClickListener(v -> {
             Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
+            Toast.makeText(this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
             startActivity(intent);
         });
     }
