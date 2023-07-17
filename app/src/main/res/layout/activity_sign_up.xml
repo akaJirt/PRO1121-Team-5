@@ -143,24 +143,23 @@
                 android:layout_marginEnd="30sp">
 
                 <EditText
-                    android:id="@+id/edtWard"
+                    android:id="@+id/edtDistrict"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:autofillHints="address-level2"
                     android:background="@drawable/custom_edittext_bg"
-                    android:hint="Ward"
+                    android:hint="District"
                     android:inputType="textPersonName"
                     android:padding="15dp" />
 
                 <ImageView
-                    android:id="@+id/imgWard"
+                    android:id="@+id/imgDistrict"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="10dp"
-                    android:contentDescription="Dropdown icon for Ward selection"
                     android:src="@drawable/arrow_down_24" />
 
 
@@ -171,25 +170,24 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/edtDistrict"
+                    android:id="@+id/edtWard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:autofillHints="address-level1"
                     android:background="@drawable/custom_edittext_bg"
-                    android:hint="District"
+                    android:hint="Ward"
                     android:inputType="textPersonName"
                     android:padding="15dp" />
 
 
                 <ImageView
-                    android:id="@+id/imgDistrict"
+                    android:id="@+id/imgWard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="10dp"
-                    android:contentDescription="Dropdown icon for District selection"
                     android:src="@drawable/arrow_down_24" />
 
             </RelativeLayout>

@@ -20,7 +20,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     EditText edtFullName, edtUsername, edtPhoneNumber, edtWard, edtDistrict, edtStreet, edtPassword, edtConfirmPassword;
 
-    Button btnSignUp;
+    Button btnSignUp, btnSignIn;
 
     private boolean isAtLeast8 = false, hasUppercase = false, hasNumber = false, hasSymbol = false, hasLowercase = false;
 
@@ -48,10 +48,18 @@ public class SignUpActivity extends AppCompatActivity {
 
         btnSignUp = findViewById(R.id.btnSignUp);
 
+
+        btnSignUp.setOnClickListener(v -> {
+            Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
+            startActivity(intent);
+        });
+
+
         tvSignIn.setOnClickListener(v -> {
             Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
             startActivity(intent);
         });
+
 
 
         edtPassword.addTextChangedListener(new TextWatcher() {
