@@ -12,6 +12,6 @@ public class BookActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
 
-        startActivity(new Intent(BookActivity.this, BookLocation.class));
+//        startActivity(new Intent(BookActivity.this, BookLocation.class));
     }
 }
