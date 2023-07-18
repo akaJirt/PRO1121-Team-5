@@ -10,9 +10,6 @@
         android:id="@+id/image_slider"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:iss_auto_cycle="true"
-        app:iss_delay="1500"
-        app:iss_period="1500"
         app:iss_text_align="CENTER">
 
         <ImageView

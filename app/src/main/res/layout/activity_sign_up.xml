@@ -18,9 +18,8 @@
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginTop="50dp"
-            android:text="Sign Up"
+            android:text="Sign up"
             android:textColor="@color/black"
             android:textSize="28sp"
             android:textStyle="bold" />
@@ -121,6 +120,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="22dp"
+
                 android:layout_weight="1"
                 android:labelFor="@+id/edtWard"
                 android:text="Ward :"
@@ -242,7 +242,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custom_edittext_bg"
-                android:inputType="textPassword"
                 android:padding="15dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -427,6 +426,7 @@
             android:id="@+id/edtConfirmPasswordLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:layout_marginTop="12dp"
             android:hint="Confirm Password"
             app:boxBackgroundMode="outline"
@@ -437,7 +437,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custom_edittext_bg"
-                android:inputType="textPassword"
                 android:padding="15dp" />
 
         </com.google.android.material.textfield.TextInputLayout>

@@ -1,20 +1,20 @@
 package com.example.hotel_luxvoy.adapter;
 
 import android.content.Context;
-import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.hotel_luxvoy.R;
-import com.example.hotel_luxvoy.activity.ConfirmAndPayActivity;
 import com.example.hotel_luxvoy.models.Room;
 
 
@@ -54,10 +54,6 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomAdaterView
         }
 
         holder.imageSlider.setImageList(slideModels, ScaleTypes.FIT);
-        holder.imgSelectRoom.setOnClickListener(v -> {
-            Intent intent = new Intent(context, ConfirmAndPayActivity.class);
-            context.startActivity(intent);
-        });
 
     }
 
