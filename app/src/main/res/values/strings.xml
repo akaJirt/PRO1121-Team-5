@@ -7,4 +7,6 @@
     </string-array>
     <string name="title_text">It’s time to switch off</string>
     <string name="description_text2">Enjoy breakfast, bonus points and hotel credits.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

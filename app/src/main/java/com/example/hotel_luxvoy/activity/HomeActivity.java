@@ -1,118 +1,54 @@
 package com.example.hotel_luxvoy.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.ForegroundColorSpan;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.FrameLayout;
 
 import com.example.hotel_luxvoy.FullScreenHelper;
 import com.example.hotel_luxvoy.R;
-import com.example.hotel_luxvoy.adapter.ExploreAdaper;
-import com.example.hotel_luxvoy.adapter.MoreAdapter;
-import com.example.hotel_luxvoy.adapter.ViewedAdapter;
-import com.example.hotel_luxvoy.models.Explore;
-import com.example.hotel_luxvoy.models.Hotel;
-import com.example.hotel_luxvoy.models.More;
-import com.example.hotel_luxvoy.models.UserAfterCheckLG;
-import com.example.hotel_luxvoy.models.Viewed;
-import com.google.android.material.bottomnavigation.BottomNavigationItemView;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import com.example.hotel_luxvoy.fragment.AccountFragment;
+import com.example.hotel_luxvoy.fragment.BookingFragment;
+import com.example.hotel_luxvoy.fragment.HomeFragment;
+import com.example.hotel_luxvoy.fragment.TripsFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
-    TextView textView, tvNameUser;
+    BottomNavigationView bottomNavigationView;
 
-    ImageView imgBookNow;
-
-    RecyclerView recyclerViewViewed, recyclerViewMore, recyclerViewExplore;
-
-    BottomNavigationItemView bottomNavigationItemView;
-
+    FrameLayout frameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FullScreenHelper.setFullScreen(this);
         setContentView(R.layout.activity_home);
-        textView = findViewById(R.id.tvBooking);
-        tvNameUser = findViewById(R.id.tvUsername);
-        String fullText = "It's time to switch off";
-        String targetText = "switch off";
-        int startIndex = fullText.indexOf(targetText);
-        int endIndex = startIndex + targetText.length();
-        //lấy dữ liệu từ intent
-        Intent intent = getIntent();
-        UserAfterCheckLG user = (UserAfterCheckLG) intent.getSerializableExtra("user");
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        frameLayout = findViewById(R.id.frameLayout);
 
-        SpannableString spannableString = new SpannableString(fullText);
-        ForegroundColorSpan colorSpan = new ForegroundColorSpan(Color.parseColor("#FFA500")); // Màu cam
-        spannableString.setSpan(colorSpan, startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        replaceFragment(new HomeFragment());
 
-        textView.setText(spannableString);
-        tvNameUser.setText(user.getFullName());
-
-        imgBookNow = findViewById(R.id.imgBookNow);
-        imgBookNow.setOnClickListener(v -> {
-            Intent intent1 = new Intent(HomeActivity.this, BookCheckActivity.class);
-            startActivity(intent1);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.nav_home) {
+                replaceFragment(new HomeFragment());
+            } else if (itemId == R.id.nav_booking) {
+                replaceFragment(new BookingFragment());
+            } else if (itemId == R.id.nav_trips) {
+                replaceFragment(new TripsFragment());
+            } else if (itemId == R.id.nav_account) {
+                replaceFragment(new AccountFragment());
+            }
+            return true;
         });
-
-//       ======================== Viewed ========================
-
-        recyclerViewViewed = findViewById(R.id.rvViewed);
-        recyclerViewViewed.setHasFixedSize(true);
-        recyclerViewViewed.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-
-        List<Viewed> viewedList = new ArrayList<>();
-        viewedList.add(new Viewed(R.drawable.img_viewed1, "Phu Quoc Beach, Luxvoy Collection"));
-        viewedList.add(new Viewed(R.drawable.img_viewed1, "Ha Long Bay, Luxvoy Collection"));
-        viewedList.add(new Viewed(R.drawable.img_viewed1, "Da Nang Beach, Luxvoy Collection"));
-        viewedList.add(new Viewed(R.drawable.img_viewed1, "Nha Trang Beach, Luxvoy Collection"));
-
-        ViewedAdapter viewedAdapter = new ViewedAdapter(viewedList, this);
-        recyclerViewViewed.setAdapter(viewedAdapter);
-
-//       ======================== More ========================
-
-        recyclerViewMore = findViewById(R.id.rvMore);
-        recyclerViewMore.setHasFixedSize(true);
-        recyclerViewMore.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-
-        List<More> moreList = new ArrayList<>();
-        moreList.add(new More(R.drawable.img_more, "Resort relaxation await"));
-        moreList.add(new More(R.drawable.img_more, "A rewarded stay at Renaissance Saigon"));
-        moreList.add(new More(R.drawable.img_more, "A rewarded stay at Renaissance Saigon"));
-        moreList.add(new More(R.drawable.img_more, "A rewarded stay at Renaissance Saigon"));
-
-        MoreAdapter moreAdapter = new MoreAdapter(moreList, this);
-        recyclerViewMore.setAdapter(moreAdapter);
-
-//       ======================== Explore ========================
-
-        recyclerViewExplore = findViewById(R.id.rvExplore);
-        recyclerViewExplore.setHasFixedSize(true);
-        recyclerViewExplore.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-
-        List<Explore> exploreList = new ArrayList<>();
-        exploreList.add(new Explore(R.drawable.img_explore, "Ha Noi explore"));
-        exploreList.add(new Explore(R.drawable.img_explore, "Da Nang explore"));
-        exploreList.add(new Explore(R.drawable.img_explore, "Nha Trang explore"));
-
-        ExploreAdaper exploreAdaper = new ExploreAdaper(exploreList, this);
-        recyclerViewExplore.setAdapter(exploreAdaper);
-
-
     }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(frameLayout.getId(), fragment);
+        fragmentTransaction.commit();
+    }
+
 }
