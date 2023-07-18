@@ -14,5 +14,6 @@ public class ConfirmAndPayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         FullScreenHelper.setFullScreen(this);
         setContentView(R.layout.activity_confirm_and_pay);
+        //test
     }
 }
