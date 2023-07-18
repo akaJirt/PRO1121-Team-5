@@ -12,6 +12,9 @@
         android:theme="@style/Theme.HotelLuxvoy"
         tools:targetApi="31">
         <activity
+            android:name=".BookCheckActivity"
+            android:exported="false" />
+        <activity
             android:name=".BookLocation"
             android:exported="false" />
         <activity
