@@ -17,7 +17,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface APIService {
-
+   public static final String BASE_URL = "http://172.16.98.150:6969/api/v1/";
     @GET("users")
     Call<ArrayList<UserModel>> getData();
 

@@ -1,5 +1,7 @@
 package com.example.hotel_luxvoy.activity;
 
+import static com.example.hotel_luxvoy.ServiceAPI.APIService.BASE_URL;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -122,7 +124,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void postData(String userName, String password, String fullName, String phoneNumber, String ward, String district, String street) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.122:6969/api/v1/")
+                .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

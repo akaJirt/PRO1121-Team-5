@@ -1,5 +1,7 @@
 package com.example.hotel_luxvoy.activity;
 
+import static com.example.hotel_luxvoy.ServiceAPI.APIService.BASE_URL;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -57,7 +59,7 @@ public class SignInActivity extends AppCompatActivity {
     private void checklogin(String toString, String toString1) {
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.122:6969/api/v1/")
+                .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
