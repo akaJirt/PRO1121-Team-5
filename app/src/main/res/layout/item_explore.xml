@@ -5,12 +5,12 @@
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     app:cardCornerRadius="10dp"
-    app:cardElevation="10dp"
-    app:cardUseCompatPadding="true">
+    app:cardElevation="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:orientation="vertical">
 
         <ImageView
@@ -23,7 +23,7 @@
             android:id="@+id/tvExplore"
             android:layout_width="150sp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_margin="10dp"
             android:text="Ha Noi exploration"
             android:textColor="@color/black"
             android:textSize="16sp"
