@@ -55,7 +55,7 @@ public class RoomActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rvRoom);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        roomList = (List<Room>) getIntent().getSerializableExtra("roomList");
+        roomList = (ArrayList<Room>)getIntent().getSerializableExtra("roomList");
         tvRoomAvailable.setText(roomList.size() + " Room types avaiable");
 
         RoomAdapter roomAdapter = new RoomAdapter(roomList, this);

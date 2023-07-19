@@ -26,6 +26,7 @@ import com.example.hotel_luxvoy.adapter.MoreAdapter;
 import com.example.hotel_luxvoy.adapter.ViewedAdapter;
 import com.example.hotel_luxvoy.models.Explore;
 import com.example.hotel_luxvoy.models.More;
+import com.example.hotel_luxvoy.models.UserAfterCheckLG;
 import com.example.hotel_luxvoy.models.Viewed;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    TextView textView;
+    TextView textView,tvUsername;
     ImageView imgBookNow;
     RecyclerView recyclerViewViewed, recyclerViewMore, recyclerViewExplore;
 
@@ -42,6 +43,10 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         textView = rootView.findViewById(R.id.tvBooking);
+        tvUsername = rootView.findViewById(R.id.tvUsername);
+        Intent intent1 = getActivity().getIntent();
+        UserAfterCheckLG userAfterCheckLG = (UserAfterCheckLG) intent1.getSerializableExtra("user");
+        tvUsername.setText(userAfterCheckLG.getFullName());
         String fullText = "It's time to switch off";
         String targetText = "switch off";
         int startIndex = fullText.indexOf(targetText);

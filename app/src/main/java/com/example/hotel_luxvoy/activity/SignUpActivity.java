@@ -68,7 +68,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         // retrofit API
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.122:6969/api/v1/")
+                .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

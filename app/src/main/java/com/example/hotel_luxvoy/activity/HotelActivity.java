@@ -33,7 +33,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HotelActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private HotelAdapter hotelAdapter;
-    private List<Hotel> hotelList;
+    private ArrayList<Hotel> hotelList;
     private ArrayList<Room> roomList;
 
     private TextView tvHotelName, tvResult;
@@ -110,7 +110,7 @@ public class HotelActivity extends AppCompatActivity {
                     ArrayList<Hotel> hotelList = response.body();
                     hotelAdapter = new HotelAdapter(hotelList, HotelActivity.this);
                     recyclerView.setAdapter(hotelAdapter);
-
+                    tvResult.setText("Showing " + hotelList.size() + " results");
                 }
             }
 
@@ -120,7 +120,7 @@ public class HotelActivity extends AppCompatActivity {
             }
         });
 
-        tvResult.setText("Showing " + hotelList.size() + " results");
+
 
     }
 }

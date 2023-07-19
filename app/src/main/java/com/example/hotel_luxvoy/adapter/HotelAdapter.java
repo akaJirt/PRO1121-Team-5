@@ -61,9 +61,10 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelAdapter
     public void onBindViewHolder(@NonNull HotelAdapterViewHolder holder, int position) {
         Hotel hotel = hotelList.get(position);
         ArrayList<imageModel1> images = hotel.getImages();
+        Log.d("TAG>>>>>>>>>>>>>>>>>>>>>>>", "onBindViewHolder: "+images.get(0).getLinkImg());
         ArrayList<SlideModel> slideModels = new ArrayList<>();
         for (int i = 0; i < images.size(); i++) {
-            slideModels.add(new SlideModel(images.get(i).getLinkImg(), ScaleTypes.FIT));
+            slideModels.add(new SlideModel(images.get(0).getLinkImg(), ScaleTypes.FIT));
         }
 
 
