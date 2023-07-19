@@ -66,11 +66,11 @@
 
                     <TextView
                         android:id="@+id/where_next_"
-                        android:layout_width="91dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:fontFamily="@font/aeonikpro"
-                        android:text="Where next?"
+                        android:hint="Where next?"
                         android:textColor="#777E91"
                         android:textSize="16dp" />
                 </LinearLayout>
@@ -140,142 +140,14 @@
 
         <HorizontalScrollView
             android:id="@+id/scrollNearby"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:scrollbars="none">
 
-            <LinearLayout
-                android:id="@+id/layoutNearby"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:id="@+id/card_1"
-                    android:layout_width="200dp"
-                    android:layout_height="198dp"
-                    android:background="@drawable/card_2"
-                    android:elevation="36dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="200dp"
-                            android:layout_height="120dp"
-                            android:src="@drawable/saigon1" />
-
-                        <TextView
-                            android:layout_width="176dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="8dp"
-                            android:fontFamily="@font/aeonikpro"
-
-                            android:text="Luxvoy Luxury Hotel \nSouth Sai Gon"
-                            android:textColor="@color/black"
-                            android:textFontWeight="400"
-                            android:textSize="16dp" />
-
-                        <TextView
-                            android:id="@+id/SGHotel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="12dp"
-                            android:layout_marginTop="4dp"
-                            android:fontFamily="@font/aeonikpro"
-                            android:text="3.8 km"
-                            android:textAlignment="center"
-                            android:textColor="#B1B5C4"
-                            android:textSize="12dp" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/card_2"
-                    android:layout_width="200dp"
-                    android:layout_height="198dp"
-                    android:layout_marginLeft="28dp"
-                    android:background="@drawable/card_2"
-                    android:elevation="36dp">
-
-                    <LinearLayout
-                        android:layout_width="200dp"
-                        android:layout_height="198dp"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="200dp"
-                            android:layout_height="120dp"
-                            android:src="@drawable/saigon2" />
-
-                        <TextView
-                            android:layout_width="176dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="8dp"
-                            android:fontFamily="@font/aeonikpro"
-
-
-                            android:text="Luxvoy Hotel and Tower \nSai Gon"
-                            android:textColor="@color/black"
-                            android:textFontWeight="400"
-                            android:textSize="16dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="12dp"
-                            android:layout_marginTop="4dp"
-                            android:fontFamily="@font/aeonikpro"
-                            android:text="4.2 km"
-                            android:textAlignment="center"
-                            android:textColor="#B1B5C4"
-                            android:textSize="12dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/card_3"
-                        android:layout_width="200dp"
-                        android:layout_height="198dp"
-                        android:layout_marginLeft="28dp"
-                        android:background="@drawable/card_2"
-                        android:elevation="36dp">
-
-                        <LinearLayout
-                            android:layout_width="200dp"
-                            android:layout_height="198dp"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="200dp"
-                                android:layout_height="120dp"
-                                android:src="@drawable/saigon2" />
-
-                            <TextView
-                                android:layout_width="176dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginTop="8dp"
-                                android:text="Luxvoy Hotel South Sai \nGon"
-                                android:textColor="@color/black"
-                                android:textFontWeight="400"
-                                android:textSize="16dp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="12dp"
-                                android:layout_marginTop="4dp"
-                                android:text="3.8 km"
-                                android:textAlignment="center"
-                                android:textSize="12dp" />
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </HorizontalScrollView>
 
         <TextView
@@ -294,111 +166,10 @@
             android:layout_marginTop="16dp"
             android:scrollbars="none">
 
-            <LinearLayout
-                android:id="@+id/layoutViewed"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content">
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
-                <LinearLayout
-                    android:id="@+id/PQ1"
-                    android:layout_width="200dp"
-                    android:layout_height="180dp"
-                    android:background="@drawable/card_2"
-                    android:elevation="36dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="200dp"
-                            android:layout_height="120dp"
-                            android:src="@drawable/phuquoc" />
-
-                        <TextView
-                            android:layout_width="176dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="8dp"
-                            android:fontFamily="@font/aeonikpro"
-                            android:text="Phu Quoc Beach, \nLuxvoy Collection"
-                            android:textColor="@color/black"
-                            android:textFontWeight="500"
-                            android:textSize="16dp" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/HLB2"
-                    android:layout_width="200dp"
-                    android:layout_height="180dp"
-                    android:layout_marginLeft="28dp"
-                    android:background="@drawable/card_2"
-                    android:elevation="36dp">
-
-                    <LinearLayout
-                        android:layout_width="200dp"
-                        android:layout_height="180dp"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="200dp"
-                            android:layout_height="120dp"
-                            android:src="@drawable/halongbay" />
-
-                        <TextView
-                            android:layout_width="176dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="8dp"
-                            android:fontFamily="@font/aeonikpro"
-                            android:text="Ha Long Bay, Luxvoy \nCollection"
-                            android:textColor="@color/black"
-                            android:textFontWeight="400"
-                            android:textSize="16dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/HG3"
-                        android:layout_width="200dp"
-                        android:layout_height="180dp"
-                        android:layout_marginLeft="28dp"
-                        android:background="@drawable/card_2"
-                        android:elevation="36dp">
-
-                        <LinearLayout
-                            android:layout_width="200dp"
-                            android:layout_height="180dp"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="200dp"
-                                android:layout_height="120dp"
-                                android:src="@drawable/hagiang" />
-
-                            <TextView
-                                android:layout_width="176dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginTop="8dp"
-                                android:text="Ha Giang, Luxvoy \nCollection"
-                                android:textColor="@color/black"
-                                android:textFontWeight="400"
-                                android:textSize="16dp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="12dp"
-                                android:layout_marginTop="4dp"
-                                android:text="3.8 km"
-                                android:textAlignment="center"
-                                android:textSize="12dp" />
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
         </HorizontalScrollView>
 
         <TextView
@@ -412,57 +183,14 @@
 
         <HorizontalScrollView
             android:id="@+id/scrollFeatured"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginTop="16dp"
             android:scrollbars="none">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="150dp"
-                android:orientation="horizontal">
-
-                <RelativeLayout
-                    android:id="@+id/hochiminh"
-                    android:layout_width="152dp"
-                    android:layout_height="150dp"
-                    android:background="@drawable/frame_839"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="152dp"
-                        android:layout_height="150dp"
-                        android:src="@mipmap/hcm" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_marginStart="16dp"
-                    android:id="@+id/hanoi"
-                    android:layout_width="152dp"
-                    android:layout_height="150dp"
-                    android:background="@drawable/frame_839"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="152dp"
-                        android:layout_height="150dp"
-                        android:src="@mipmap/hanoi" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_marginStart="16dp"
-                    android:id="@+id/halong"
-                    android:layout_width="152dp"
-                    android:layout_height="150dp"
-                    android:background="@drawable/frame_839"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="152dp"
-                        android:layout_height="150dp"
-                        android:src="@mipmap/halong" />
-                </RelativeLayout>
-            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </HorizontalScrollView>
 
 
@@ -493,110 +221,9 @@
             android:layout_marginTop="16dp"
             android:scrollbars="none">
 
-            <LinearLayout
-                android:id="@+id/layoutLuxury"
-                android:layout_width="wrap_content"
-                android:layout_height="174dp">
-
-                <LinearLayout
-                    android:id="@+id/Lux1"
-                    android:layout_width="200dp"
-                    android:layout_height="174dp"
-                    android:background="@drawable/card_2"
-                    android:elevation="36dp">
-
-                    <LinearLayout
-                        android:layout_width="200dp"
-                        android:layout_height="174dp"
-                        android:orientation="vertical">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <ImageView
-                                android:layout_width="200dp"
-                                android:layout_height="120dp"
-                                android:src="@drawable/premium1" />
-
-                            <TextView
-                                android:id="@+id/luxvoy_luxu"
-                                android:layout_width="148dp"
-                                android:layout_height="16dp"
-                                android:layout_alignParentLeft="true"
-                                android:layout_alignParentTop="true"
-                                android:layout_marginLeft="26dp"
-                                android:layout_marginTop="91.03dp"
-                                android:fontFamily="@font/azonix1"
-                                android:gravity="center_horizontal|center_vertical"
-                                android:text="LUXVOY LUXURY"
-                                android:textColor="@color/white" />
-                        </RelativeLayout>
-
-
-                        <TextView
-                            android:layout_width="200dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:fontFamily="@font/aeonikpro"
-                            android:gravity="center_horizontal"
-                            android:text="Luxvoy Luxury Saigon"
-                            android:textColor="@color/black"
-                            android:textFontWeight="500"
-                            android:textSize="16dp" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/Lux2"
-                    android:layout_width="200dp"
-                    android:layout_height="174dp"
-                    android:layout_marginLeft="28dp"
-                    android:background="@drawable/card_2"
-                    android:elevation="36dp">
-
-                    <LinearLayout
-                        android:layout_width="200dp"
-                        android:layout_height="174dp"
-                        android:orientation="vertical">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <ImageView
-                                android:layout_width="200dp"
-                                android:layout_height="120dp"
-                                android:src="@drawable/premium2" />
-
-                            <TextView
-                                android:layout_width="148dp"
-                                android:layout_height="16dp"
-                                android:layout_alignParentLeft="true"
-                                android:layout_alignParentTop="true"
-                                android:layout_marginLeft="26dp"
-                                android:layout_marginTop="91.03dp"
-                                android:fontFamily="@font/azonix1"
-                                android:gravity="center_horizontal|center_vertical"
-                                android:text="LUXVOY LUXURY"
-                                android:textColor="@color/white" />
-                        </RelativeLayout>
-
-                        <TextView
-                            android:layout_width="200dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:fontFamily="@font/aeonikpro"
-
-
-                            android:gravity="center_horizontal"
-                            android:text="Luxvoy Luxury Hanoi"
-                            android:textColor="@color/black"
-                            android:textFontWeight="500"
-                            android:textSize="16dp" />
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </HorizontalScrollView>
 
         <TextView
@@ -616,107 +243,9 @@
             android:layout_marginTop="16dp"
             android:scrollbars="none">
 
-            <LinearLayout
-                android:id="@+id/layoutPremium2"
-                android:layout_width="wrap_content"
-                android:layout_height="174dp">
-
-                <LinearLayout
-                    android:id="@+id/Pre1"
-                    android:layout_width="200dp"
-                    android:layout_height="174dp"
-                    android:background="@drawable/card_2"
-                    android:elevation="36dp">
-
-                    <LinearLayout
-                        android:layout_width="200dp"
-                        android:layout_height="174dp"
-                        android:orientation="vertical">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <ImageView
-                                android:layout_width="200dp"
-                                android:layout_height="120dp"
-                                android:src="@drawable/premium3" />
-
-                            <TextView
-                                android:layout_width="148dp"
-                                android:layout_height="16dp"
-                                android:layout_alignParentLeft="true"
-                                android:layout_alignParentTop="true"
-                                android:layout_marginLeft="26dp"
-                                android:layout_marginTop="91.03dp"
-                                android:fontFamily="@font/azonix1"
-                                android:gravity="center_horizontal|center_vertical"
-                                android:text="LUXVOY PREMIUM"
-                                android:textColor="@color/white" />
-                        </RelativeLayout>
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="16dp"
-                            android:fontFamily="@font/aeonikpro"
-
-
-                            android:text="Luxvoy Premium Saigon"
-                            android:textColor="@color/black"
-                            android:textSize="16dp" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/Pre2"
-                    android:layout_width="200dp"
-                    android:layout_height="174dp"
-                    android:layout_marginLeft="28dp"
-                    android:background="@drawable/card_2"
-                    android:elevation="36dp">
-
-                    <LinearLayout
-                        android:layout_width="200dp"
-                        android:layout_height="174dp"
-                        android:orientation="vertical">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <ImageView
-                                android:layout_width="200dp"
-                                android:layout_height="120dp"
-                                android:src="@drawable/premium4" />
-
-                            <TextView
-                                android:layout_width="148dp"
-                                android:layout_height="16dp"
-                                android:layout_alignParentLeft="true"
-                                android:layout_alignParentTop="true"
-                                android:layout_marginLeft="22dp"
-                                android:layout_marginTop="91.03dp"
-                                android:fontFamily="@font/azonix1"
-                                android:text="LUXVOY PREMIUM"
-                                android:textColor="@color/white" />
-                        </RelativeLayout>
-
-                        <TextView
-                            android:layout_width="200dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:fontFamily="@font/aeonikpro"
-                            android:gravity="center_horizontal"
-                            android:text="Luxvoy Premium Hanoi"
-                            android:textColor="@color/black"
-                            android:textFontWeight="500"
-                            android:textSize="16dp" />
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </HorizontalScrollView>
     </LinearLayout>
 </ScrollView>
