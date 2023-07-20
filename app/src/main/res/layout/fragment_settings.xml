@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_marginLeft="30sp"
+            android:layout_marginTop="10sp"
+            android:text="Manage profile"
+            android:textSize="20sp" />
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:layout_marginTop="20sp">
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Persona information"
+              android:textSize="20sp"
+              android:textColor="@color/black"
+              android:layout_marginLeft="20sp"/>
+          <ImageView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:src="@drawable/img_5"
+              android:layout_marginLeft="350sp"
+              android:layout_marginTop="-20sp"/>
+          <TextView
+              android:layout_marginLeft="20sp"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Pham Van Thang"
+              android:textSize="16sp"
+              android:layout_marginTop="-10sp"
+             />
+      </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10sp">
+            <TextView
+                android:layout_marginTop="10sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Change Password"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="20sp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_5"
+                android:layout_marginLeft="350sp"
+                android:layout_marginTop="-30sp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10sp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Payment information"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="20sp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_5"
+                android:layout_marginLeft="350sp"
+                android:layout_marginTop="-20sp"/>
+            <TextView
+                android:layout_marginLeft="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add a credit card"
+                android:textSize="16sp"
+                android:layout_marginTop="-10sp"
+                />
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Manage profile"
+            android:layout_marginLeft="30sp"
+            android:layout_marginTop="10sp"
+            android:textSize="20sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10sp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total point"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="20sp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_5"
+                android:layout_marginLeft="350sp"
+                android:layout_marginTop="-20sp"/>
+            <TextView
+                android:layout_marginLeft="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="50,000 points"
+                android:textSize="16sp"
+                android:layout_marginTop="-10sp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10sp">
+            <TextView
+                android:layout_marginTop="10sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My promotions"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="20sp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_5"
+                android:layout_marginLeft="350sp"
+                android:layout_marginTop="-30sp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_marginTop="10sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Program benefits"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="20sp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_5"
+                android:layout_marginLeft="350sp"
+                android:layout_marginTop="-30sp"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="App settings"
+            android:layout_marginLeft="30sp"
+            android:layout_marginTop="10sp"
+            android:textSize="20sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10sp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:text="Stay notification"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_5"
+                android:layout_marginLeft="350sp"
+                android:layout_marginTop="-20sp"/>
+            <TextView
+                android:layout_marginLeft="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Get room ready, check-in/check out,..."
+                android:textSize="16sp"
+                android:layout_marginTop="-10sp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10sp">
+            <TextView
+                android:layout_marginTop="10sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enable Face ID"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="20sp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_5"
+                android:layout_marginLeft="350sp"
+                android:layout_marginTop="-30sp"/>
+
+        </LinearLayout>
+        <Button
+            android:layout_width="300sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/black"
+            android:text="Sign out"
+            />
+
+
+    </LinearLayout>
+
+</ScrollView>

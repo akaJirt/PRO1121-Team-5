@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:scrollbars="none">
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:src="@drawable/img_1"
+            android:layout_marginTop="-40dp"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_2"
+            android:layout_marginTop="-300sp"
+            android:layout_marginLeft="20sp"/>
+
+       <ImageView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="300dp"
+           android:layout_marginTop="-73dp"
+           android:src="@drawable/img_3" />
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Luxvoy Luxury Ha Noi Hotel"
+           android:layout_marginTop="200dp"
+           android:layout_marginLeft="15sp"
+           android:textSize="24sp"
+           android:textColor="@color/black"
+           />
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Check-in"
+           android:layout_margin="20sp"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Sun, Sep 11, 1:00 PM"
+               android:layout_marginTop="20sp"
+               android:layout_marginLeft="100sp"/>
+   </LinearLayout>
+       <LinearLayout
+           android:layout_marginTop="-30sp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Check-in"
+               android:layout_margin="20sp"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Sun, Sep 11, 1:00 PM"
+               android:layout_marginTop="20sp"
+               android:layout_marginLeft="100sp"/>
+       </LinearLayout>
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Address"
+           android:layout_marginLeft="20sp"
+           android:textSize="20sp"/>
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="20sp"
+           android:layout_marginTop="20sp"
+           android:textSize="17sp"
+           android:textColor="@color/black"
+           android:text="476, Minh Khai, Hai Ba Trung District, Hanoi, Vietnam"/>
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="+ 84 909 090 909"
+           android:layout_marginLeft="20sp"
+           android:textColor="#FF9800"/>
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Reservation Detail"
+           android:layout_margin="20sp"
+           android:textSize="20sp"/>
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="20sp"
+           android:textSize="17sp"
+           android:textColor="@color/black"
+           android:text="Confirmation number: 98581885"/>
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Sep 11-14 (3 Nights)"
+           android:layout_marginLeft="20sp"
+           android:layout_marginTop="10sp"
+          />
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="1 Room, 2 Guests"
+           android:layout_marginLeft="20sp"
+           android:layout_marginTop="10sp"
+           />
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Reservation Detail"
+           android:layout_margin="20sp"
+           android:textSize="20sp"/>
+       <androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/rcvroom"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           />
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Gallery"
+           android:layout_margin="20sp"
+           android:textSize="20sp"/>
+       <androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/rcvgallery"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           />
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+          android:orientation="horizontal"
+           android:layout_marginTop="20sp"
+           >
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Cancel reservartion"
+               android:layout_gravity="center"
+               android:layout_marginLeft="20sp"
+               android:textSize="20sp"
+               android:textColor="@color/black"/>
+
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="150sp"
+               android:src="@drawable/img_4" />
+       </LinearLayout>
+   </LinearLayout>
+
+
+</ScrollView>
