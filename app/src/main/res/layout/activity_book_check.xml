@@ -1,178 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingHorizontal="28dp"
-    tools:context=".BookCheckActivity">
-
-    <ImageView
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="17dp"
-        android:src="@drawable/back" />
+    tools:context=".activity.BookCheckActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:orientation="horizontal">
+        android:layout_margin="20dp"
+        android:orientation="vertical">
 
         <ImageView
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:src="@drawable/location" />
+            android:id="@+id/imgBack"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:src="@drawable/arrow_left_24" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:fontFamily="@font/aeonikpro"
-            android:text="Loacation"
-            android:textColor="#777E90"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/aeonikpro"
-        android:text="Hanoi, Vietnam"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:layout_width="319dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/longline" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:src="@drawable/calendar" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:fontFamily="@font/aeonikpro"
-            android:text="Dates"
-            android:textColor="#777E90"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/aeonikpro"
-        android:text="11-14 September"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:layout_width="319dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/longline" />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/aeonikpro"
-        android:text="Room, guests"
-        android:textColor="#777E90"
-        android:textSize="16sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/aeonikpro"
-            android:text="1 Room, 1 Guest"
+            android:layout_marginTop="20dp"
+            android:text="It’s time to switch off"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="193dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/go" />
+        <TextView
+            android:id="@+id/tvSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="80sp"
+            android:text="Enjoy breakfast, bonus points and hotel credits."
+            android:textSize="15sp" />
+
     </LinearLayout>
 
     <ImageView
-        android:layout_width="319dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/longline" />
+        android:id="@+id/imgBookCheck"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_booknow" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        android:layout_margin="20dp"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/aeonikpro"
-            android:text="Special rates"
-            android:textColor="#777E90"
-            android:textSize="16sp" />
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:src="@drawable/circle_24" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="Redeem your bonus point for free nights, unrivaled, and so much more."
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:src="@drawable/circle_24" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="Book now, then earn from September 10 through September 20, 2022."
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/imgBookNow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:orientation="horizontal">
+        android:src="@drawable/btn_booknow" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/aeonikpro"
-            android:text="Add special rates"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="178dp"
-            android:src="@drawable/go" />
-    </LinearLayout>
-    
-    <Button
-        android:id="@+id/btnFind"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="260dp"
-        android:layout_gravity="center_horizontal"
-        android:backgroundTint="@color/black"
-        android:text="Find Hotels"
-        android:textStyle="bold"
-        android:fontFamily="@font/aeonikpro"
-        android:background="@drawable/frame_801" />
 </LinearLayout>

@@ -22,10 +22,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildFeatures {
+        viewBinding true
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildToolsVersion '33.0.2'
 }
 
 dependencies {
@@ -41,4 +46,5 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.15.1'
 //    Image Slider
     implementation 'com.github.denzcoskun:ImageSlideshow:0.1.2'
+
 }
