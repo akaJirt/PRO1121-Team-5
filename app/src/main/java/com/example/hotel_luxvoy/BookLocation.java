@@ -10,7 +10,7 @@ public class BookLocation extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_book_location);
+        setContentView(R.layout.activity_booking_dates);
 
         startActivity(new Intent(BookLocation.this, BookCheckActivity.class));
     }
