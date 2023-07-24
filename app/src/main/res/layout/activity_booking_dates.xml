@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     android:orientation="vertical"
     android:scrollbars="none"
     tools:context=".BookLocation">
@@ -79,6 +78,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:background="@color/background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -96,6 +96,9 @@
                 android:firstDayOfWeek="1"
                 android:minDate="08/20/2023"
                 android:weekNumberColor="@color/black" />
+            <com.google.android.material.datepicker.MaterialDatePicker>
+
+            </com.google.android.material.datepicker.MaterialDatePicker>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
