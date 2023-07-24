@@ -4,6 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:elevation="8sp"
+    android:layout_marginRight="15dp"
     app:cardCornerRadius="10dp">
 
     <LinearLayout
@@ -18,31 +19,15 @@
             android:layout_height="174dp"
             android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="200dp"
-                    android:layout_height="120dp"
-                    android:src="@drawable/premium3" />
-
-                <TextView
-                    android:layout_width="148dp"
-                    android:layout_height="16dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginLeft="26dp"
-                    android:layout_marginTop="91.03dp"
-                    android:fontFamily="@font/azonix1"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:text="LUXVOY PREMIUM"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
-            </RelativeLayout>
+            <ImageView
+                android:id="@+id/imgPremium"
+                android:layout_width="200dp"
+                android:layout_height="120dp"
+                android:src="@drawable/premium3" />
 
 
             <TextView
+                android:id="@+id/tvPremium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
