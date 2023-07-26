@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="15dp"
+    app:cardCornerRadius="10dp">
+
+    <LinearLayout
+        android:id="@+id/Lux1"
+        android:layout_width="200dp"
+        android:layout_height="174dp"
+        android:background="@drawable/card_2"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imgLuxury"
+            android:layout_width="200dp"
+            android:layout_height="120dp"
+            android:src="@drawable/premium1" />
+
+        <TextView
+            android:id="@+id/tvLuxury"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/aeonikpro"
+            android:gravity="center_horizontal"
+            android:text="Luxvoy Luxury Saigon"
+            android:textColor="@color/black"
+            android:textFontWeight="500"
+            android:textSize="16dp" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

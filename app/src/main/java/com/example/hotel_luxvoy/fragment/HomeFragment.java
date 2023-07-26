@@ -68,12 +68,14 @@ public class HomeFragment extends Fragment {
         recyclerViewViewed.setHasFixedSize(true);
         recyclerViewViewed.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
-        // ... Tiếp tục khởi tạo và cấu hình recyclerViewViewed
+
         List<Viewed> viewedList = new ArrayList<>();
         viewedList.add(new Viewed(R.drawable.img_viewed1, "Phu Quoc Beach, Luxvoy Collection"));
         viewedList.add(new Viewed(R.drawable.img_viewed1, "Ha Long Bay, Luxvoy Collection"));
         viewedList.add(new Viewed(R.drawable.img_viewed1, "Da Nang Beach, Luxvoy Collection"));
         viewedList.add(new Viewed(R.drawable.img_viewed1, "Nha Trang Beach, Luxvoy Collection"));
+
+
 
         ViewedAdapter viewedAdapter = new ViewedAdapter(viewedList, getActivity());
         recyclerViewViewed.setAdapter(viewedAdapter);
@@ -103,6 +105,8 @@ public class HomeFragment extends Fragment {
 
         ExploreAdaper exploreAdaper = new ExploreAdaper(exploreList, getActivity());
         recyclerViewExplore.setAdapter(exploreAdaper);
+
+
 
         return rootView;
     }
