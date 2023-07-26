@@ -10,15 +10,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="30sp">
 
         <TextView
             android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
+            android:gravity="center"
             android:text="Sign up"
             android:textColor="@color/black"
             android:textSize="28sp"
@@ -143,24 +143,23 @@
                 android:layout_marginEnd="30sp">
 
                 <EditText
-                    android:id="@+id/edtWard"
+                    android:id="@+id/edtDistrict"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:autofillHints="address-level2"
                     android:background="@drawable/custom_edittext_bg"
-                    android:hint="Ward"
+                    android:hint="District"
                     android:inputType="textPersonName"
                     android:padding="15dp" />
 
                 <ImageView
-                    android:id="@+id/imgWard"
+                    android:id="@+id/imgDistrict"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="10dp"
-                    android:contentDescription="Dropdown icon for Ward selection"
                     android:src="@drawable/arrow_down_24" />
 
 
@@ -171,25 +170,24 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/edtDistrict"
+                    android:id="@+id/edtWard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:autofillHints="address-level1"
                     android:background="@drawable/custom_edittext_bg"
-                    android:hint="District"
+                    android:hint="Ward"
                     android:inputType="textPersonName"
                     android:padding="15dp" />
 
 
                 <ImageView
-                    android:id="@+id/imgDistrict"
+                    android:id="@+id/imgWard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="10dp"
-                    android:contentDescription="Dropdown icon for District selection"
                     android:src="@drawable/arrow_down_24" />
 
             </RelativeLayout>
@@ -235,7 +233,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:hint="Enter your password"
-            android:inputType="textPassword"
             app:boxBackgroundMode="outline"
             app:endIconMode="password_toggle">
 
@@ -244,6 +241,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custom_edittext_bg"
+                android:inputType="textPassword"
                 android:padding="15dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -428,7 +426,6 @@
             android:id="@+id/edtConfirmPasswordLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_marginTop="12dp"
             android:hint="Confirm Password"
             app:boxBackgroundMode="outline"
@@ -439,6 +436,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custom_edittext_bg"
+                android:inputType="textPassword"
                 android:padding="15dp" />
 
         </com.google.android.material.textfield.TextInputLayout>

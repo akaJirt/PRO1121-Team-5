@@ -1,5 +1,7 @@
 package com.example.hotel_luxvoy.activity;
 
+import static com.example.hotel_luxvoy.ServiceAPI.APIService.BASE_URL;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,12 +16,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hotel_luxvoy.FullScreenHelper;
 import com.example.hotel_luxvoy.R;
 import com.example.hotel_luxvoy.ServiceAPI.APIService;
-import com.example.hotel_luxvoy.models.UserModel;
 import com.example.hotel_luxvoy.models.UserPostModel;
-
-import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,17 +29,20 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    TextView tvPasswordLength, tvPasswordUpperCase, tvPasswordNumber, tvPasswordLowerCase, tvPasswordSpecialCharacter, tvSignIn;
+    TextView tvPasswordLength, tvPasswordUpperCase, tvPasswordNumber, tvPasswordLowerCase, tvPasswordSpecialCharacter,
+            tvSignIn;
 
     EditText edtFullName, edtUsername, edtPhoneNumber, edtWard, edtDistrict, edtStreet, edtPassword, edtConfirmPassword;
 
-    Button btnSignUp;
+    Button btnSignUp, btnSignIn;
 
-    private boolean isAtLeast8 = false, hasUppercase = false, hasNumber = false, hasSymbol = false, hasLowercase = false;
+    private boolean isAtLeast8 = false, hasUppercase = false, hasNumber = false, hasSymbol = false,
+            hasLowercase = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FullScreenHelper.setFullScreen(this);
         setContentView(R.layout.activity_sign_up);
 
         tvPasswordLength = findViewById(R.id.tvPasswordLength);
@@ -60,24 +63,28 @@ public class SignUpActivity extends AppCompatActivity {
 
         btnSignUp = findViewById(R.id.btnSignUp);
 
-        //retrofit API
+        // retrofit API
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.122:6969/api/v1/")
+                .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         APIService apiService = retrofit.create(APIService.class);
 
-        //btn sign up
+        // btn sign up
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (edtUsername.getText().toString().equals("") || edtPassword.getText().toString().equals("") || edtFullName.getText().toString().equals("") || edtPhoneNumber.getText().toString().equals("") || edtWard.getText().toString().equals("") || edtDistrict.getText().toString().equals("") || edtStreet.getText().toString().equals("")) {
+                if (edtUsername.getText().toString().equals("") || edtPassword.getText().toString().equals("")
+                        || edtFullName.getText().toString().equals("") || edtPhoneNumber.getText().toString().equals("")
+                        || edtWard.getText().toString().equals("") || edtDistrict.getText().toString().equals("")
+                        || edtStreet.getText().toString().equals("")) {
                     Toast.makeText(SignUpActivity.this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
                 } else {
                     if (isAtLeast8 && hasUppercase && hasLowercase && hasNumber && hasSymbol) {
                         if (edtPassword.getText().toString().equals(edtConfirmPassword.getText().toString())) {
-                            //get data from edit text (username, password, full name, phone number, ward, district, street
+                            // get data from edit text (username, password, full name, phone number, ward,
+                            // district, street
                             String userName = edtUsername.getText().toString();
                             String password = edtPassword.getText().toString();
                             String fullName = edtFullName.getText().toString();
@@ -86,7 +93,7 @@ public class SignUpActivity extends AppCompatActivity {
                             String district = edtDistrict.getText().toString();
                             String street = edtStreet.getText().toString();
 
-                            postData(userName, password, fullName, phoneNumber, ward, district, street);
+                            postData(phoneNumber, password, fullName, "user", street, ward, district);
                         } else {
                             Toast.makeText(SignUpActivity.this, "Mật khẩu không khớp!", Toast.LENGTH_SHORT).show();
                         }
@@ -101,7 +108,6 @@ public class SignUpActivity extends AppCompatActivity {
             Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
             startActivity(intent);
         });
-
 
         edtPassword.addTextChangedListener(new TextWatcher() {
             @Override
@@ -123,27 +129,31 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-    private void postData(String userName, String password, String fullName, String phoneNumber, String ward, String district, String street) {
+    private void postData(String phoneNumber, String password, String fullName, String role, String street, String ward,
+            String district) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.122:6969/api/v1/")
+                .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         APIService apiService = retrofit.create(APIService.class);
-        UserPostModel userPostModel = new UserPostModel(userName, password, fullName, Integer.parseInt(phoneNumber), ward, district, street);
-        Call<UserPostModel> call = apiService.createUser(userPostModel);
+        UserPostModel userPostModel = new UserPostModel(phoneNumber, password, fullName, role, street, ward, district);
+        Call<UserPostModel> call = apiService.APIcreateUser(userPostModel);
         call.enqueue(new Callback<UserPostModel>() {
             @Override
             public void onResponse(Call<UserPostModel> call, Response<UserPostModel> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(SignUpActivity.this, "Đăng ký Thành Công!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
+                    intent.putExtra("user", userPostModel);
+                    startActivity(intent);
                 }
             }
 
             @Override
             public void onFailure(Call<UserPostModel> call, Throwable t) {
-                Toast.makeText(SignUpActivity.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.d("Log>>>>>>>>>>>>>>", "onFailure: "+t.getMessage());
+                Toast.makeText(SignUpActivity.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.d("Log>>>>>>>>>>>>>>", "onFailure: " + t.getMessage());
             }
         });
     }
@@ -153,7 +163,7 @@ public class SignUpActivity extends AppCompatActivity {
         hasUppercase = password.matches(".*[A-Z].*");
         hasLowercase = password.matches(".*[a-z].*");
         hasNumber = password.matches(".*\\d.*");
-//        hasSymbol = !password.matches("[A-Za-z\\d ]*");
+        // hasSymbol = !password.matches("[A-Za-z\\d ]*");
         hasSymbol = password.matches(".*\\W.*");
         // "\d" == [0-9].
     }

@@ -1,5 +1,7 @@
 package com.example.hotel_luxvoy.activity;
 
+import static com.example.hotel_luxvoy.ServiceAPI.APIService.BASE_URL;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hotel_luxvoy.FullScreenHelper;
 import com.example.hotel_luxvoy.R;
 import com.example.hotel_luxvoy.ServiceAPI.APIService;
 import com.example.hotel_luxvoy.models.UserAfterCheckLG;
@@ -31,12 +34,18 @@ public class SignInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FullScreenHelper.setFullScreen(this);
         setContentView(R.layout.activity_sign_in);
 
         tvSignUp = findViewById(R.id.tvSignUp);
         edtUsername = findViewById(R.id.edtUsername);
         edtPassword = findViewById(R.id.edtPassword);
         btnSignIn = findViewById(R.id.btnSignIn);
+        Intent intent1 = getIntent();
+        if(intent1.getSerializableExtra("user") != null){
+            UserAfterCheckLG userAfterCheckLG = (UserAfterCheckLG) intent1.getSerializableExtra("user");
+            edtUsername.setText(userAfterCheckLG.getPhoneNumber());
+        }
 
         tvSignUp.setOnClickListener(v -> {
             Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
@@ -45,6 +54,7 @@ public class SignInActivity extends AppCompatActivity {
 
         btnSignIn.setOnClickListener(v -> {
             checklogin(edtUsername.getText().toString(), edtPassword.getText().toString());
+            Log.d("login button>>>>>>>>>", "onCreate: "+edtUsername.getText().toString()+" "+edtPassword.getText().toString());
         });
     }
 
@@ -55,7 +65,7 @@ public class SignInActivity extends AppCompatActivity {
     private void checklogin(String toString, String toString1) {
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.122:6969/api/v1/")
+                .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -76,6 +86,7 @@ public class SignInActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else {
+                    Log.d("TAG", "onResponse: "+response.body());
                     Toast.makeText(SignInActivity.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
                 }
 
