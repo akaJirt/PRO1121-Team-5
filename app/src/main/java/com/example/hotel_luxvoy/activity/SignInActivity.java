@@ -41,6 +41,11 @@ public class SignInActivity extends AppCompatActivity {
         edtUsername = findViewById(R.id.edtUsername);
         edtPassword = findViewById(R.id.edtPassword);
         btnSignIn = findViewById(R.id.btnSignIn);
+        Intent intent1 = getIntent();
+        if(intent1.getSerializableExtra("user") != null){
+            UserAfterCheckLG userAfterCheckLG = (UserAfterCheckLG) intent1.getSerializableExtra("user");
+            edtUsername.setText(userAfterCheckLG.getPhoneNumber());
+        }
 
         tvSignUp.setOnClickListener(v -> {
             Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
@@ -49,6 +54,7 @@ public class SignInActivity extends AppCompatActivity {
 
         btnSignIn.setOnClickListener(v -> {
             checklogin(edtUsername.getText().toString(), edtPassword.getText().toString());
+            Log.d("login button>>>>>>>>>", "onCreate: "+edtUsername.getText().toString()+" "+edtPassword.getText().toString());
         });
     }
 
@@ -80,6 +86,7 @@ public class SignInActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else {
+                    Log.d("TAG", "onResponse: "+response.body());
                     Toast.makeText(SignInActivity.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
                 }
 

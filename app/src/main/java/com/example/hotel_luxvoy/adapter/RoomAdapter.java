@@ -51,11 +51,11 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomAdaterView
         Room room = roomList.get(position);
         holder.tvTypeRoom.setText(room.getType());
         holder.tvRoomPrice.setText(room.getPrice());
-        Log.d("TAG", "onBindViewHolder: "+room.getRoomId());
-        ArrayList<imageModel> images = room.getImages();
+        Log.d("TAG", "onBindViewHolder: "+room.get_id());
+        ArrayList<String> images = room.getRoomImages();
         ArrayList<SlideModel> slideModels = new ArrayList<>();
         for (int i = 0; i < images.size(); i++) {
-            slideModels.add(new SlideModel(images.get(i).getLinkImg(), ScaleTypes.FIT));
+            slideModels.add(new SlideModel(images.get(i), ScaleTypes.FIT));
         }
 
 

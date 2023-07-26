@@ -1,27 +1,27 @@
 package com.example.hotel_luxvoy.models;
 
 public class UserLoginModel {
-    private String userName;
-    private String passWord;
+    private String username;
+    private String password;
 
-    public UserLoginModel(String userName, String passWord) {
-        this.userName = userName;
-        this.passWord = passWord;
+    public UserLoginModel(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getPassWord() {
-        return passWord;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

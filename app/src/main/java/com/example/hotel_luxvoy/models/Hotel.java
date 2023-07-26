@@ -5,41 +5,30 @@ import java.util.List;
 
 public class Hotel implements java.io.Serializable{
 
-    private int hotelId;
-    private ArrayList<imageModel1> images;
+    private String _id;
     private String hotelName;
+    private ArrayList<String> image;
     private String rating;
-
-    private String price;
-
+    private String lowestPrice;
+    private String userId;
     private ArrayList<Room> rooms;
 
-    public Hotel() {
-    }
-
-    public Hotel(int hotelId, ArrayList<imageModel1> images, String hotelName, String rating, String price, ArrayList<Room> rooms) {
-        this.hotelId = hotelId;
-        this.images = images;
+    public Hotel(String _id, String hotelName, ArrayList<String> image, String rating, String lowestPrice, String userId, ArrayList<Room> rooms) {
+        this._id = _id;
         this.hotelName = hotelName;
+        this.image = image;
         this.rating = rating;
-        this.price = price;
+        this.lowestPrice = lowestPrice;
+        this.userId = userId;
         this.rooms = rooms;
     }
 
-    public int getHotelId() {
-        return hotelId;
+    public String get_id() {
+        return _id;
     }
 
-    public void setHotelId(int hotelId) {
-        this.hotelId = hotelId;
-    }
-
-    public ArrayList<imageModel1> getImages() {
-        return images;
-    }
-
-    public void setImages(ArrayList<imageModel1> images) {
-        this.images = images;
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getHotelName() {
@@ -50,6 +39,14 @@ public class Hotel implements java.io.Serializable{
         this.hotelName = hotelName;
     }
 
+    public ArrayList<String> getImage() {
+        return image;
+    }
+
+    public void setImage(ArrayList<String> image) {
+        this.image = image;
+    }
+
     public String getRating() {
         return rating;
     }
@@ -58,12 +55,20 @@ public class Hotel implements java.io.Serializable{
         this.rating = rating;
     }
 
-    public String getPrice() {
-        return price;
+    public String getLowestPrice() {
+        return lowestPrice;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setLowestPrice(String lowestPrice) {
+        this.lowestPrice = lowestPrice;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public ArrayList<Room> getRooms() {

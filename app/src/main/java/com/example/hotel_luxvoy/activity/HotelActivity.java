@@ -57,12 +57,12 @@ public class HotelActivity extends AppCompatActivity {
         ivBack.setOnClickListener(v -> {
             finish();
         });
-
+        gethotelList();
         recyclerView = findViewById(R.id.rvHotel);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        gethotelList();
+
 
         // int[] roomImages = {R.drawable.room_1, R.drawable.room_2, R.drawable.room_3,
         // R.drawable.room_4};
@@ -101,16 +101,18 @@ public class HotelActivity extends AppCompatActivity {
                 .build();
 
         APIService apiService = retrofit.create(APIService.class);
-        Hotel hotel = new Hotel();
+
         Call<ArrayList<Hotel>> call = apiService.getHotel();
         call.enqueue(new Callback<ArrayList<Hotel>>() {
             @Override
             public void onResponse(Call<ArrayList<Hotel>> call, Response<ArrayList<Hotel>> response) {
                 if (response.isSuccessful()) {
                     ArrayList<Hotel> hotelList = response.body();
+                    Log.d("on call api>>>>>>>", "onResponse: "+response.body().toString());
                     hotelAdapter = new HotelAdapter(hotelList, HotelActivity.this);
                     recyclerView.setAdapter(hotelAdapter);
                     tvResult.setText("Showing " + hotelList.size() + " results");
+
                 }
             }
 

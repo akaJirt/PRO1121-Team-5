@@ -1,40 +1,40 @@
 package com.example.hotel_luxvoy.models;
 
-public class UserPostModel {
+public class UserPostModel implements java.io.Serializable{
 
 
-    private String userName;
-    private String passWord;
+    private String phoneNumber;
+    private String password;
     private String fullName;
-    private int phoneNumber;
-    private String district;
+    private String role ;
+    private String street;
     private String ward;
-    private String stress;
+    private String district;
 
-    public UserPostModel(String userName, String passWord, String fullName, int phoneNumber, String district, String ward, String stress) {
-        this.userName = userName;
-        this.passWord = passWord;
-        this.fullName = fullName;
+    public UserPostModel(String phoneNumber, String password, String fullName, String role, String street, String ward, String district) {
         this.phoneNumber = phoneNumber;
-        this.district = district;
+        this.password = password;
+        this.fullName = fullName;
+        this.role = role;
+        this.street = street;
         this.ward = ward;
-        this.stress = stress;
+        this.district = district;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getPassWord() {
-        return passWord;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFullName() {
@@ -45,20 +45,20 @@ public class UserPostModel {
         this.fullName = fullName;
     }
 
-    public int getPhoneNumber() {
-        return phoneNumber;
+    public String getRole() {
+        return role;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setRole(String role) {
+        this.role = role;
     }
 
-    public String getDistrict() {
-        return district;
+    public String getStreet() {
+        return street;
     }
 
-    public void setDistrict(String district) {
-        this.district = district;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
     public String getWard() {
@@ -69,11 +69,11 @@ public class UserPostModel {
         this.ward = ward;
     }
 
-    public String getStress() {
-        return stress;
+    public String getDistrict() {
+        return district;
     }
 
-    public void setStress(String stress) {
-        this.stress = stress;
+    public void setDistrict(String district) {
+        this.district = district;
     }
 }

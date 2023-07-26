@@ -1,58 +1,48 @@
 package com.example.hotel_luxvoy.models;
 
-public class UserAfterCheckLG implements java.io.Serializable{
-//    {
-//        "idUser": 5,
-//            "userName": "0123456789",
-//            "passWord": "@Zqa123456",
-//            "fullName": "testName1",
-//            "phoneNumber": 123456789,
-//            "district": "12",
-//            "ward": "6",
-//            "stress": "testStress"
-//    }
-    private int idUser;
-    private String userName;
-    private String passWord;
-    private String fullName;
-    private int phoneNumber;
-    private String district;
-    private String ward;
-    private String stress;
+import java.util.ArrayList;
 
-    public UserAfterCheckLG(int idUser, String userName, String passWord, String fullName, int phoneNumber, String district, String ward, String stress) {
-        this.idUser = idUser;
-        this.userName = userName;
-        this.passWord = passWord;
+public class UserAfterCheckLG implements java.io.Serializable{
+    private String _id;
+    private String username;
+    private String password;
+    private String fullName;
+    private String phoneNumber;
+    private String role;
+    private ArrayList<Hotel> hotels;
+
+    public UserAfterCheckLG(String _id, String username, String password, String fullName, String phoneNumber, String role, ArrayList<Hotel> hotels) {
+        this._id = _id;
+        this.username = username;
+        this.password = password;
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
-        this.district = district;
-        this.ward = ward;
-        this.stress = stress;
+        this.role = role;
+        this.hotels = hotels;
     }
 
-    public int getIdUser() {
-        return idUser;
+    public String get_id() {
+        return _id;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getPassWord() {
-        return passWord;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFullName() {
@@ -63,35 +53,27 @@ public class UserAfterCheckLG implements java.io.Serializable{
         this.fullName = fullName;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getDistrict() {
-        return district;
+    public String getRole() {
+        return role;
     }
 
-    public void setDistrict(String district) {
-        this.district = district;
+    public void setRole(String role) {
+        this.role = role;
     }
 
-    public String getWard() {
-        return ward;
+    public ArrayList<Hotel> getHotels() {
+        return hotels;
     }
 
-    public void setWard(String ward) {
-        this.ward = ward;
-    }
-
-    public String getStress() {
-        return stress;
-    }
-
-    public void setStress(String stress) {
-        this.stress = stress;
+    public void setHotels(ArrayList<Hotel> hotels) {
+        this.hotels = hotels;
     }
 }

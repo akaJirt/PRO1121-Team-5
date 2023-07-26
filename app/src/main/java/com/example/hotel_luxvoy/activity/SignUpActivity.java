@@ -19,10 +19,7 @@ import android.widget.Toast;
 import com.example.hotel_luxvoy.FullScreenHelper;
 import com.example.hotel_luxvoy.R;
 import com.example.hotel_luxvoy.ServiceAPI.APIService;
-import com.example.hotel_luxvoy.models.UserModel;
 import com.example.hotel_luxvoy.models.UserPostModel;
-
-import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -89,7 +86,8 @@ public class SignUpActivity extends AppCompatActivity {
                     String district = edtDistrict.getText().toString();
                     String street = edtStreet.getText().toString();
 
-                    postData(userName, password, fullName, phoneNumber, ward, district, street);
+
+                    postData(phoneNumber, password, fullName, "user", street, ward, district);
                 } else {
                     Toast.makeText(SignUpActivity.this, "Mật khẩu không hợp lệ!", Toast.LENGTH_SHORT).show();
                 }
@@ -121,23 +119,22 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-    private void postData(String userName, String password, String fullName, String phoneNumber, String ward,
-            String district, String street) {
+    private void postData(String phoneNumber,String password,String fullName,String role,String street,String ward,String district) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         APIService apiService = retrofit.create(APIService.class);
-        UserPostModel userPostModel = new UserPostModel(userName, password, fullName, Integer.parseInt(phoneNumber),
-                ward, district, street);
-        Call<UserPostModel> call = apiService.createUser(userPostModel);
+        UserPostModel userPostModel = new UserPostModel(phoneNumber, password, fullName, role, street, ward, district);
+        Call<UserPostModel> call = apiService.APIcreateUser(userPostModel);
         call.enqueue(new Callback<UserPostModel>() {
             @Override
             public void onResponse(Call<UserPostModel> call, Response<UserPostModel> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(SignUpActivity.this, "Đăng ký Thành Công!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
+                    Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
+                    intent.putExtra("user", userPostModel);
                     startActivity(intent);
                 }
             }

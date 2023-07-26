@@ -60,18 +60,17 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelAdapter
     @Override
     public void onBindViewHolder(@NonNull HotelAdapterViewHolder holder, int position) {
         Hotel hotel = hotelList.get(position);
-        ArrayList<imageModel1> images = hotel.getImages();
-        Log.d("TAG>>>>>>>>>>>>>>>>>>>>>>>", "onBindViewHolder: "+images.get(0).getLinkImg());
+        ArrayList<String> images = hotel.getImage();
         ArrayList<SlideModel> slideModels = new ArrayList<>();
         for (int i = 0; i < images.size(); i++) {
-            slideModels.add(new SlideModel(images.get(i).getLinkImg(), ScaleTypes.FIT));
+            slideModels.add(new SlideModel(images.get(i), ScaleTypes.FIT));
         }
 
 
         holder.imgHotel.setImageList(slideModels, ScaleTypes.FIT);
         holder.tvHotelName.setText(hotel.getHotelName());
         holder.tvHotelRating.setText(hotel.getRating());
-        holder.tvHotelPrice.setText(hotel.getPrice());
+        holder.tvHotelPrice.setText(hotel.getLowestPrice());
         Log.d("TAG", "onBindViewHolder: "+hotel.getRooms().size());
         holder.imgSelectRoom.setOnClickListener(new View.OnClickListener() {
             @Override

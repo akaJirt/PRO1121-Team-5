@@ -17,18 +17,18 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface APIService {
-   public static final String BASE_URL = "http://172.16.68.222:6969/api/v1/";
+   public static final String BASE_URL = "https://luxvoy-hotel-be.vercel.app/auth/";
     @GET("users")
     Call<ArrayList<UserModel>> getData();
 
-    @GET("hotel")
+    @GET("get-hotels")
     Call<ArrayList<Hotel>> getHotel();
 
 
-    @POST("checklogin")
+    @POST("login")
     Call<UserAfterCheckLG> checkLogin(@Body UserLoginModel userLoginModel);
 
-    @POST("users")
-    Call<UserPostModel> createUser(@Body UserPostModel user);
+    @POST("register")
+    Call<UserPostModel> APIcreateUser(@Body UserPostModel user);
 
 }
