@@ -15,14 +15,14 @@
             android:src="@drawable/img_1"
             android:layout_marginTop="-40dp"/>
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:src="@drawable/img_2"
             android:layout_marginTop="-300sp"
-            android:layout_marginLeft="20sp"/>
+            android:layout_marginLeft="40sp"/>
 
        <ImageView
-           android:layout_width="wrap_content"
+           android:layout_width="50dp"
            android:layout_height="wrap_content"
            android:layout_marginLeft="300dp"
            android:layout_marginTop="-73dp"
@@ -133,11 +133,12 @@
            android:text="Gallery"
            android:layout_margin="20sp"
            android:textSize="20sp"/>
+
        <androidx.recyclerview.widget.RecyclerView
            android:id="@+id/rcvgallery"
            android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           />
+           android:layout_height="wrap_content" />
+
        <LinearLayout
 
            android:layout_width="match_parent"

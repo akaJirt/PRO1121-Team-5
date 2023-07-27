@@ -17,48 +17,41 @@ import com.example.hotel_luxvoy.models.ListHA;
 import java.util.List;
 
 public class RCV1Adapter extends RecyclerView.Adapter<RCV1Adapter.RCVViewHolder> {
-   private Context mcontext;
+   private Context context;
     private List<ListHA> mlistHA;
-
-    public RCV1Adapter(Context mcontext) {
-        this.mcontext = mcontext;
+    public RCV1Adapter(List<ListHA> mlistHA, Context context) {
+        this.mlistHA = mlistHA;
+        this.context = context;
     }
-    public void setData(List<ListHA> list){
-        this.mlistHA = list;
-        notifyDataSetChanged();
-    }
-
     @NonNull
     @Override
-    public RCVViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_item1, parent, false);
-        return new RCVViewHolder(v);
+    public RCV1Adapter.RCVViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = View.inflate(context,R.layout.layout_item1, null);
+
+        return new RCVViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RCVViewHolder holder, int position) {
-       ListHA listHA = mlistHA.get(position);
-       if(listHA== null){
-           return;
-       }
-       holder.ivRoom.setImageResource(listHA.getPicture());
-       holder.txtRoom.setText(listHA.getText());
-
+    public void onBindViewHolder(@NonNull RCV1Adapter.RCVViewHolder holder, int position) {
+        ListHA listHA = mlistHA.get(position);
+        holder.txtRoom.setText(listHA.getText());
+        holder.ivRoom.setImageResource(listHA.getPicture());
     }
 
     @Override
     public int getItemCount() {
-       return mlistHA.size();
+        return mlistHA.size();
     }
 
-    public static  class RCVViewHolder extends RecyclerView.ViewHolder{
-        ImageView ivRoom;
+    public class RCVViewHolder extends RecyclerView.ViewHolder {
         TextView txtRoom;
+
+        ImageView ivRoom;
+
         public RCVViewHolder(@NonNull View itemView) {
             super(itemView);
-            ivRoom = itemView.findViewById(R.id.ivRoom);
             txtRoom = itemView.findViewById(R.id.txtRoom);
-
+            ivRoom = itemView.findViewById(R.id.ivRoom);
         }
     }
 }
