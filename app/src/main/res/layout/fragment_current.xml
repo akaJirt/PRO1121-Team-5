@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img"
+        android:layout_marginTop="-60dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Luxvoy Luxury Ha Noi Hotel"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="-50sp"
+        android:textSize="24sp"
+        android:textColor="@color/black"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sep 11-14 (3 nights)"
+       android:layout_margin="20sp"
+        android:textSize="16sp"
+        />
+    <Button
+        android:id="@+id/btnDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Details"
+        android:backgroundTint="@color/black"
+        android:layout_marginLeft="250sp"
+        android:layout_marginTop="-50sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirmation number: 98581885"
+        android:layout_margin="20sp"
+        android:textSize="16sp"
+        />
+
+
+</LinearLayout>

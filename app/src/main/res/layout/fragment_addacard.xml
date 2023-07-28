@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_6"
+        android:layout_margin="10sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add a card"
+        android:layout_margin="20sp"
+        android:textColor="@color/black"
+        android:textSize="25sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Credit card number"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="20sp"/>
+    <EditText
+        android:layout_margin="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Credit card number"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Card type"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="20sp"/>
+    <EditText
+        android:layout_margin="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Card type"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name of card"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="20sp"/>
+    <EditText
+        android:layout_margin="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name of card"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Expiration"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="20sp"/>
+    <EditText
+        android:layout_margin="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Expiration (mm/yy)"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CVV number"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="20sp"/>
+    <EditText
+        android:layout_margin="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="CVV"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZIP/Postal card"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="20sp"/>
+        <EditText
+            android:layout_margin="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="CVV"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Purpose"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="20sp"/>
+        <EditText
+            android:layout_margin="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Purpose"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please note"
+            android:layout_margin="20sp"
+            android:textSize="20sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="We need a credit card to hold you reservation. You  will not be charged at the time booking. Only those rates that require a desposit or pre-payment will be charged at booking."
+            android:layout_marginTop="-10sp"
+            android:layout_marginLeft="20sp"
+            android:textSize="18sp"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:layout_marginTop="40sp"
+            android:layout_gravity="center"
+            android:layout_width="300sp"
+            android:layout_height="wrap_content"
+            android:text="Done"
+            android:backgroundTint="#A6A3A3"/>
+
+
+    </LinearLayout>
+</ScrollView>
