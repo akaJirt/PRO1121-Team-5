@@ -2,25 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_margin="20sp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Account"
         android:layout_margin="20sp"
-        android:textSize="30sp"
-        android:textColor="@color/black"/>
+        android:text="Account"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tablayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        app:tabIndicatorColor="#FF9800"
+        app:tabIndicatorHeight="3dp"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="#FF9800" />
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager1"
         android:layout_width="match_parent"
-        android:layout_height="600dp"/>
-
+        android:layout_height="600dp" />
 
 
 </LinearLayout>

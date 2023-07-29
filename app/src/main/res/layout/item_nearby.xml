@@ -3,8 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginRight="15dp"
-    app:cardCornerRadius="10dp">
+    android:orientation="vertical"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="10dp"
+    app:cardUseCompatPadding="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +27,8 @@
                 android:id="@+id/tvNearby"
                 android:layout_width="150sp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_gravity="center"
+                android:layout_margin="10sp"
                 android:fontFamily="@font/aeonikpro"
                 android:text="Luxvoy Luxury Hotel \nSouth Sai Gon"
                 android:textColor="@color/black"
@@ -36,7 +39,8 @@
                 android:id="@+id/tvAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
+                android:layout_marginStart="10sp"
+                android:layout_marginBottom="10sp"
                 android:fontFamily="@font/aeonikpro"
                 android:text="3.8 km"
                 android:textAlignment="center"

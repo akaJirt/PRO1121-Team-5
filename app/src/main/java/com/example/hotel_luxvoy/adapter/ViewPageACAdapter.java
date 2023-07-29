@@ -18,7 +18,7 @@ public class ViewPageACAdapter extends FragmentStatePagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        switch (position){
+        switch (position) {
             case 0:
                 return new FragmentSetting();
             case 1:
@@ -38,12 +38,11 @@ public class ViewPageACAdapter extends FragmentStatePagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        switch (position){
+        switch (position) {
             case 0:
                 return "Settings";
             case 1:
                 return "Support";
-
             default:
                 return "Setting";
 
