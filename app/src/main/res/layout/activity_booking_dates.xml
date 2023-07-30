@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:scrollbars="none"
-    tools:context=".BookLocation">
+    tools:context=".activity.BookDatesActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,14 +35,14 @@
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="18dp"
-                    android:src="@drawable/location" />
+                    android:src="@drawable/calendar" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:fontFamily="@font/aeonikpro"
-                    android:text="Loacation"
+                    android:text="Dates"
                     android:textColor="#777E90"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -69,7 +69,7 @@
                     android:layout_marginStart="57sp"
                     android:layout_marginTop="12dp"
                     android:fontFamily="@font/aeonikpro"
-                    android:text="Check in"
+                    android:text="Check out"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -98,5 +98,20 @@
                 android:weekNumberColor="@color/black" />
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btnContinue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="50sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="50sp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/custom_button_bg"
+            android:fontFamily="@font/aeonikpro"
+            android:text="Continue"
+            android:textColor="@color/white" />
+
     </LinearLayout>
 </ScrollView>

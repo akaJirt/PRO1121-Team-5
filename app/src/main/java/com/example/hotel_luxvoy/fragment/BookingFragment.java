@@ -1,5 +1,6 @@
 package com.example.hotel_luxvoy.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,8 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.example.hotel_luxvoy.R;
+import com.example.hotel_luxvoy.activity.BookDatesActivity;
+import com.example.hotel_luxvoy.activity.BookLocationActivity;
 import com.example.hotel_luxvoy.adapter.ExploreAdaper;
 import com.example.hotel_luxvoy.adapter.LuxuryAdapter;
 import com.example.hotel_luxvoy.adapter.NearbyAdapter;
@@ -29,6 +33,8 @@ import java.util.List;
 public class BookingFragment extends Fragment {
 
     RecyclerView rvNearby, rvViewed, rvDestination, rvLuxury, rvPremium;
+
+    LinearLayout layoutLocation, layoutDates;
 
 
     @Override
@@ -97,6 +103,22 @@ public class BookingFragment extends Fragment {
         PremiumAdapter premiumAdapter = new PremiumAdapter(premiumList, getActivity());
         rvPremium.setAdapter(premiumAdapter);
 
+        layoutLocation = rootView.findViewById(R.id.layoutLoca);
+        layoutLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), BookLocationActivity.class));
+            }
+        });
+
+        layoutDates = rootView.findViewById(R.id.layoutDates);
+
+        layoutDates.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), BookDatesActivity.class));
+            }
+        });
         return rootView;
     }
 }
