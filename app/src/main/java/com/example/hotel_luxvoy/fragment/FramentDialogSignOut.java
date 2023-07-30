@@ -20,7 +20,7 @@ public class FramentDialogSignOut extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.layout_dialogsignout,container,false);
+        View view = inflater.inflate(R.layout.dialog_signout,container,false);
         btnCanncelDiaLog = view.findViewById(R.id.btnCancelDialog);
 
         btnCanncelDiaLog.setOnClickListener(new View.OnClickListener() {

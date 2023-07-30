@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:background="@color/background"
             android:orientation="vertical"
-            android:padding="28dp">
+            android:padding="10dp">
 
             <RelativeLayout
                 android:id="@+id/frame_head"
@@ -87,7 +87,7 @@
                         android:src="@drawable/line" />
 
                     <LinearLayout
-                        android:id="@+id/layoutDate"
+                        android:id="@+id/layoutDates"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -106,7 +106,7 @@
                                 android:src="@drawable/calendar" />
 
                             <TextView
-                                android:id="@+id/txtDate"
+                                android:id="@+id/txtDates"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="8sp"

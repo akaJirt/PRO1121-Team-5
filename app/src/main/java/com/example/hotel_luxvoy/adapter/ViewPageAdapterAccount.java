@@ -9,9 +9,9 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import com.example.hotel_luxvoy.fragment.FragmentSetting;
 import com.example.hotel_luxvoy.fragment.FragmentSupport;
 
-public class ViewPageACAdapter extends FragmentStatePagerAdapter {
+public class ViewPageAdapterAccount extends FragmentStatePagerAdapter {
 
-    public ViewPageACAdapter(@NonNull FragmentManager fm, int behavior) {
+    public ViewPageAdapterAccount(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
     }
 
@@ -19,8 +19,6 @@ public class ViewPageACAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            case 0:
-                return new FragmentSetting();
             case 1:
                 return new FragmentSupport();
             default:

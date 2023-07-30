@@ -25,7 +25,7 @@ public class BookCheckActivity extends AppCompatActivity {
 
         imgBookNow = findViewById(R.id.imgBookNow);
         imgBookNow.setOnClickListener(v -> {
-            Intent intent = new Intent(BookCheckActivity.this, HotelActivity.class);
+            Intent intent = new Intent(BookCheckActivity.this, BookLocationActivity.class);
             startActivity(intent);
         });
     }

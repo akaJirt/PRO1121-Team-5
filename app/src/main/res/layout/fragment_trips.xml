@@ -4,14 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     android:orientation="vertical"
+    android:padding="20sp"
     tools:context=".fragment.TripsFragment">
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="30sp"
+        android:layout_marginStart="20sp"
+        android:layout_marginBottom="20sp"
         android:text="Trips"
         android:textColor="@color/black"
         android:textSize="30sp" />

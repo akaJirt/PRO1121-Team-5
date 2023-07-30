@@ -15,13 +15,13 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.example.hotel_luxvoy.R;
-import com.example.hotel_luxvoy.adapter.ViewPageACAdapter;
+import com.example.hotel_luxvoy.adapter.ViewPageAdapterAccount;
 import com.google.android.material.tabs.TabLayout;
 
 
 public class AccountFragment extends Fragment {
 
-    ViewPageACAdapter aCAdapter;
+    ViewPageAdapterAccount aCAdapter;
 
     FrameLayout aframeLayout;
 
@@ -32,7 +32,7 @@ public class AccountFragment extends Fragment {
         TabLayout tabLayout = view.findViewById(R.id.tablayout1);
         ViewPager viewPagera = view.findViewById(R.id.view_pager1);
         FragmentManager fragmentManager = getChildFragmentManager();
-        aCAdapter = new ViewPageACAdapter(getChildFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        aCAdapter = new ViewPageAdapterAccount(getChildFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         viewPagera.setAdapter(aCAdapter);
         tabLayout.setupWithViewPager(viewPagera);
         return view;
