@@ -2,6 +2,13 @@ package com.example.hotel_luxvoy.models;
 
 public class UserPostModel implements java.io.Serializable{
 
+    //"phoneNumber": "string",
+    //  "password": "string",
+    //  "fullName": "string",
+    //  "role": "string",
+    //  "street": "string",
+    //  "ward": "string",
+    //  "district": "string"
 
     private String phoneNumber;
     private String password;

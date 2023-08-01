@@ -87,7 +87,7 @@ public class SignUpActivity extends AppCompatActivity {
                     String street = edtStreet.getText().toString();
 
 
-                    postData(phoneNumber, password, fullName, "user", street, ward, district);
+                    postData(phoneNumber, password, fullName, "0", street, ward, district);
                 } else {
                     Toast.makeText(SignUpActivity.this, "Mật khẩu không hợp lệ!", Toast.LENGTH_SHORT).show();
                 }

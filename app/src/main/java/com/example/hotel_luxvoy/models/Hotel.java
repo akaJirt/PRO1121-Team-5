@@ -5,18 +5,38 @@ import java.util.List;
 
 public class Hotel implements java.io.Serializable{
 
+//    "_id": "64c8869497e7dd34e7f5e3c4",
+//            "hotelName": "Pullman",
+//            "image": [],
+//            "street": "11 Phạm Ngũ Lão",
+//            "ward": "phường 7",
+//            "district": "Quận 1",
+//            "city": "Hồ Chí Minh",
+//            "rating": "3",
+//            "lowestPrice": "300$",
+//            "userId": "64c17d353d16fe7c01b7728c",
+//            "rooms": []
+
     private String _id;
     private String hotelName;
     private ArrayList<String> image;
+    private String street;
+    private String ward;
+    private String district;
+    private String city;
     private String rating;
     private String lowestPrice;
     private String userId;
     private ArrayList<Room> rooms;
 
-    public Hotel(String _id, String hotelName, ArrayList<String> image, String rating, String lowestPrice, String userId, ArrayList<Room> rooms) {
+    public Hotel(String _id, String hotelName, ArrayList<String> image, String street, String ward, String district, String city, String rating, String lowestPrice, String userId, ArrayList<Room> rooms) {
         this._id = _id;
         this.hotelName = hotelName;
         this.image = image;
+        this.street = street;
+        this.ward = ward;
+        this.district = district;
+        this.city = city;
         this.rating = rating;
         this.lowestPrice = lowestPrice;
         this.userId = userId;
@@ -45,6 +65,38 @@ public class Hotel implements java.io.Serializable{
 
     public void setImage(ArrayList<String> image) {
         this.image = image;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getWard() {
+        return ward;
+    }
+
+    public void setWard(String ward) {
+        this.ward = ward;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getRating() {

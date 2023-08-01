@@ -1,17 +1,17 @@
 package com.example.hotel_luxvoy.models;
 
 public class imageModel1 implements java.io.Serializable{
-    private String linkImg;
+    private String roomImages;
 
-    public imageModel1(String linkImg) {
-        this.linkImg = linkImg;
+    public imageModel1(String roomImages) {
+        this.roomImages = roomImages;
     }
 
-    public String getLinkImg() {
-        return linkImg;
+    public String getRoomImages() {
+        return roomImages;
     }
 
-    public void setLinkImg(String linkImg) {
-        this.linkImg = linkImg;
+    public void setRoomImages(String roomImages) {
+        this.roomImages = roomImages;
     }
 }
