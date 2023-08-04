@@ -107,12 +107,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:padding="28dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="28dp"
                     android:background="@drawable/frame_801"
                     android:text="Back for tonight" />
             </LinearLayout>
