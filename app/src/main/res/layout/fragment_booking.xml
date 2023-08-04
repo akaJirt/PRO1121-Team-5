@@ -147,6 +147,7 @@
             android:scrollbars="none">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewNearby"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
@@ -173,6 +174,7 @@
             android:scrollbars="none">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewRecently"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
@@ -195,6 +197,7 @@
             android:scrollbars="none">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewFeatured"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </HorizontalScrollView>
@@ -228,6 +231,7 @@
             android:scrollbars="none">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewLux"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </HorizontalScrollView>
@@ -250,6 +254,7 @@
             android:scrollbars="none">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewPre"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </HorizontalScrollView>

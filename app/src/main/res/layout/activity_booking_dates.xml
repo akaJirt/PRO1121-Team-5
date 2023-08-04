@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:scrollbars="none"
     tools:context=".BookLocation">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/background"
         android:orientation="vertical">
 
         <LinearLayout
@@ -78,27 +79,43 @@
         </LinearLayout>
 
         <LinearLayout
-            android:background="@color/background"
+            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:orientation="vertical">
 
-            <CalendarView
+            <LinearLayout
+                android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:firstDayOfWeek="1"
-                android:minDate="07/20/2023"
-                android:weekNumberColor="@color/black" />
+                android:layout_height="0dp">
 
-            <CalendarView
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/background"
+                    android:orientation="vertical"
+                    android:scrollbars="none">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView_dates"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+                </ScrollView>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:firstDayOfWeek="1"
-                android:minDate="08/20/2023"
-                android:weekNumberColor="@color/black" />
-            <com.google.android.material.datepicker.MaterialDatePicker>
-
-            </com.google.android.material.datepicker.MaterialDatePicker>
+                android:layout_height="wrap_content">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="28dp"
+                    android:background="@drawable/frame_801"
+                    android:text="Back for tonight" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</ScrollView>
+</LinearLayout>
