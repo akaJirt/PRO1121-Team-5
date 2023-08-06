@@ -2,7 +2,6 @@ package com.example.hotel_luxvoy.models;
 
 public class Nearby {
 
-
     private int image;
     private String name;
     private String address;

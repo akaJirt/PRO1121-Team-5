@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fbf9f7"
+    android:scrollbars="none"
     tools:context=".activity.SignUpActivity">
 
     <LinearLayout
@@ -18,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
+            android:fontFamily="@font/aeonikpro"
             android:gravity="center"
             android:text="Sign up"
             android:textColor="@color/black"
@@ -28,16 +30,18 @@
             android:id="@+id/tvDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/aeonikpro"
             android:text="All fields required unless otherwise noted." />
 
         <TextView
             android:id="@+id/tvFullName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/aeonikpro"
             android:labelFor="@+id/edtFullName"
-            android:text="Full name :"
+            android:text="Full name"
             android:textColor="@color/black"
             android:textSize="15sp" />
 
@@ -45,9 +49,10 @@
             android:id="@+id/edtFullName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:autofillHints="name"
             android:background="@drawable/custom_edittext_bg"
+            android:fontFamily="@font/aeonikpro"
             android:hint="Enter your full name"
             android:inputType="textPersonName"
             android:padding="15dp" />
@@ -58,8 +63,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:fontFamily="@font/aeonikpro"
             android:labelFor="@+id/edtUsername"
-            android:text="Username :"
+            android:text="Username"
             android:textColor="@color/black"
             android:textSize="15sp" />
 
@@ -67,7 +73,7 @@
             android:id="@+id/edtUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:autofillHints="name"
             android:background="@drawable/custom_edittext_bg"
             android:hint="Enter your username"
@@ -80,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:labelFor="@+id/edtPhoneNumber"
-            android:text="Phone number :"
+            android:text="Phone number"
             android:textColor="@color/black"
             android:textSize="15sp" />
 
@@ -88,7 +94,7 @@
             android:id="@+id/edtPhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:autofillHints="phone"
             android:background="@drawable/custom_edittext_bg"
             android:hint="Enter your mobile phone number"
@@ -98,9 +104,10 @@
         <!--    District-->
 
         <LinearLayout
+            android:layout_marginTop="12dp"
             android:id="@+id/llDistrictWard"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -108,10 +115,10 @@
                 android:id="@+id/tvDistrict"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/aeonikpro"
                 android:labelFor="@+id/spDistrict"
-                android:text="District :"
+                android:text="District:"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 
@@ -120,10 +127,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="22dp"
-
                 android:layout_weight="1"
+                android:fontFamily="@font/aeonikpro"
                 android:labelFor="@+id/edtWard"
-                android:text="Ward :"
+                android:text="Ward:"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 
@@ -131,27 +138,28 @@
 
 
         <LinearLayout
+            android:layout_weight="1"
             android:id="@+id/llDistrictWard2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <RelativeLayout
+                android:layout_weight="1"
                 android:layout_width="150sp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="30sp">
+                android:layout_height="wrap_content">
 
                 <EditText
                     android:id="@+id/edtDistrict"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_width="152dp"
+                    android:layout_height="50dp"
                     android:autofillHints="address-level2"
                     android:background="@drawable/custom_edittext_bg"
+                    android:fontFamily="@font/aeonikpro"
                     android:hint="District"
-                    android:inputType="textPersonName"
-                    android:padding="15dp" />
+                    android:inputType="textPersonName" />
 
                 <ImageView
                     android:id="@+id/imgDistrict"
@@ -159,24 +167,25 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="40dp"
                     android:src="@drawable/arrow_down_24" />
 
 
             </RelativeLayout>
 
             <RelativeLayout
+                android:layout_weight="1"
                 android:layout_width="150sp"
                 android:layout_height="wrap_content">
 
                 <EditText
                     android:id="@+id/edtWard"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_width="152dp"
+                    android:layout_height="50dp"
                     android:autofillHints="address-level1"
                     android:background="@drawable/custom_edittext_bg"
                     android:hint="Ward"
+                    android:fontFamily="@font/aeonikpro"
                     android:inputType="textPersonName"
                     android:padding="15dp" />
 
@@ -187,7 +196,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="30dp"
                     android:src="@drawable/arrow_down_24" />
 
             </RelativeLayout>
@@ -198,8 +207,8 @@
             android:id="@+id/tvStreet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:layout_marginTop="20dp"
+            android:fontFamily="@font/aeonikpro"
+            android:layout_marginTop="15dp"
             android:labelFor="@+id/edtPhoneNumber"
             android:text="Street :"
             android:textColor="@color/black"
@@ -209,7 +218,8 @@
             android:id="@+id/edtStreet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/aeonikpro"
             android:autofillHints="street-address"
             android:background="@drawable/custom_edittext_bg"
             android:hint="145 Điện Biên Phủ, DaKao, District 1"
@@ -221,7 +231,8 @@
             android:id="@+id/tvPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/aeonikpro"
             android:labelFor="@+id/edtPassword"
             android:text="Password :"
             android:textColor="@color/black"
@@ -239,6 +250,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtPassword"
                 android:layout_width="match_parent"
+                app:boxStrokeColor="#000000"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custom_edittext_bg"
                 android:inputType="textPassword"
@@ -277,6 +289,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <TextView
+                    android:fontFamily="@font/aeonikpro"
                     android:id="@+id/tvPasswordLength"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -308,6 +321,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <TextView
+                    android:fontFamily="@font/aeonikpro"
                     android:id="@+id/tvPasswordUpperCase"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -345,6 +359,7 @@
                     android:layout_marginStart="10dp"
                     android:gravity="center|start"
                     android:text="One number"
+                    android:fontFamily="@font/aeonikpro"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -375,6 +390,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:gravity="center|start"
+                    android:fontFamily="@font/aeonikpro"
                     android:text="One lowercase letter"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -406,6 +422,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:gravity="center|start"
+                    android:fontFamily="@font/aeonikpro"
                     android:text="One special character"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -416,7 +433,7 @@
             android:id="@+id/tvConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:fontFamily="@font/aeonikpro"
             android:layout_marginTop="12dp"
             android:text="Confirm Password"
             android:textColor="@color/black"
@@ -434,6 +451,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtConfirmPassword"
                 android:layout_width="match_parent"
+                android:fontFamily="@font/aeonikpro"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custom_edittext_bg"
                 android:inputType="textPassword"
@@ -449,6 +467,7 @@
             android:layout_marginTop="30dp"
             android:backgroundTint="@color/black"
             android:text="Sign Up"
+            android:background="@drawable/sign_in_btn"
             android:textColor="@color/white" />
 
         <TextView
@@ -458,6 +477,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginBottom="50dp"
             android:gravity="center"
+            android:fontFamily="@font/aeonikpro"
             android:text="Have an account ? Sign in"
             android:textColor="@color/black"
             android:textSize="14sp" />

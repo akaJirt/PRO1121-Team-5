@@ -1,113 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:scrollbars="none"
-    tools:context=".activity.BookDatesActivity">
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" tools:context=".BookLocation">
 
+    <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:background="@color/background" android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:background="#FFEEDF"
-            android:orientation="vertical"
-            android:padding="28dp"
-            android:paddingBottom="26dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="2" android:background="#FFEEDF" android:orientation="vertical" android:padding="28dp" android:paddingBottom="26dp">
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/back" />
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/back" />
 
-            <LinearLayout
-                android:id="@+id/layoutLocaBook"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:orientation="horizontal">
+            <LinearLayout android:id="@+id/layoutLocaBook" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/calendar" />
+                <ImageView android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/calendar" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:fontFamily="@font/aeonikpro"
-                    android:text="Dates"
-                    android:textColor="#777E90"
-                    android:textSize="16sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="4dp" android:fontFamily="@font/aeonikpro" android:text="Dates" android:textColor="#777E90" android:textSize="16sp" />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/layoutCheck"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+            <LinearLayout android:id="@+id/layoutCheck" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:fontFamily="@font/aeonikpro"
-                    android:text="Check in"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:fontFamily="@font/aeonikpro" android:text="Check in" android:textColor="@color/black" android:textSize="20sp" android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="57sp"
-                    android:layout_marginTop="12dp"
-                    android:fontFamily="@font/aeonikpro"
-                    android:text="Check out"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="57sp" android:layout_marginTop="12dp" android:fontFamily="@font/aeonikpro" android:text="Check out" android:textColor="@color/black" android:textSize="20sp" android:textStyle="bold" />
             </LinearLayout>
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6"
-            android:background="@color/background"
-            android:orientation="vertical">
+        <LinearLayout android:layout_weight="1" android:layout_width="match_parent" android:layout_height="0dp" android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/recyclerView_Calendar"
-                />
+            <LinearLayout android:layout_weight="1" android:layout_width="match_parent" android:layout_height="0dp">
 
+                <ScrollView android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/background" android:orientation="vertical" android:scrollbars="none">
+
+                    <androidx.recyclerview.widget.RecyclerView android:id="@+id/recyclerView_dates" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+                </ScrollView>
+            </LinearLayout>
+
+            <LinearLayout android:padding="28dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <Button android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/frame_801" android:text="Back for tonight" />
+            </LinearLayout>
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.1"
-            android:orientation="vertical"
-            >
-        <Button
-            android:id="@+id/btnContinue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="50sp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="50sp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/custom_button_bg"
-            android:fontFamily="@font/aeonikpro"
-            android:text="Continue"
-            android:textColor="@color/white" />
-        </LinearLayout>
-
+    </LinearLayout>
 </LinearLayout>

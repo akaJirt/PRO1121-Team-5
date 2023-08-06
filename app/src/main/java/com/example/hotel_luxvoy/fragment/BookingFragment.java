@@ -29,17 +29,15 @@ import com.example.hotel_luxvoy.models.Viewed;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class BookingFragment extends Fragment {
 
     RecyclerView rvNearby, rvViewed, rvDestination, rvLuxury, rvPremium;
 
     LinearLayout layoutLocation, layoutDates;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+            Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_booking, container, false);
 
         rvNearby = rootView.findViewById(R.id.rvNearby);
@@ -95,7 +93,7 @@ public class BookingFragment extends Fragment {
         rvPremium.setHasFixedSize(true);
         rvPremium.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
-        List< Premium > premiumList = new ArrayList<>();
+        List<Premium> premiumList = new ArrayList<>();
         premiumList.add(new Premium(R.drawable.premium3, "Premium Hotel 1"));
         premiumList.add(new Premium(R.drawable.premium4, "Premium Hotel 2"));
         premiumList.add(new Premium(R.drawable.premium2, "Premium Hotel 3"));
