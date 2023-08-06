@@ -34,7 +34,7 @@ public class ViewedAdapter extends RecyclerView.Adapter<ViewedAdapter.ViewedView
     @Override
     public void onBindViewHolder(@NonNull ViewedViewHolder holder, int position) {
         Viewed viewed = viewedList.get(position);
-        holder.tvtvViewed.setText(viewed.getDescription());
+        holder.tvViewed.setText(viewed.getDescription());
         holder.imgViewed.setImageResource(viewed.getImage());
     }
 
@@ -44,13 +44,13 @@ public class ViewedAdapter extends RecyclerView.Adapter<ViewedAdapter.ViewedView
     }
 
     public class ViewedViewHolder extends RecyclerView.ViewHolder {
-        TextView tvtvViewed;
+        TextView tvViewed;
 
         ImageView imgViewed;
 
         public ViewedViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvtvViewed = itemView.findViewById(R.id.tvViewed);
+            tvViewed = itemView.findViewById(R.id.tvViewed);
             imgViewed = itemView.findViewById(R.id.imgViewed);
         }
     }

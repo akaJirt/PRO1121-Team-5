@@ -23,11 +23,6 @@ public class TripsFragment extends Fragment {
 
     ViewPageAdapter adapter;
 
-    FrameLayout mframeLayout;
-
-    public void fragmentTrips() {
-
-    }
 
     @Nullable
     @Override
