@@ -53,7 +53,7 @@ calendarView.setDate(System.currentTimeMillis(), false, true);
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
-            recyclerView_Calendar = itemView.findViewById(R.id.recyclerView_Calendar);
+            recyclerView_Calendar = itemView.findViewById(R.id.recyclerView_dates);
         }
     }
 }

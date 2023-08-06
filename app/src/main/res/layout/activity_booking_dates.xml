@@ -37,7 +37,7 @@
             </LinearLayout>
 
             <LinearLayout android:padding="28dp" android:layout_width="match_parent" android:layout_height="wrap_content">
-                <Button android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/frame_801" android:text="Back for tonight" />
+                <Button android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/frame_801" android:text="Back for tonight" android:id="@+id/btnContinue"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
