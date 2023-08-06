@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:orientation="vertical">
+    android:background="@color/background"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:scrollbars="none"
+    tools:context=".fragment.FragmentCancelled">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCancelled"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:scrollbars="none"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <LinearLayout
+        android:id="@+id/llNoData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -14,7 +28,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvCancel"
+            android:id="@+id/tvDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40sp"
@@ -34,4 +48,4 @@
 
     </LinearLayout>
 
-</FrameLayout>
+</LinearLayout>
