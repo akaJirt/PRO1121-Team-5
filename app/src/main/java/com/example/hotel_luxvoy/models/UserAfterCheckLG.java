@@ -3,15 +3,6 @@ package com.example.hotel_luxvoy.models;
 import java.util.ArrayList;
 
 public class UserAfterCheckLG implements java.io.Serializable{
-
-    //"_id": "64c17d353d16fe7c01b7728c",
-    //    "username": "0937361929",
-    //    "password": "Uyen6662003@",
-    //    "fullName": "Trần Thảo Uyên",
-    //    "phoneNumber": "0937361929",
-    //    "role": "1",
-    //    "hotels": [rooms": []],
-    //    "bills": []
     private String _id;
     private String username;
     private String password;
@@ -19,9 +10,8 @@ public class UserAfterCheckLG implements java.io.Serializable{
     private String phoneNumber;
     private String role;
     private ArrayList<Hotel> hotels;
-    private ArrayList<Bill> bills;
 
-    public UserAfterCheckLG(String _id, String username, String password, String fullName, String phoneNumber, String role, ArrayList<Hotel> hotels, ArrayList<Bill> bills) {
+    public UserAfterCheckLG(String _id, String username, String password, String fullName, String phoneNumber, String role, ArrayList<Hotel> hotels) {
         this._id = _id;
         this.username = username;
         this.password = password;
@@ -29,7 +19,6 @@ public class UserAfterCheckLG implements java.io.Serializable{
         this.phoneNumber = phoneNumber;
         this.role = role;
         this.hotels = hotels;
-        this.bills = bills;
     }
 
     public String get_id() {
@@ -86,13 +75,5 @@ public class UserAfterCheckLG implements java.io.Serializable{
 
     public void setHotels(ArrayList<Hotel> hotels) {
         this.hotels = hotels;
-    }
-
-    public ArrayList<Bill> getBills() {
-        return bills;
-    }
-
-    public void setBills(ArrayList<Bill> bills) {
-        this.bills = bills;
     }
 }

@@ -1,7 +1,6 @@
 package com.example.hotel_luxvoy.models;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Room implements java.io.Serializable{
 

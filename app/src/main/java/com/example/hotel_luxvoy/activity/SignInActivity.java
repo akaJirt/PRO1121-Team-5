@@ -53,15 +53,7 @@ public class SignInActivity extends AppCompatActivity {
         });
 
         btnSignIn.setOnClickListener(v -> {
-            if(edtUsername.getText().toString().isEmpty() || edtPassword.getText().toString().isEmpty()){
-                Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            else {
-                Toast.makeText(this, "Đang đăng nhập", Toast.LENGTH_SHORT).show();
-                checklogin(edtUsername.getText().toString(), edtPassword.getText().toString());
-            }
-
+            checklogin(edtUsername.getText().toString(), edtPassword.getText().toString());
             Log.d("login button>>>>>>>>>", "onCreate: "+edtUsername.getText().toString()+" "+edtPassword.getText().toString());
         });
     }
