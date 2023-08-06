@@ -21,7 +21,7 @@ public interface APIService {
     @GET("users")
     Call<ArrayList<UserModel>> getData();
 
-    @GET("get-hotels")
+    @GET("get-all-hotels")
     Call<ArrayList<Hotel>> getHotel();
 
 
