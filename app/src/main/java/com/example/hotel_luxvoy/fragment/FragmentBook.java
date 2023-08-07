@@ -25,16 +25,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FragmentBook extends Fragment {
-    private static final String TAG = "FragmentBook";
     private RecyclerView  recyclerView2;
 
-    @SuppressLint("MissingInflatedId")
+    ImageView ivCancel, ivBack, ivFavorite;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_books, container, false);
 
-        ImageView ivCancelres = view.findViewById(R.id.ivCancelres);
+        ivCancel = view.findViewById(R.id.ivCancel);
+        ivBack = view.findViewById(R.id.ivBack);
+        ivFavorite = view.findViewById(R.id.ivFavourite);
+
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (requireActivity().getSupportFragmentManager() != null) {
+                    requireActivity().getSupportFragmentManager().popBackStack();
+                }
+            }
+        });
 
         ImageSlider imageSlider = view.findViewById(R.id.imageSlider);
         ArrayList<SlideModel> imageList = new ArrayList<>();
@@ -44,13 +55,12 @@ public class FragmentBook extends Fragment {
 
         imageSlider.setImageList(imageList);
 
-        ivCancelres.setOnClickListener(new View.OnClickListener() {
+        ivCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Log.d(TAG, "onClick : opening dialog");
                 FramentDialog dialog = new FramentDialog();
-                dialog.show(getChildFragmentManager(), "FramnetDialog");
+                dialog.show(getChildFragmentManager(), "FragmentDialog");
 
             }
         });

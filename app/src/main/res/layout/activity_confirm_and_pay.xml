@@ -270,24 +270,27 @@
                 android:textStyle="bold" />
 
             <LinearLayout
+                android:id="@+id/llPayment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5sp"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/ivMomo"
+                    android:layout_width="30sp"
+                    android:layout_height="30sp"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/mastercard" />
+                    android:src="@drawable/momo_icon_circle_pinkbg" />
 
                 <TextView
+                    android:id="@+id/tvMomo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16sp"
+                    android:layout_marginStart="16sp"
                     android:layout_weight="1"
                     android:padding="5sp"
-                    android:text="Mastercard"
+                    android:text="Momo wallet"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 

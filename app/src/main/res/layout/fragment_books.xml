@@ -39,7 +39,7 @@
                     android:src="@drawable/img_2" />
 
                 <ImageView
-                    android:id="@+id/ivNext"
+                    android:id="@+id/ivFavourite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
@@ -209,7 +209,7 @@
                     android:textSize="20sp" />
 
                 <ImageView
-                    android:id="@+id/ivCancelres"
+                    android:id="@+id/ivCancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="150sp"
