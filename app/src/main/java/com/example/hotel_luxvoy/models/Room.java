@@ -13,8 +13,10 @@ public class Room implements java.io.Serializable{
    private String capacity;
    private ArrayList<String> roomImages;
    private String _id;
+    private String hotelId;
+    private String bookedBy;
 
-    public Room(String roomName, String type, String status, String price, String capacity, ArrayList<String> roomImages, String _id) {
+    public Room(String roomName, String type, String status, String price, String capacity, ArrayList<String> roomImages, String _id, String hotelId, String bookedBy) {
         this.roomName = roomName;
         this.type = type;
         this.status = status;
@@ -22,6 +24,8 @@ public class Room implements java.io.Serializable{
         this.capacity = capacity;
         this.roomImages = roomImages;
         this._id = _id;
+        this.hotelId = hotelId;
+        this.bookedBy = bookedBy;
     }
 
     public String getRoomName() {
@@ -78,5 +82,21 @@ public class Room implements java.io.Serializable{
 
     public void set_id(String _id) {
         this._id = _id;
+    }
+
+    public String getHotelId() {
+        return hotelId;
+    }
+
+    public void setHotelId(String hotelId) {
+        this.hotelId = hotelId;
+    }
+
+    public String getBookedBy() {
+        return bookedBy;
+    }
+
+    public void setBookedBy(String bookedBy) {
+        this.bookedBy = bookedBy;
     }
 }

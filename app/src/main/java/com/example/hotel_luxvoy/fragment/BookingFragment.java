@@ -24,6 +24,7 @@ import com.example.hotel_luxvoy.models.Explore;
 import com.example.hotel_luxvoy.models.Luxury;
 import com.example.hotel_luxvoy.models.Nearby;
 import com.example.hotel_luxvoy.models.Premium;
+import com.example.hotel_luxvoy.models.UserAfterCheckLG;
 import com.example.hotel_luxvoy.models.Viewed;
 
 import java.util.ArrayList;
@@ -45,7 +46,8 @@ public class BookingFragment extends Fragment {
         rvNearby = rootView.findViewById(R.id.rvNearby);
         rvNearby.setHasFixedSize(true);
         rvNearby.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-
+        Intent intent = getActivity().getIntent();
+        UserAfterCheckLG userAfterCheckLG = (UserAfterCheckLG) intent.getSerializableExtra("user");
         List<Nearby> nearbyList = new ArrayList<>();
         nearbyList.add(new Nearby(R.drawable.saigon1, "Luxvoy Luxury Hotel South Sai Gon", "3.8 Km"));
         nearbyList.add(new Nearby(R.drawable.saigon2, "Luxvoy Luxury Hotel South Sai Gon 2", "4.8 Km"));
@@ -107,7 +109,11 @@ public class BookingFragment extends Fragment {
         layoutLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), BookLocationActivity.class));
+
+                Intent intent1 = new Intent(getActivity(), BookLocationActivity.class);
+                intent1.putExtra("user", userAfterCheckLG);
+                startActivity(intent1);
+
             }
         });
 

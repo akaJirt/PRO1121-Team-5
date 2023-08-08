@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,7 +28,8 @@ import java.util.List;
 public class FragmentBook extends Fragment {
     private RecyclerView  recyclerView2;
 
-    ImageView ivCancel, ivBack, ivFavorite;
+    ImageView ivCancel, ivBack, ivFavorite,ivHotel;
+    TextView tvHotelName, tvDescription, tvConfirmation, tvCancellation;
 
     @Nullable
     @Override
@@ -37,6 +39,10 @@ public class FragmentBook extends Fragment {
         ivCancel = view.findViewById(R.id.ivCancel);
         ivBack = view.findViewById(R.id.ivBack);
         ivFavorite = view.findViewById(R.id.ivFavourite);
+        ivHotel = view.findViewById(R.id.ivHotel);
+        tvHotelName = view.findViewById(R.id.tvHotelName);
+
+
 
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override

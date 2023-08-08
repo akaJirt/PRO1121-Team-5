@@ -42,7 +42,7 @@ public class FragmentPast extends Fragment {
         btnBook = rootView.findViewById(R.id.btnBook);
 
         tripsList = new ArrayList<>();
-        tripsList.add(new Trips(R.drawable.img_trips, "Luxvoy Luxury Hotel South Sai Gon", "Checked out", null, null));
+        tripsList.add(new Trips("https://d2e5ushqwiltxm.cloudfront.net/wp-content/uploads/sites/79/2016/12/01042801/RoomSuites-Executive-Suite-King-e1548065261664.jpg", "Luxvoy Luxury Hotel South Sai Gon", "Checked out", null, null));
 
 
         if (tripsList == null || tripsList.size() == 0) {

@@ -16,6 +16,7 @@ import com.example.hotel_luxvoy.FullScreenHelper;
 import com.example.hotel_luxvoy.R;
 import com.example.hotel_luxvoy.ServiceAPI.APIService;
 import com.example.hotel_luxvoy.models.Hotel;
+import com.example.hotel_luxvoy.models.UserAfterCheckLG;
 
 import java.util.ArrayList;
 
@@ -39,6 +40,8 @@ public class BookLocationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_booking_location);
 
         geArrayListHotel();
+        Intent intent1 = getIntent();
+        UserAfterCheckLG userAfterCheckLG = (UserAfterCheckLG) intent1.getSerializableExtra("user");
 
         ivBack = findViewById(R.id.ivBack);
         etLocation = findViewById(R.id.edLocation);
@@ -54,6 +57,7 @@ public class BookLocationActivity extends AppCompatActivity {
         etLocation.setOnItemClickListener((parent, view, position, id) -> {
             String selectedItem = (String) parent.getItemAtPosition(position);
             Intent intent = new Intent(BookLocationActivity.this, BookDatesActivity.class);
+            intent.putExtra("user", userAfterCheckLG);
             // Truyền dữ liệu từ item đã chọn qua màn hình mới
             intent.putExtra("selectedLocation", selectedItem);
             startActivity(intent);

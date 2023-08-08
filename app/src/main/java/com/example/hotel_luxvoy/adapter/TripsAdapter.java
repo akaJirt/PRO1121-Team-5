@@ -5,6 +5,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -20,6 +21,7 @@ import com.example.hotel_luxvoy.R;
 import com.example.hotel_luxvoy.activity.BookLocationActivity;
 import com.example.hotel_luxvoy.fragment.FragmentBook;
 import com.example.hotel_luxvoy.models.Trips;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -56,7 +58,12 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripsViewHol
         holder.tvDescription.setText(trips.getDescription());
         holder.tvConfirmation.setText(trips.getConfirmationNumber());
         holder.tvCancellation.setText(trips.getCancellationNumber());
-        holder.imgTrips.setImageResource(trips.getImage());
+//        holder.imgTrips.setImageResource(trips.getImage());
+        Picasso.get()
+                .load(trips.getImage())
+                .resize(550,300)
+                .into(holder.imgTrips);
+
         switch (fragmentType) {
             case CURRENT:
                 holder.btnTrips.setText("Details");
@@ -65,6 +72,13 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripsViewHol
                     @Override
                     public void onClick(View v) {
                         FragmentBook fragmentBook = new FragmentBook();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("hotelName", trips.getHotelName());
+                        bundle.putString("description", trips.getDescription());
+                        bundle.putString("confirmationNumber", trips.getConfirmationNumber());
+                        bundle.putString("cancellationNumber", trips.getCancellationNumber());
+                        bundle.putString("image", trips.getImage());
+                        fragmentBook.setArguments(bundle);
                         FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
 
                         fragmentManager.beginTransaction()

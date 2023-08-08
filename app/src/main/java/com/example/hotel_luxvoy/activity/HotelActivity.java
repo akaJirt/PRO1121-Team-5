@@ -39,15 +39,20 @@ public class HotelActivity extends AppCompatActivity {
     private TextView tvHotelName, tvResult;
 
     private Spinner spSort;
-
+    private String selectedLocation, checkInDate, checkOutDate;
+    private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FullScreenHelper.setFullScreen(this);
         setContentView(R.layout.activity_hotel);
 
-        Intent intent = getIntent();
+        intent = getIntent();
         String hotelName = intent.getStringExtra("nameDestination");
+        selectedLocation = intent.getStringExtra("selectedLocation");
+        checkInDate = intent.getStringExtra("checkInDate");
+        checkOutDate = intent.getStringExtra("checkOutDate");
+
         tvHotelName = findViewById(R.id.tvHotelName);
         tvResult = findViewById(R.id.tvResult);
         spSort = findViewById(R.id.spSort);
@@ -101,28 +106,50 @@ public class HotelActivity extends AppCompatActivity {
                 .build();
 
         APIService apiService = retrofit.create(APIService.class);
+        Log.d("selectedLocation", "gethotelList: "+selectedLocation);
 
-        Call<ArrayList<Hotel>> call = apiService.getHotel();
-        call.enqueue(new Callback<ArrayList<Hotel>>() {
-            @Override
-            public void onResponse(Call<ArrayList<Hotel>> call, Response<ArrayList<Hotel>> response) {
-                if (response.isSuccessful()) {
-                    ArrayList<Hotel> hotelList = response.body();
-                    Log.d("on call api>>>>>>>", "onResponse: "+response.body().toString());
-                    hotelAdapter = new HotelAdapter(hotelList, HotelActivity.this);
-                    recyclerView.setAdapter(hotelAdapter);
-                    tvResult.setText("Showing " + hotelList.size() + " results");
+        if(!selectedLocation.equals("default")) {
+            Call<ArrayList<Hotel>> call = apiService.getHotelByCity(selectedLocation);
+            call.enqueue(new Callback<ArrayList<Hotel>>() {
+                @Override
+                public void onResponse(Call<ArrayList<Hotel>> call, Response<ArrayList<Hotel>> response) {
+                    if (response.isSuccessful()) {
+                        ArrayList<Hotel> hotelList = response.body();
+                        Log.d("on call api>>>>>>>", "onResponse: "+response.body().toString());
+                        hotelAdapter = new HotelAdapter(hotelList, HotelActivity.this,intent);
+                        recyclerView.setAdapter(hotelAdapter);
+                        tvResult.setText("Showing " + hotelList.size() + " results");
 
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<ArrayList<Hotel>> call, Throwable t) {
-                Log.d("TAG", "onFailure: " + t.getMessage());
-            }
-        });
+                @Override
+                public void onFailure(Call<ArrayList<Hotel>> call, Throwable t) {
+                    Log.d("TAG", "onFailure: " + t.getMessage());
+                }
+            });
+        }
+        else {
+            Call<ArrayList<Hotel>> call = apiService.getHotel();
+            call.enqueue(new Callback<ArrayList<Hotel>>() {
+                @Override
+                public void onResponse(Call<ArrayList<Hotel>> call, Response<ArrayList<Hotel>> response) {
+                    if (response.isSuccessful()) {
+                        ArrayList<Hotel> hotelList = response.body();
+                        Log.d("on call api>>>>>>>", "onResponse: "+response.body().toString());
+                        hotelAdapter = new HotelAdapter(hotelList, HotelActivity.this,intent);
+                        recyclerView.setAdapter(hotelAdapter);
+                        tvResult.setText("Showing " + hotelList.size() + " results");
 
+                    }
+                }
 
+                @Override
+                public void onFailure(Call<ArrayList<Hotel>> call, Throwable t) {
+                    Log.d("TAG", "onFailure: " + t.getMessage());
+                }
+            });
+        }
 
     }
 }

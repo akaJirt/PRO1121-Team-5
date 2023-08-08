@@ -17,6 +17,7 @@ import com.example.hotel_luxvoy.FullScreenHelper;
 import com.example.hotel_luxvoy.R;
 import com.example.hotel_luxvoy.ServiceAPI.APIService;
 import com.example.hotel_luxvoy.adapter.RoomAdapter;
+import com.example.hotel_luxvoy.models.Hotel;
 import com.example.hotel_luxvoy.models.Room;
 
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ public class RoomActivity extends AppCompatActivity {
     private TextView tvHotelName, tvRoomAvailable;
 
     private ImageView ivBack;
+    private Intent intent1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +44,14 @@ public class RoomActivity extends AppCompatActivity {
 
         FullScreenHelper.setFullScreen(this);
         setContentView(R.layout.activity_room);
-
+        intent1 = getIntent();
         ivBack = findViewById(R.id.ivBack);
         ivBack.setOnClickListener(v -> {
             finish();
         });
+
+        Hotel hotel = (Hotel)getIntent().getSerializableExtra("hotel");
+
 
         tvHotelName = findViewById(R.id.tvHotelName);
         tvRoomAvailable = findViewById(R.id.tvRoomAvailable);
@@ -58,7 +63,7 @@ public class RoomActivity extends AppCompatActivity {
         roomList = (ArrayList<Room>)getIntent().getSerializableExtra("roomList");
         tvRoomAvailable.setText(roomList.size() + " Room types avaiable");
 
-        RoomAdapter roomAdapter = new RoomAdapter(roomList, this);
+        RoomAdapter roomAdapter = new RoomAdapter(roomList, this, hotel,intent1);
         recyclerView.setAdapter(roomAdapter);
     }
 

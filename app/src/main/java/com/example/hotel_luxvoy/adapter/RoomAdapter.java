@@ -1,5 +1,7 @@
 package com.example.hotel_luxvoy.adapter;
 
+import static android.content.Intent.getIntent;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -18,6 +20,7 @@ import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.hotel_luxvoy.R;
 import com.example.hotel_luxvoy.activity.ConfirmAndPayActivity;
+import com.example.hotel_luxvoy.models.Hotel;
 import com.example.hotel_luxvoy.models.Room;
 import com.example.hotel_luxvoy.models.imageModel;
 import com.example.hotel_luxvoy.models.imageModel1;
@@ -33,10 +36,15 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomAdaterView
 
     private Context context;
 
+    private Hotel hotel;
+    private Intent intent1;
 
-    public RoomAdapter(ArrayList<Room> roomList, Context context) {
+
+    public RoomAdapter(ArrayList<Room> roomList, Context context, Hotel hotel, Intent intent) {
         this.roomList = roomList;
         this.context = context;
+        this.hotel = hotel;
+        this.intent1 = intent;
     }
 
     @NonNull
@@ -65,6 +73,9 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomAdaterView
         holder.imgSelectRoom.setOnClickListener(v -> {
             Intent intent = new Intent(context, ConfirmAndPayActivity.class);
             intent.putExtra("room", room);
+            intent.putExtra("hotel", hotel);
+            intent.putExtra("checkInDate", intent1.getStringExtra("checkInDate"));
+            intent.putExtra("checkOutDate", intent1.getStringExtra("checkOutDate"));
             context.startActivity(intent);
         });
 

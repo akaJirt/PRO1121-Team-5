@@ -43,11 +43,15 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelAdapter
     private Context context;
 
     private List<Hotel> hotelList;
+    private List<Room> roomList;
+    private Intent intent1;
 
 
-    public HotelAdapter(List<Hotel> hotelList, Context context) {
+    public HotelAdapter(List<Hotel> hotelList, Context context,Intent intent) {
         this.context = context;
         this.hotelList = hotelList;
+        this.intent1 = intent;
+
     }
 
     @NonNull
@@ -66,8 +70,6 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelAdapter
         for (int i = 0; i < images.size(); i++) {
             slideModels.add(new SlideModel(images.get(i), ScaleTypes.FIT));
         }
-
-
         holder.imgHotel.setImageList(slideModels, ScaleTypes.FIT);
         holder.tvHotelName.setText(hotel.getHotelName());
         holder.tvHotelRating.setText(hotel.getRating());
@@ -77,16 +79,29 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelAdapter
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, RoomActivity.class);
-                intent.putExtra("roomList", (Serializable) hotel.getRooms());
+                intent.putExtra("roomList", (Serializable) getRoomListAvailable());
 //                Bundle bundle = new Bundle();
 //                bundle.putSerializable("roomList", (Serializable) hotel.getRooms());
                 Log.d("TAG", "onClick: "+hotel.getRooms().size());
                 intent.putExtra("hotelName", hotel.getHotelName());
+                intent.putExtra("hotel", (Serializable) hotelList.get(position));
+                intent.putExtra("checkInDate", intent1.getStringExtra("checkInDate"));
+                intent.putExtra("checkOutDate", intent1.getStringExtra("checkOutDate"));
                 context.startActivity(intent);
             }
         });
     }
-
+    public ArrayList<Room> getRoomListAvailable(){
+        ArrayList<Room> roomListAvailable = new ArrayList<>();
+        for (int i = 0; i < hotelList.size(); i++) {
+            for (int j = 0; j < hotelList.get(i).getRooms().size(); j++) {
+                if (hotelList.get(i).getRooms().get(j).getStatus().equals("available")){
+                    roomListAvailable.add(hotelList.get(i).getRooms().get(j));
+                }
+            }
+        }
+        return roomListAvailable;
+    }
     @Override
     public int getItemCount() {
         return hotelList.size();
@@ -115,5 +130,7 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelAdapter
 
         }
     }
+
+
 
 }

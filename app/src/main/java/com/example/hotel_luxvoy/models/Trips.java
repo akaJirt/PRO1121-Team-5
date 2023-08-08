@@ -1,8 +1,10 @@
 package com.example.hotel_luxvoy.models;
 
+import java.lang.reflect.Array;
+
 public class Trips {
 
-    private int image;
+    private String image;
 
     private String HotelName;
 
@@ -13,26 +15,19 @@ public class Trips {
     private String CancellationNumber;
 
 
-
-    public Trips() {
-    }
-
-    public Trips(int image, String hotelName, String description, String confirmNumber, String cancelNumber) {
+    public Trips(String image, String hotelName, String description, String confirmationNumber, String cancellationNumber) {
         this.image = image;
         HotelName = hotelName;
         Description = description;
-        ConfirmationNumber = confirmNumber;
-        CancellationNumber = cancelNumber;
-
+        ConfirmationNumber = confirmationNumber;
+        CancellationNumber = cancellationNumber;
     }
 
-
-
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

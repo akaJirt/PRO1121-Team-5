@@ -2,6 +2,7 @@ package com.example.hotel_luxvoy.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ImageView;
@@ -11,12 +12,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hotel_luxvoy.FullScreenHelper;
 import com.example.hotel_luxvoy.R;
+import com.example.hotel_luxvoy.models.UserAfterCheckLG;
 
 public class BookDatesActivity extends AppCompatActivity {
     ImageView ivBack;
     TextView tvCheckIn, tvCheckOut;
     CalendarView cvCheckIn, cvCheckOut;
     Button btnContinue;
+    String selectedLocation, checkInDate, checkOutDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +31,12 @@ public class BookDatesActivity extends AppCompatActivity {
         tvCheckOut = findViewById(R.id.tvCheckOutDate);
         cvCheckIn = findViewById(R.id.calendarCheckIn);
         cvCheckOut = findViewById(R.id.calendarCheckOut);
-
+        Intent intent1 = getIntent();
+        selectedLocation = intent1.getStringExtra("selectedLocation");
+        UserAfterCheckLG userAfterCheckLG = (UserAfterCheckLG) intent1.getSerializableExtra("user");
+        Log.d("Bookdate>>>>>>>>", "onCreate: "+selectedLocation);
+        checkInDate = tvCheckIn.getText().toString();
+        checkOutDate = tvCheckOut.getText().toString();
         ivBack.setOnClickListener(v -> {
             Intent intent = new Intent(BookDatesActivity.this, BookLocationActivity.class);
             startActivity(intent);
@@ -48,6 +56,28 @@ public class BookDatesActivity extends AppCompatActivity {
         btnContinue = findViewById(R.id.btnContinue);
         btnContinue.setOnClickListener(v -> {
             Intent intent = new Intent(BookDatesActivity.this, HotelActivity.class);
+
+
+            if (selectedLocation != null) {
+                switch (selectedLocation){
+                    case "default":
+                        intent.putExtra("selectedLocation", "default");
+                        break;
+                    case "Ha Noi City":
+                        intent.putExtra("selectedLocation", "Hà Nội");
+                        break;
+                    case "Ho Chi Minh City":
+                        intent.putExtra("selectedLocation", "Hồ Chí Minh");
+                        break;
+                }
+
+            }
+            else {
+                intent.putExtra("selectedLocation", "default");
+            }
+            intent.putExtra("checkInDate", tvCheckIn.getText().toString());
+            intent.putExtra("checkOutDate", tvCheckOut.getText().toString());
+            intent.putExtra("user", userAfterCheckLG);
             startActivity(intent);
         });
 
