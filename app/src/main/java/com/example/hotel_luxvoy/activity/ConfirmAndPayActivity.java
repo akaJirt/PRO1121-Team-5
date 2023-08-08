@@ -5,6 +5,7 @@ import static com.example.hotel_luxvoy.ServiceAPI.APIService.BASE_URL;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,6 +19,7 @@ import com.example.hotel_luxvoy.models.Hotel;
 import com.example.hotel_luxvoy.models.Room;
 import com.example.hotel_luxvoy.models.UserAfterCheckLG;
 import com.example.hotel_luxvoy.models.Book;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import retrofit2.Call;
@@ -29,6 +31,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ConfirmAndPayActivity extends AppCompatActivity {
     ImageView ivBack,ivHotel,ivBookNow;
     TextView tvHotelName,tvDate,tvCapacity,tvTypeRoom;
+
+    UserAfterCheckLG user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +48,18 @@ public class ConfirmAndPayActivity extends AppCompatActivity {
         tvCapacity = findViewById(R.id.tvCapacity);
         tvTypeRoom = findViewById(R.id.tvTypeRoom);
         ivBookNow = findViewById(R.id.ivBookNow);
-        UserAfterCheckLG user = (UserAfterCheckLG) intent.getSerializableExtra("user");
+//        UserAfterCheckLG user = (UserAfterCheckLG) intent.getSerializableExtra("user");
+        user = new UserAfterCheckLG();
+        //get data from shared preferences
+        SharedPreferences sharedPreferences = getSharedPreferences("user", MODE_PRIVATE);
+        String user1 = sharedPreferences.getString("user", "");
+        if(!user1.isEmpty()) {
+            Gson gson = new Gson();
+            UserAfterCheckLG userAfterCheckLG = gson.fromJson(user1, UserAfterCheckLG.class);
+            user = userAfterCheckLG;
+
+        }
+
 
         tvHotelName.setText(hotel.getHotelName());
         Picasso.get().load(hotel.getImage().get(0)).into(ivHotel);
@@ -93,7 +108,7 @@ public class ConfirmAndPayActivity extends AppCompatActivity {
                 book.setCheckOutDate(intent.getStringExtra("checkOutDate"));
                 book.setHotelId(hotel.get_id());
                 book.setRoomId(room.get_id());
-                book.setBookedBy("64ce84d38054ce3dfca3ec15");
+                book.setBookedBy(user.get_id());
 
                 Call<Book> call = apiService.bookHotel(book);
                 call.enqueue(new Callback<Book>() {

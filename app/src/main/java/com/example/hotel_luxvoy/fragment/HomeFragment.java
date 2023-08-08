@@ -1,6 +1,7 @@
 package com.example.hotel_luxvoy.fragment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -28,6 +29,7 @@ import com.example.hotel_luxvoy.models.Explore;
 import com.example.hotel_luxvoy.models.More;
 import com.example.hotel_luxvoy.models.UserAfterCheckLG;
 import com.example.hotel_luxvoy.models.Viewed;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +47,19 @@ public class HomeFragment extends Fragment {
         textView = rootView.findViewById(R.id.tvBooking);
         tvUsername = rootView.findViewById(R.id.tvUsername);
         Intent intent1 = getActivity().getIntent();
-        UserAfterCheckLG userAfterCheckLG = (UserAfterCheckLG) intent1.getSerializableExtra("user");
+
+        //get data from SharePreferences
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user", getActivity().MODE_PRIVATE);
+        String user = sharedPreferences.getString("user", "");
+        UserAfterCheckLG userAfterCheckLG = new UserAfterCheckLG();
+        if(!user.isEmpty()) {
+            Gson gson = new Gson();
+            userAfterCheckLG = gson.fromJson(user, UserAfterCheckLG.class);
+        }
+        else {
+            userAfterCheckLG.setFullName("Guest");
+        }
+
         tvUsername.setText(userAfterCheckLG.getFullName());
         String fullText = "It's time to switch off";
         String targetText = "switch off";

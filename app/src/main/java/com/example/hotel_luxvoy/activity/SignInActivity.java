@@ -5,6 +5,7 @@ import static com.example.hotel_luxvoy.ServiceAPI.APIService.BASE_URL;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -17,6 +18,7 @@ import com.example.hotel_luxvoy.R;
 import com.example.hotel_luxvoy.ServiceAPI.APIService;
 import com.example.hotel_luxvoy.models.UserAfterCheckLG;
 import com.example.hotel_luxvoy.models.UserLoginModel;
+import com.google.gson.Gson;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -90,6 +92,13 @@ public class SignInActivity extends AppCompatActivity {
                     Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("user", userAfterCheckLG);
+                    //save user to share preference
+                    Gson gson = new Gson();
+                    String json = gson.toJson(userAfterCheckLG);
+                    SharedPreferences.Editor editor = getSharedPreferences("user", MODE_PRIVATE).edit();
+                    editor.putString("user", json);
+                    editor.apply();
+                    //end save user to share preference
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }

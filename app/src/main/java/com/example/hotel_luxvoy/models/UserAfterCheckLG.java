@@ -21,6 +21,9 @@ public class UserAfterCheckLG implements java.io.Serializable{
     private ArrayList<Hotel> hotels;
     private ArrayList<Bill> bills;
 
+    public UserAfterCheckLG() {
+    }
+
     public UserAfterCheckLG(String _id, String username, String password, String fullName, String phoneNumber, String role, ArrayList<Hotel> hotels, ArrayList<Bill> bills) {
         this._id = _id;
         this.username = username;
