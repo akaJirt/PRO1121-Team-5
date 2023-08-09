@@ -3,6 +3,7 @@ package com.example.hotel_luxvoy.fragment;
 import static com.example.hotel_luxvoy.ServiceAPI.APIService.BASE_URL;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,7 @@ import com.example.hotel_luxvoy.adapter.TripsAdapter;
 import com.example.hotel_luxvoy.models.Hotel;
 import com.example.hotel_luxvoy.models.Trips;
 import com.example.hotel_luxvoy.models.UserAfterCheckLG;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +39,7 @@ public class FragmentCurrent extends Fragment {
     LinearLayout llNoData;
     ArrayList<Trips> tripsList;
     Button btnBook;
+    UserAfterCheckLG userAfterCheckLG;
 
     @Nullable
     @Override
@@ -48,7 +51,18 @@ public class FragmentCurrent extends Fragment {
         llNoData = rootView.findViewById(R.id.llNoData);
         btnBook = rootView.findViewById(R.id.btnBook);
         Intent intent = getActivity().getIntent();
-        UserAfterCheckLG userAfterCheckLG = (UserAfterCheckLG) intent.getSerializableExtra("user");
+
+        //get data from Shared Preferences
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user", getActivity().MODE_PRIVATE);
+        String user = sharedPreferences.getString("user", "");
+        userAfterCheckLG = new UserAfterCheckLG();
+        if(!user.isEmpty()) {
+            Gson gson = new Gson();
+            userAfterCheckLG = gson.fromJson(user, UserAfterCheckLG.class);
+        }
+        else {
+            Toast.makeText(getActivity(), "User null", Toast.LENGTH_SHORT).show();
+        }
 //        tripsList.add(new Trips(R.drawable.img_trips, "Luxvoy Luxury Hotel South Sai Gon", "Sep 11-14 (3 nights)", "Confirmation number: 98581885", null));
 //        tripsList.add(new Trips(R.drawable.img_trips, "Luxvoy Luxury Hotel South Sai Gon 2", "Sep 11-14 (3 nights)", "Confirmation number: 98581885", null));
 //        tripsList.add(new Trips(R.drawable.img_trips, "Luxvoy Luxury Hotel South Sai Gon 3", "Sep 11-14 (3 nights)", "Confirmation number: 98581885", null));

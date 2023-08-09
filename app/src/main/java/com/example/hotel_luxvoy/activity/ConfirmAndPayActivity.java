@@ -22,6 +22,12 @@ import com.example.hotel_luxvoy.models.Book;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -30,7 +36,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ConfirmAndPayActivity extends AppCompatActivity {
     ImageView ivBack,ivHotel,ivBookNow;
-    TextView tvHotelName,tvDate,tvCapacity,tvTypeRoom;
+    TextView tvHotelName,tvDate,tvCapacity,tvTypeRoom,tvDateStay,tvPrice,tvTotalPrice,tvServiceCharge,tvTaxesAndFee;
 
     UserAfterCheckLG user;
 
@@ -48,6 +54,12 @@ public class ConfirmAndPayActivity extends AppCompatActivity {
         tvCapacity = findViewById(R.id.tvCapacity);
         tvTypeRoom = findViewById(R.id.tvTypeRoom);
         ivBookNow = findViewById(R.id.ivBookNow);
+        tvDateStay = findViewById(R.id.tvDateStay);
+        tvPrice = findViewById(R.id.tvPrice);
+        tvTotalPrice = findViewById(R.id.tvTotalPrice);
+        tvServiceCharge = findViewById(R.id.tvServiceCharge);
+        tvTaxesAndFee = findViewById(R.id.tvTaxesAndFee);
+
 //        UserAfterCheckLG user = (UserAfterCheckLG) intent.getSerializableExtra("user");
         user = new UserAfterCheckLG();
         //get data from shared preferences
@@ -67,6 +79,56 @@ public class ConfirmAndPayActivity extends AppCompatActivity {
         tvDate.setText(date);
         tvCapacity.setText(room.getCapacity() + " guests");
         tvTypeRoom.setText(room.getType());
+        tvDateStay.setText(totalDate(intent.getStringExtra("checkInDate"),intent.getStringExtra("checkOutDate")));
+        int totaldate = Integer.parseInt(totalDate1(intent.getStringExtra("checkInDate"),intent.getStringExtra("checkOutDate")));
+        if(totaldate >=2) {
+            //money unit is VND
+            //ServiceCharge = 5% of total price
+            //TaxesAndFee = 10% of total price
+            int price = Integer.parseInt(room.getPrice())*totaldate;
+            int serviceCharge = (int) (price*0.05);
+            int taxesAndFee = (int) (price*0.1);
+            int totalPrice = price + serviceCharge + taxesAndFee;
+            tvPrice.setText(price+" VND");
+            tvServiceCharge.setText(serviceCharge+" VND");
+            tvTaxesAndFee.setText(taxesAndFee+" VND");
+            tvTotalPrice.setText(totalPrice+" VND");
+
+
+        }
+        else if(totaldate >=7){
+            //money unit is VND
+            //ServiceCharge = 10% of total price
+            //TaxesAndFee = 15% of total price
+            int price = Integer.parseInt(room.getPrice())*totaldate;
+            int serviceCharge = (int) (price*0.1);
+            int taxesAndFee = (int) (price*0.15);
+            int totalPrice = price + serviceCharge + taxesAndFee;
+            tvPrice.setText(price+" VND");
+            tvServiceCharge.setText(serviceCharge+" VND");
+            tvTaxesAndFee.setText(taxesAndFee+" VND");
+            tvTotalPrice.setText(totalPrice+" VND");
+
+        }
+        else {
+            //money unit is VND
+            //ServiceCharge = 0% of total price
+            //TaxesAndFee = 0% of total price
+            int price = Integer.parseInt(room.getPrice())*totaldate;
+            int serviceCharge = 0;
+            int taxesAndFee = 0;
+            int totalPrice = price + serviceCharge + taxesAndFee;
+            tvPrice.setText(price+" VND");
+            tvServiceCharge.setText(serviceCharge+" VND");
+            tvTaxesAndFee.setText(taxesAndFee+" VND");
+            tvTotalPrice.setText(totalPrice+" VND");
+
+        }
+
+
+
+
+
 //        String checkInDate = intent.getStringExtra("checkInDate");
 //        String checkOutDate = intent.getStringExtra("checkOutDate");
 //        SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
@@ -124,5 +186,113 @@ public class ConfirmAndPayActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    private String formatDate(String part1) {
+        // Định dạng ban đầu của chuỗi ngày
+        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
+
+// Định dạng mới bạn muốn
+        SimpleDateFormat outputFormat = new SimpleDateFormat("E, MMMM d, yyyy", Locale.ENGLISH);
+
+        try {
+            // Chuyển đổi chuỗi ngày gốc thành Date object
+            Date date = inputFormat.parse(part1);
+
+            // Chuyển đổi Date object thành chuỗi ngày mới với định dạng bạn mong muốn
+            String formattedDate = outputFormat.format(date);
+
+            return formattedDate;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private String totalDate(String part1, String part2) {
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        //tách date 1 lấy ngày tháng năm
+        String[] parts = part1.split("/");
+        String Ngay1 = parts[0];
+        String Thang1 = parts[1];
+        String Nam1 = parts[2];
+
+        cal1.set(Integer.parseInt(Nam1),Integer.parseInt(Thang1),Integer.parseInt(Ngay1));
+        //tách date 2 lấy ngày tháng năm
+        String[] parts2 = part2.split("/");
+        String Ngay2 = parts2[0];
+        String Thang2 = parts2[1];
+        String Nam2 = parts2[2];
+
+        cal2.set(Integer.parseInt(Nam2),Integer.parseInt(Thang2),Integer.parseInt(Ngay2));
+        // Trừ hai ngày với nhau
+        long timeInMillis1 = cal1.getTimeInMillis();
+        long timeInMillis2 = cal2.getTimeInMillis();
+        long difference = timeInMillis2 - timeInMillis1;
+
+// Chuyển đổi khoảng thời gian thành số ngày
+        long daysDifference = difference / (24 * 60 * 60 * 1000);
+        String[] monthNames = {
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+        };
+        if(cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH)){
+
+
+            int monthNumber = cal1.get(Calendar.MONTH); // Số tháng (từ 1 đến 12)
+
+            String monthName = monthNames[monthNumber - 1];
+            return monthName+", "+Ngay1+"-"+Ngay2+" ("+String.valueOf(daysDifference+1)+" Days)";
+        }
+        else {
+            int monthNumber = cal1.get(Calendar.MONTH); // Số tháng (từ 1 đến 12)
+            int monthNumber2 = cal2.get(Calendar.MONTH); // Số tháng (từ 1 đến 12)
+            return monthNumber+"-"+monthNumber2+", "+Ngay1+"-"+Ngay2+" ("+String.valueOf(daysDifference+1)+" Days)";
+        }
+
+    }
+    private String totalDate1(String part1, String part2) {
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        //tách date 1 lấy ngày tháng năm
+        String[] parts = part1.split("/");
+        String Ngay1 = parts[0];
+        String Thang1 = parts[1];
+        String Nam1 = parts[2];
+
+        cal1.set(Integer.parseInt(Nam1),Integer.parseInt(Thang1),Integer.parseInt(Ngay1));
+        //tách date 2 lấy ngày tháng năm
+        String[] parts2 = part2.split("/");
+        String Ngay2 = parts2[0];
+        String Thang2 = parts2[1];
+        String Nam2 = parts2[2];
+
+        cal2.set(Integer.parseInt(Nam2),Integer.parseInt(Thang2),Integer.parseInt(Ngay2));
+        // Trừ hai ngày với nhau
+        long timeInMillis1 = cal1.getTimeInMillis();
+        long timeInMillis2 = cal2.getTimeInMillis();
+        long difference = timeInMillis2 - timeInMillis1;
+
+// Chuyển đổi khoảng thời gian thành số ngày
+        long daysDifference = difference / (24 * 60 * 60 * 1000);
+        String[] monthNames = {
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+        };
+        if(cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH)){
+
+
+            int monthNumber = cal1.get(Calendar.MONTH); // Số tháng (từ 1 đến 12)
+
+            String monthName = monthNames[monthNumber - 1];
+            return String.valueOf(daysDifference+1);
+        }
+        else {
+            int monthNumber = cal1.get(Calendar.MONTH); // Số tháng (từ 1 đến 12)
+            int monthNumber2 = cal2.get(Calendar.MONTH); // Số tháng (từ 1 đến 12)
+            return String.valueOf(daysDifference+1);
+        }
+
     }
 }
