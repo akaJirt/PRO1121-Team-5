@@ -6,11 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,12 +45,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import vn.momo.momo_partner.AppMoMoLib;
 
 public class ConfirmAndPayActivity extends AppCompatActivity {
-    ImageView ivBack, ivHotel, ivBookNow;
-    TextView tvHotelName, tvDate, tvCapacity, tvTypeRoom, tvDateStay, tvPrice, tvTotalPrice, tvServiceCharge, tvTaxesAndFee;
+    ImageView ivBack, ivHotel;
+    TextView tvHotelName, tvDate, tvCapacity, tvTypeRoom, tvDateStay, tvPrice, tvTotalPrice,
+            tvServiceCharge, tvTaxesAndFee, tvAdditionalInfo, tvPaymentInfo;
+
+    RadioButton rbMomo, rbCash;
 
     UserAfterCheckLG user;
 
-    LinearLayout llPayment, llConfirm;
+    LinearLayout llPaymentMomo, llConfirm, llInfoPrice;
 
     Button btnBookNow;
 
@@ -83,8 +88,12 @@ public class ConfirmAndPayActivity extends AppCompatActivity {
         tvTotalPrice = findViewById(R.id.tvTotalPrice);
         tvServiceCharge = findViewById(R.id.tvServiceCharge);
         tvTaxesAndFee = findViewById(R.id.tvTaxesAndFee);
-        llPayment = findViewById(R.id.llPayment);
+        tvAdditionalInfo = findViewById(R.id.tvAdditionalInfo);
+        rbMomo = findViewById(R.id.rbMomo);
+        tvPaymentInfo = findViewById(R.id.tvPaymentInfo);
+        llPaymentMomo = findViewById(R.id.llPaymentMomo);
         llConfirm = findViewById(R.id.llConfirm);
+        llInfoPrice = findViewById(R.id.llInfoPrice);
 
 //        UserAfterCheckLG user = (UserAfterCheckLG) intent.getSerializableExtra("user");
         user = new UserAfterCheckLG();
@@ -154,13 +163,14 @@ public class ConfirmAndPayActivity extends AppCompatActivity {
             onBackPressed();
         });
 
-        llPayment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                amount = tvTotalPrice.getText().toString().replace(" VND", "");
-                requestPayment();
-            }
+        rbMomo.setOnClickListener(v -> {
+            rbMomo.setChecked(true);
+            amount = tvTotalPrice.getText().toString().replace(" VND", "");
+            requestPayment();
+
         });
+
+
 
     }
 
@@ -315,35 +325,6 @@ public class ConfirmAndPayActivity extends AppCompatActivity {
         if (requestCode == AppMoMoLib.getInstance().REQUEST_CODE_MOMO && resultCode == -1) {
             if (data != null) {
                 if (data.getIntExtra("status", -1) == 0) {
-                    btnBookNow.setEnabled(false);
-                    btnBookNow.setText("Đã thanh toán");
-                    llConfirm.setVisibility(View.VISIBLE);
-                    Retrofit retrofit = new Retrofit.Builder()
-                            .baseUrl(BASE_URL)
-                            .addConverterFactory(GsonConverterFactory.create())
-                            .build();
-
-                    APIService apiService = retrofit.create(APIService.class);
-                    Book book = new Book();
-                    book.setCheckInDate(intent.getStringExtra("checkInDate"));
-                    book.setCheckOutDate(intent.getStringExtra("checkOutDate"));
-                    book.setHotelId(hotel.get_id());
-                    book.setRoomId(room.get_id());
-                    book.setBookedBy(user.get_id());
-
-                    Call<Book> call = apiService.bookHotel(book);
-                    call.enqueue(new Callback<Book>() {
-                        @Override
-                        public void onResponse(Call<Book> call, Response<Book> response) {
-                            Toast.makeText(ConfirmAndPayActivity.this, "Đặt phòng thành công", Toast.LENGTH_SHORT).show();
-                        }
-
-                        @Override
-                        public void onFailure(Call<Book> call, Throwable t) {
-                            Toast.makeText(ConfirmAndPayActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
 
                     String token = data.getStringExtra("data"); //Token response
                     String phoneNumber = data.getStringExtra("phonenumber");
@@ -353,6 +334,42 @@ public class ConfirmAndPayActivity extends AppCompatActivity {
                     }
 
                     if (token != null && !token.equals("")) {
+                        Retrofit retrofit = new Retrofit.Builder()
+                                .baseUrl(BASE_URL)
+                                .addConverterFactory(GsonConverterFactory.create())
+                                .build();
+
+                        APIService apiService = retrofit.create(APIService.class);
+                        Book book = new Book();
+                        book.setCheckInDate(intent.getStringExtra("checkInDate"));
+                        book.setCheckOutDate(intent.getStringExtra("checkOutDate"));
+                        book.setHotelId(hotel.get_id());
+                        book.setRoomId(room.get_id());
+                        book.setBookedBy(user.get_id());
+                        book.setPaymentMethod("Momo");
+                        String total = tvTotalPrice.getText().toString();
+                        String[] parts = total.split(" ");
+                        String part1 = parts[0];
+                        book.setTotalPrice(String.valueOf(Integer.parseInt(part1)));
+
+                        Call<Book> call = apiService.bookHotel(book);
+                        call.enqueue(new Callback<Book>() {
+                            @Override
+                            public void onResponse(Call<Book> call, Response<Book> response) {
+                                Toast.makeText(ConfirmAndPayActivity.this, "Đặt phòng thành công", Toast.LENGTH_SHORT).show();
+                                llConfirm.setVisibility(View.VISIBLE);
+                                llInfoPrice.setVisibility(View.GONE);
+                                tvPaymentInfo.setText("Thanks for using MoMo.\nYour payment is successful");
+                                tvAdditionalInfo.setTextColor(Color.parseColor("#008000"));
+                                btnBookNow.setVisibility(View.VISIBLE);
+                                btnBookNow.setText("Done");
+                            }
+
+                            @Override
+                            public void onFailure(Call<Book> call, Throwable t) {
+                                Toast.makeText(ConfirmAndPayActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                            }
+                        });
 
                     } else {
                         Toast.makeText(this, "Not receive info", Toast.LENGTH_LONG).show();
@@ -363,16 +380,16 @@ public class ConfirmAndPayActivity extends AppCompatActivity {
                     Toast.makeText(this, "123", Toast.LENGTH_SHORT).show();
                 } else if (data.getIntExtra("status", -1) == 2) {
                     //TOKEN FAIL
-                    Toast.makeText(this, "message:", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "message: 1", Toast.LENGTH_SHORT).show();
                 } else {
                     //TOKEN FAIL
-                    Toast.makeText(this, "message:", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "message: 2", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                Toast.makeText(this, "message:", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "message: 3", Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(this, "message:", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "message: 4", Toast.LENGTH_SHORT).show();
         }
     }
 }

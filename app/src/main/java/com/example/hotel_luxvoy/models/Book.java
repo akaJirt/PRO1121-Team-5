@@ -15,17 +15,20 @@ public class Book implements java.io.Serializable{
     private String checkInDate;
     private String checkOutDate;
 
+    private String totalPrice;
+
     public Book() {
     }
 
 
-    public Book(String hotelId, String roomId, String bookedBy, String paymentMethod, String checkInDate, String checkOutDate) {
+    public Book(String hotelId, String roomId, String bookedBy, String paymentMethod, String checkInDate, String checkOutDate, String totalPrice) {
         this.hotelId = hotelId;
         this.roomId = roomId;
         this.bookedBy = bookedBy;
         this.paymentMethod = paymentMethod;
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
+        this.totalPrice = totalPrice;
     }
 
     public String getHotelId() {
@@ -74,5 +77,13 @@ public class Book implements java.io.Serializable{
 
     public void setCheckOutDate(String checkOutDate) {
         this.checkOutDate = checkOutDate;
+    }
+
+    public String getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(String totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

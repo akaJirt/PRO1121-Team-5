@@ -46,8 +46,7 @@ public class BookLocationActivity extends AppCompatActivity {
         ivBack = findViewById(R.id.ivBack);
         etLocation = findViewById(R.id.edLocation);
         ivBack.setOnClickListener(v -> {
-            Intent intent = new Intent(BookLocationActivity.this, HomeActivity.class);
-            startActivity(intent);
+            finish();
         });
 
         String[] suggestions = { "Ho Chi Minh City", "Ha Noi City" };
