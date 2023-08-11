@@ -1,19 +1,27 @@
 package com.example.hotel_luxvoy.models;
 
 public class Nearby {
-    private int saigon;
+
+
+    private int image;
     private String name;
-    private String distance;
+    private String address;
 
     public Nearby() {
     }
 
-    public int getSaigon() {
-        return saigon;
+    public Nearby(int image, String name, String address) {
+        this.image = image;
+        this.name = name;
+        this.address = address;
     }
 
-    public void setSaigon(int saigon) {
-        this.saigon = saigon;
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
     }
 
     public String getName() {
@@ -24,18 +32,11 @@ public class Nearby {
         this.name = name;
     }
 
-    public String getDistance() {
-        return distance;
+    public String getAddress() {
+        return address;
     }
 
-    public void setDistance(String distance) {
-        this.distance = distance;
+    public void setAddress(String address) {
+        this.address = address;
     }
-
-    public Nearby(int saigon, String name, String distance) {
-        this.saigon = saigon;
-        this.name = name;
-        this.distance = distance;
-    }
-
 }

@@ -1,52 +1,54 @@
 package com.example.hotel_luxvoy.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Hotel {
+public class Hotel implements java.io.Serializable{
 
-    private int hotelId;
-    private int image;
+//    "_id": "64c8869497e7dd34e7f5e3c4",
+//            "hotelName": "Pullman",
+//            "image": [],
+//            "street": "11 Phạm Ngũ Lão",
+//            "ward": "phường 7",
+//            "district": "Quận 1",
+//            "city": "Hồ Chí Minh",
+//            "rating": "3",
+//            "lowestPrice": "300$",
+//            "userId": "64c17d353d16fe7c01b7728c",
+//            "rooms": []
+
+    private String _id;
     private String hotelName;
+    private ArrayList<String> image;
+    private String street;
+    private String ward;
+    private String district;
+    private String city;
     private String rating;
+    private String lowestPrice;
+    private String userId;
+    private ArrayList<Room> rooms;
 
-    private String price;
-
-    private List<Room> rooms;
-
-    public Hotel() {
-    }
-
-    public Hotel(int hotelId, int image, String hotelName, String rating, String price, List<Room> rooms) {
-        this.hotelId = hotelId;
-        this.image = image;
+    public Hotel(String _id, String hotelName, ArrayList<String> image, String street, String ward, String district, String city, String rating, String lowestPrice, String userId, ArrayList<Room> rooms) {
+        this._id = _id;
         this.hotelName = hotelName;
+        this.image = image;
+        this.street = street;
+        this.ward = ward;
+        this.district = district;
+        this.city = city;
         this.rating = rating;
-        this.price = price;
+        this.lowestPrice = lowestPrice;
+        this.userId = userId;
         this.rooms = rooms;
     }
 
-    public Hotel(int hotelId, int image, String hotelName, String rating, String price) {
-        this.hotelId = hotelId;
-        this.image = image;
-        this.hotelName = hotelName;
-        this.rating = rating;
-        this.price = price;
+    public String get_id() {
+        return _id;
     }
 
-    public int getHotelId() {
-        return hotelId;
-    }
-
-    public void setHotelId(int hotelId) {
-        this.hotelId = hotelId;
-    }
-
-    public int getImage() {
-        return image;
-    }
-
-    public void setImage(int image) {
-        this.image = image;
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getHotelName() {
@@ -57,6 +59,46 @@ public class Hotel {
         this.hotelName = hotelName;
     }
 
+    public ArrayList<String> getImage() {
+        return image;
+    }
+
+    public void setImage(ArrayList<String> image) {
+        this.image = image;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getWard() {
+        return ward;
+    }
+
+    public void setWard(String ward) {
+        this.ward = ward;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     public String getRating() {
         return rating;
     }
@@ -65,19 +107,27 @@ public class Hotel {
         this.rating = rating;
     }
 
-    public String getPrice() {
-        return price;
+    public String getLowestPrice() {
+        return lowestPrice;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setLowestPrice(String lowestPrice) {
+        this.lowestPrice = lowestPrice;
     }
 
-    public List<Room> getRooms() {
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public ArrayList<Room> getRooms() {
         return rooms;
     }
 
-    public void setRooms(List<Room> rooms) {
+    public void setRooms(ArrayList<Room> rooms) {
         this.rooms = rooms;
     }
 }

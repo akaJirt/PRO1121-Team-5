@@ -3,55 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:elevation="8sp"
-    app:cardCornerRadius="10dp">
+    app:cardCornerRadius="15dp"
+    app:cardElevation="10dp"
+    app:cardUseCompatPadding="true">
 
     <LinearLayout
         android:id="@+id/Pre1"
-        android:layout_width="200dp"
-        android:layout_height="174dp"
-        android:background="@drawable/card_2"
-        android:elevation="36dp">
-
-        <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="174dp"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="200dp"
-                    android:layout_height="120dp"
-                    android:src="@drawable/premium3" />
-
-                <TextView
-                    android:layout_width="148dp"
-                    android:layout_height="16dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginLeft="26dp"
-                    android:layout_marginTop="91.03dp"
-                    android:fontFamily="@font/azonix1"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:text="LUXVOY PREMIUM"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
-            </RelativeLayout>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="36dp"
+        android:orientation="vertical">
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/aeonikpro"
-                android:text="Luxvoy Premium Saigon"
-                android:textColor="@color/black"
-                android:textSize="16dp" />
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/imgPremium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/premium3" />
+
+
+        <TextView
+            android:id="@+id/tvPremium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/aeonikpro"
+            android:text="Luxvoy Premium Saigon"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

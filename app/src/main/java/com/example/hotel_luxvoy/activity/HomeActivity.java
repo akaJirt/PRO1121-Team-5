@@ -15,7 +15,6 @@ import com.example.hotel_luxvoy.fragment.HomeFragment;
 import com.example.hotel_luxvoy.fragment.TripsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-
 public class HomeActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 

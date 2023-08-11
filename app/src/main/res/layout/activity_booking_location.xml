@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/background"
-    tools:context=".BookLocation">
+    android:orientation="vertical"
+    tools:context=".activity.BookLocationActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,6 +17,7 @@
         android:paddingBottom="26dp">
 
         <ImageView
+            android:id="@+id/ivBack"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/back" />
@@ -30,26 +32,32 @@
             <ImageView
                 android:layout_width="18dp"
                 android:layout_height="18dp"
-                android:src="@drawable/calendar" />
+                android:src="@drawable/location" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:fontFamily="@font/aeonikpro"
-                android:text="Dates"
+                android:text="Loacation"
                 android:textColor="#777E90"
                 android:textSize="16sp" />
         </LinearLayout>
 
-        <EditText
+        <AutoCompleteTextView
+            android:id="@+id/edLocation"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50sp"
             android:layout_marginTop="12dp"
-            android:background="#FFEEDF"
+            android:completionThreshold="1"
             android:fontFamily="@font/aeonikpro"
-            android:hint="Where next?"
-            android:textColor="#777E90" />
+            android:hint="Enter a location"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
     </LinearLayout>
 
     <LinearLayout

@@ -1,8 +1,11 @@
 package com.example.hotel_luxvoy.adapter;
 
+import static android.content.Intent.getIntent;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -17,8 +20,11 @@ import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.hotel_luxvoy.R;
 import com.example.hotel_luxvoy.activity.ConfirmAndPayActivity;
+import com.example.hotel_luxvoy.models.Hotel;
 import com.example.hotel_luxvoy.models.Room;
-
+import com.example.hotel_luxvoy.models.imageModel;
+import com.example.hotel_luxvoy.models.imageModel1;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,14 +32,19 @@ import java.util.List;
 public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomAdaterViewHolder> {
 
 
-    private List<Room> roomList;
+    private ArrayList<Room> roomList;
 
     private Context context;
 
+    private Hotel hotel;
+    private Intent intent1;
 
-    public RoomAdapter(List<Room> roomList, Context context) {
+
+    public RoomAdapter(ArrayList<Room> roomList, Context context, Hotel hotel, Intent intent) {
         this.roomList = roomList;
         this.context = context;
+        this.hotel = hotel;
+        this.intent1 = intent;
     }
 
     @NonNull
@@ -45,20 +56,26 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomAdaterView
 
     @Override
     public void onBindViewHolder(@NonNull RoomAdaterViewHolder holder, int position) {
+
         Room room = roomList.get(position);
         holder.tvTypeRoom.setText(room.getType());
         holder.tvRoomPrice.setText(room.getPrice());
-
-        int[] images = room.getImage();
-        List<SlideModel> slideModels = new ArrayList<>();
-        for (int i = 0; i < images.length; i++) {
-            slideModels.add(new SlideModel(images[i], ScaleTypes.FIT));
+        Log.d("TAG", "onBindViewHolder: "+room.get_id());
+        ArrayList<String> images = room.getRoomImages();
+        ArrayList<SlideModel> slideModels = new ArrayList<>();
+        for (int i = 0; i < images.size(); i++) {
+            slideModels.add(new SlideModel(images.get(i), ScaleTypes.FIT));
         }
+
+
 
         holder.imageSlider.setImageList(slideModels, ScaleTypes.FIT);
         holder.imgSelectRoom.setOnClickListener(v -> {
             Intent intent = new Intent(context, ConfirmAndPayActivity.class);
             intent.putExtra("room", room);
+            intent.putExtra("hotel", hotel);
+            intent.putExtra("checkInDate", intent1.getStringExtra("checkInDate"));
+            intent.putExtra("checkOutDate", intent1.getStringExtra("checkOutDate"));
             context.startActivity(intent);
         });
 

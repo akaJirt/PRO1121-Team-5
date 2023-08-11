@@ -45,6 +45,24 @@ public class ExploreAdaper extends RecyclerView.Adapter<ExploreAdaper.ExploreVie
             public void onClick(View v) {
                 Intent intent = new Intent(context, HotelActivity.class);
                 intent.putExtra("nameDestination", explore.getDescription());
+                switch (explore.getDescription())
+                {
+                    case "Ha Noi explore":
+                        intent.putExtra("selectedLocation", "Hà Nội");
+                        break;
+                    case "Da Nang explore":
+                        intent.putExtra("selectedLocation", "Đà Nẵng");
+                        break;
+                    case "Ho Chi Minh explore":
+                        intent.putExtra("selectedLocation", "Hồ Chí Minh");
+                        break;
+                    case "Nha Trang explore":
+                        intent.putExtra("selectedLocation", "Nha Trang");
+                        break;
+                    default:
+                        intent.putExtra("selectedLocation", "default");
+                        break;
+                }
                 context.startActivity(intent);
             }
         });

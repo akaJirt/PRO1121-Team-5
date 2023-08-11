@@ -1,262 +1,232 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:orientation="vertical"
-    android:scrollbars="none"
-    tools:context=".BookActivity">
+    tools:context=".fragment.BookingFragment">
 
-    <LinearLayout
-        android:id="@+id/layoutMain"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background"
-        android:orientation="vertical"
-        android:padding="28dp">
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
 
-        <RelativeLayout
-            android:id="@+id/frame_head"
+        <LinearLayout
+            android:id="@+id/layoutMain"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/frame_831"
-            android:elevation="@dimen/cardview_default_radius">
+            android:layout_height="match_parent"
+            android:background="@color/background"
+            android:orientation="vertical"
+            android:padding="10dp">
 
-            <LinearLayout
-                android:id="@+id/frame_830"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/frame_head"
+                android:layout_width="match_parent"
                 android:layout_height="75dp"
-                android:layout_centerInParent="true"
-                android:orientation="horizontal">
+                android:layout_alignParentTop="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/frame_831"
+                android:elevation="@dimen/cardview_default_radius">
 
                 <LinearLayout
-                    android:id="@+id/layoutLoca"
+                    android:id="@+id/frame_830"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:orientation="vertical">
+                    android:layout_height="75dp"
+                    android:layout_centerInParent="true"
+                    android:orientation="horizontal">
 
                     <LinearLayout
-                        android:id="@+id/layoutLoca_image"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="19dp"
-                            android:src="@drawable/location" />
-
-                        <TextView
-                            android:id="@+id/location"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="8sp"
-                            android:fontFamily="@font/aeonikpro"
-
-                            android:gravity="center_vertical"
-                            android:text="Location"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/txtWhere"
+                        android:id="@+id/layoutLoca"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="7dp"
-                        android:fontFamily="@font/aeonikpro"
-                        android:hint="Where next?"
-                        android:textColor="#777E91"
-                        android:textSize="16dp" />
-                </LinearLayout>
+                        android:layout_gravity="center_vertical"
+                        android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/imgLine"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="30dp"
-                    android:src="@drawable/line" />
+                        <LinearLayout
+                            android:id="@+id/layoutLoca_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
-                <LinearLayout
-                    android:id="@+id/layoutDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="30dp"
-                    android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="19dp"
+                                android:src="@drawable/location" />
 
-                    <LinearLayout
-                        android:id="@+id/layoutDate_image"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="19dp"
-                            android:src="@drawable/calendar" />
+                            <TextView
+                                android:id="@+id/location"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="8sp"
+                                android:fontFamily="@font/aeonikpro"
+                                android:gravity="center_vertical"
+                                android:text="Location"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
 
                         <TextView
-                            android:id="@+id/txtDate"
+                            android:id="@+id/txtWhere"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="8sp"
+                            android:layout_marginTop="7dp"
                             android:fontFamily="@font/aeonikpro"
-
-                            android:gravity="center_vertical"
-                            android:text="Dates"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
+                            android:hint="Where next?"
+                            android:textColor="#777E91"
+                            android:textSize="16dp" />
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/txtSelect"
-                        android:layout_width="91dp"
-                        android:layout_height="18dp"
-                        android:layout_marginTop="7dp"
-                        android:fontFamily="@font/aeonikpro"
-                        android:text="Select dates"
-                        android:textAlignment="center"
-                        android:textColor="#777E91"
-                        android:textSize="16dp" />
+                    <ImageView
+                        android:id="@+id/imgLine"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="30dp"
+                        android:src="@drawable/line" />
+
+                    <LinearLayout
+                        android:id="@+id/layoutDates"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="30dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/layoutDate_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="19dp"
+                                android:src="@drawable/calendar" />
+
+                            <TextView
+                                android:id="@+id/txtDates"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="8sp"
+                                android:fontFamily="@font/aeonikpro"
+
+                                android:gravity="center_vertical"
+                                android:text="Dates"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/txtSelect"
+                            android:layout_width="91dp"
+                            android:layout_height="18dp"
+                            android:layout_marginTop="7dp"
+                            android:fontFamily="@font/aeonikpro"
+                            android:text="Select dates"
+                            android:textAlignment="center"
+                            android:textColor="#777E91"
+                            android:textSize="16dp" />
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
-        </RelativeLayout>
+            </RelativeLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/aeonikpro"
-            android:text="Hotel nearby"
-            android:textColor="@color/gray"
-            android:textSize="14dp" />
-
-        <HorizontalScrollView
-            android:id="@+id/scrollNearby"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:scrollbars="none">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/aeonikpro"
+                android:text="Hotel nearby"
+                android:textColor="@color/gray"
+                android:textSize="14sp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewNearby"
+                android:id="@+id/rvNearby"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:scrollbars="none"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                tools:itemCount="4"
-                tools:listitem="@layout/item_nearby" />
-        </HorizontalScrollView>
+                android:layout_marginTop="16dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/aeonikpro"
-            android:text="Recently viewed"
-            android:textColor="@color/gray"
-            android:textSize="14dp" />
 
-        <HorizontalScrollView
-            android:id="@+id/scrollViewed"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:scrollbars="none">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/aeonikpro"
+                android:text="Recently viewed"
+                android:textColor="@color/gray"
+                android:textSize="14sp" />
+
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewRecently"
+                android:id="@+id/rvViewed"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp" />
 
-        </HorizontalScrollView>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/aeonikpro"
-            android:text="Featured destinations"
-            android:textColor="@color/gray"
-            android:textSize="14dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/aeonikpro"
+                android:text="Featured destinations"
+                android:textColor="@color/gray"
+                android:textSize="14sp" />
 
-        <HorizontalScrollView
-            android:id="@+id/scrollFeatured"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginTop="16dp"
-            android:scrollbars="none">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewFeatured"
+                android:id="@+id/rvDestinations"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </HorizontalScrollView>
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp" />
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:fontFamily="@font/aeonikpro"
-            android:text="Explore Luxvoy"
-            android:textColor="#111111"
-            android:textSize="23dp"
-            android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/aeonikpro"
+                android:text="Explore Luxvoy"
+                android:textColor="#111111"
+                android:textSize="23dp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:fontFamily="@font/aeonikpro"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/aeonikpro"
+                android:text="Luxury"
+                android:textColor="@color/gray"
+                android:textSize="14sp" />
 
-            android:text="Luxury"
-            android:textColor="@color/gray"
-            android:textSize="14dp" />
-
-        <HorizontalScrollView
-            android:id="@+id/scrollLuxury"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:scrollbars="none">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewLux"
+                android:id="@+id/rvLuxury"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </HorizontalScrollView>
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:fontFamily="@font/aeonikpro"
 
-            android:text="Premium"
-            android:textColor="@color/gray"
-            android:textSize="14dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/aeonikpro"
+                android:text="Premium"
+                android:textColor="@color/gray"
+                android:textSize="14sp" />
 
-        <HorizontalScrollView
-            android:id="@+id/scrollPremium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:scrollbars="none">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewPre"
+                android:id="@+id/rvPremium"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </HorizontalScrollView>
-    </LinearLayout>
-</ScrollView>
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>
