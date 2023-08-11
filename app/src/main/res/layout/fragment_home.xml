@@ -28,12 +28,14 @@
                     android:id="@+id/tvTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/aeonikpro"
                     android:text="Good morning," />
 
                 <TextView
                     android:id="@+id/tvUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/aeonikpro"
                     android:text="John Doe"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -65,6 +67,7 @@
                         android:id="@+id/tvBooking"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/aeonikpro"
                         android:text="@string/title_text"
                         android:textColor="@color/white"
                         android:textSize="30sp" />
@@ -73,6 +76,7 @@
                         android:id="@+id/tvDescription"
                         android:layout_width="220dp"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/aeonikpro"
                         android:text="@string/description_text2"
                         android:textColor="@color/white"
                         android:textSize="16dp" />
@@ -92,6 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20sp"
                 android:layout_marginBottom="20sp"
+                android:fontFamily="@font/aeonikpro"
                 android:labelFor="@+id/rvViewed"
                 android:text="Recently viewed"
                 android:textSize="15sp" />
@@ -108,6 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20sp"
                 android:layout_marginBottom="20sp"
+                android:fontFamily="@font/aeonikpro"
                 android:labelFor="@+id/rvMore"
                 android:text="More for you"
                 android:textSize="15sp" />
@@ -124,6 +130,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20sp"
                 android:layout_marginBottom="20sp"
+                android:fontFamily="@font/aeonikpro"
                 android:labelFor="@+id/rvExplore"
                 android:text="Destinations to explore"
                 android:textSize="15sp" />
@@ -140,6 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20sp"
                 android:layout_marginBottom="20sp"
+                android:fontFamily="@font/aeonikpro"
                 android:text="Future Offers"
                 android:textSize="15sp" />
 

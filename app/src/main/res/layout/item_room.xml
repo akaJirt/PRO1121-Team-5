@@ -34,6 +34,7 @@
                 android:text="1 King bed, guest room, Non-smoking"
                 android:textColor="@color/black"
                 android:textSize="18sp"
+                android:fontFamily="@font/aeonikpro"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -42,6 +43,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:fontFamily="@font/aeonikpro"
                     android:id="@+id/tvRoomPrice"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -60,6 +62,7 @@
             </LinearLayout>
 
             <TextView
+                android:fontFamily="@font/aeonikpro"
                 android:id="@+id/tvTax"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

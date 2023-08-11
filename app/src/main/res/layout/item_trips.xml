@@ -28,6 +28,7 @@
             android:layout_marginStart="20sp"
             android:layout_marginTop="20sp"
             android:layout_marginEnd="20sp"
+            android:fontFamily="@font/aeonikpro"
             android:text="Luxvoy Luxury Ha Noi Hotel"
             android:textColor="@color/black"
             android:textSize="24sp" />
@@ -44,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20sp"
                 android:layout_weight="1"
+                android:fontFamily="@font/aeonikpro"
                 android:text="Sep 11-14 (3 nights)"
                 android:textSize="16sp" />
 
@@ -53,8 +55,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20sp"
                 android:layout_weight="1"
-                android:text="Details"
-                android:background="@drawable/custom_button_bg" />
+                android:background="@drawable/custom_button_bg"
+                android:fontFamily="@font/aeonikpro"
+                android:text="Details" />
 
         </LinearLayout>
 
@@ -68,6 +71,7 @@
                 android:id="@+id/tvConfirmation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/aeonikpro"
                 android:text="Confirmation number: 98581885"
                 android:textSize="16sp" />
 
@@ -76,6 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15sp"
+                android:fontFamily="@font/aeonikpro"
                 android:text="Cancellation number: 98581885"
                 android:textSize="16sp" />
         </LinearLayout>

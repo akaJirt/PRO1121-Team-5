@@ -24,6 +24,7 @@
                 android:src="@drawable/saigon1" />
 
             <TextView
+                android:fontFamily="@font/aeonikpro"
                 android:id="@+id/tvViewed"
                 android:layout_width="150sp"
                 android:layout_height="wrap_content"

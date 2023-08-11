@@ -37,6 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:textColor="@color/black"
         android:autofillHints="phone"
         android:background="@drawable/custom_edittext_bg"
         android:fontFamily="@font/aeonikpro"
@@ -71,6 +72,7 @@
             android:background="@drawable/custom_edittext_bg"
             android:fontFamily="@font/aeonikpro"
             android:inputType="textPassword"
+            android:textColor="@color/black"
             android:padding="15dp" />
 
     </com.google.android.material.textfield.TextInputLayout>

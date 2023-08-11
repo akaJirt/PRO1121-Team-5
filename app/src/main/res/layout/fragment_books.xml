@@ -55,6 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20sp"
                 android:gravity="center"
+                android:fontFamily="@font/aeonikpro"
                 android:text="Luxvoy Luxury Ha Noi Hotel"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
@@ -72,11 +73,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="@font/aeonikpro"
                     android:text="Check-in" />
 
                 <TextView
                     android:id="@+id/tvCheckin"
                     android:layout_width="wrap_content"
+                    android:fontFamily="@font/aeonikpro"
                     android:layout_height="wrap_content"
                     android:text="Sun, Sep 11, 1:00 PM" />
 
@@ -92,12 +95,14 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:fontFamily="@font/aeonikpro"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Check-in" />
 
                 <TextView
+                    android:fontFamily="@font/aeonikpro"
                     android:id="@+id/tvCheckout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -117,12 +122,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20sp"
                 android:text="Address"
+                android:fontFamily="@font/aeonikpro"
                 android:textSize="20sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20sp"
+                android:fontFamily="@font/aeonikpro"
                 android:layout_marginTop="20sp"
                 android:text="476, Minh Khai, Hai Ba Trung District, Hanoi, Vietnam"
                 android:textColor="@color/black"
@@ -133,6 +140,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20sp"
                 android:layout_marginTop="20sp"
+                android:fontFamily="@font/aeonikpro"
                 android:text="+ 84 909 090 909"
                 android:textColor="#FF9800" />
 
@@ -140,6 +148,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20sp"
+                android:fontFamily="@font/aeonikpro"
                 android:text="Reservation Detail"
                 android:textSize="20sp" />
 
@@ -148,6 +157,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20sp"
+                android:fontFamily="@font/aeonikpro"
                 android:text="Confirmation number: 98581885"
                 android:textColor="@color/black"
                 android:textSize="17sp" />
@@ -157,6 +167,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20sp"
+                android:fontFamily="@font/aeonikpro"
                 android:layout_marginTop="10sp"
                 android:text="Sep 11-14 (3 Nights)" />
 
@@ -165,12 +176,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20sp"
                 android:layout_marginTop="10sp"
+                android:fontFamily="@font/aeonikpro"
                 android:text="1 Room, 2 Guests" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20sp"
+                android:fontFamily="@font/aeonikpro"
                 android:text="Room Detail"
                 android:textSize="20sp" />
 
@@ -190,6 +203,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20sp"
                 android:text="Gallery"
+                android:fontFamily="@font/aeonikpro"
                 android:textSize="20sp" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -208,6 +222,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:fontFamily="@font/aeonikpro"
                     android:layout_marginLeft="20sp"
                     android:text="Cancel reservartion"
                     android:textColor="@color/black"
