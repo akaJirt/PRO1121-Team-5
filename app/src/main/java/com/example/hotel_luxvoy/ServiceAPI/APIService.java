@@ -1,5 +1,6 @@
 package com.example.hotel_luxvoy.ServiceAPI;
 
+import com.example.hotel_luxvoy.models.Bill;
 import com.example.hotel_luxvoy.models.Hotel;
 import com.example.hotel_luxvoy.models.Room;
 import com.example.hotel_luxvoy.models.UserAfterCheckLG;
@@ -40,5 +41,9 @@ public interface APIService {
 
     @PUT("book-hotel")
     Call<Book> bookHotel(@Body Book book);
+
+    @GET("{userId}/bills")
+    Call<ArrayList<Bill>> getBillByUser(@Path("userId") String userId);
+
 
 }

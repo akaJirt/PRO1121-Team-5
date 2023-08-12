@@ -20,6 +20,7 @@ import com.example.hotel_luxvoy.R;
 import com.example.hotel_luxvoy.ServiceAPI.APIService;
 import com.example.hotel_luxvoy.activity.BookLocationActivity;
 import com.example.hotel_luxvoy.adapter.TripsAdapter;
+import com.example.hotel_luxvoy.models.Bill;
 import com.example.hotel_luxvoy.models.Hotel;
 import com.example.hotel_luxvoy.models.Trips;
 import com.example.hotel_luxvoy.models.UserAfterCheckLG;
@@ -81,6 +82,8 @@ public class FragmentCurrent extends Fragment {
                     public void onResponse(Call<ArrayList<Hotel>> call, Response<ArrayList<Hotel>> response) {
                         ArrayList<Hotel> hotels = response.body();
                         tripsList = new ArrayList<>();
+
+                        
 
                         for (int i = 0; i < userAfterCheckLG.getBills().size(); i++) {
                             if (userAfterCheckLG.getBills().get(i).getBillStatus().equals("pending")) {

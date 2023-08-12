@@ -166,8 +166,8 @@ public class ConfirmAndPayActivity extends AppCompatActivity {
 //                        "checkOutDate": "2023-08-08T07:39:17.483Z"
                 APIService apiService = retrofit.create(APIService.class);
                 Book book = new Book();
-                book.setCheckInDate(intent.getStringExtra("checkInDate"));
-                book.setCheckOutDate(intent.getStringExtra("checkOutDate"));
+                book.setCheckInDate(intent.getStringExtra("checkInDate")+"T00:00:00.000+07:00");
+                book.setCheckOutDate(intent.getStringExtra("checkOutDate")+"T00:00:00.000+07:00");
                 book.setHotelId(hotel.get_id());
                 book.setRoomId(room.get_id());
                 book.setBookedBy(user.get_id());

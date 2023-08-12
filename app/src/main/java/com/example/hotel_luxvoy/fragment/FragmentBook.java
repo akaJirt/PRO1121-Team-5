@@ -131,7 +131,7 @@ public class FragmentBook extends Fragment {
         SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
 
 // Định dạng mới bạn muốn
-        SimpleDateFormat outputFormat = new SimpleDateFormat("E, MMMM d, yyyy", Locale.ENGLISH);
+        SimpleDateFormat outputFormat = new SimpleDateFormat("E, d MMMM, yyyy", Locale.ENGLISH);
 
         try {
             // Chuyển đổi chuỗi ngày gốc thành Date object
@@ -186,7 +186,9 @@ public class FragmentBook extends Fragment {
         else {
             int monthNumber = cal1.get(Calendar.MONTH); // Số tháng (từ 1 đến 12)
             int monthNumber2 = cal2.get(Calendar.MONTH); // Số tháng (từ 1 đến 12)
-            return monthNumber+"-"+monthNumber2+", "+ngay1+"-"+ngay2+" ("+String.valueOf(daysDifference+1)+" Days)";
+            String monthName = monthNames[monthNumber - 1];
+            String monthName2 = monthNames[monthNumber2 - 1];
+            return monthName+"-"+monthName2+", "+ngay1+"-"+ngay2+" ("+String.valueOf(daysDifference+1)+" Days)";
         }
 
     }
