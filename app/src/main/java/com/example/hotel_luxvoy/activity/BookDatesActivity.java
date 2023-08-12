@@ -34,12 +34,11 @@ public class BookDatesActivity extends AppCompatActivity {
         Intent intent1 = getIntent();
         selectedLocation = intent1.getStringExtra("selectedLocation");
         UserAfterCheckLG userAfterCheckLG = (UserAfterCheckLG) intent1.getSerializableExtra("user");
-        Log.d("Bookdate>>>>>>>>", "onCreate: "+selectedLocation);
+        Log.d("Bookdate>>>>>>>>", "onCreate: " + selectedLocation);
         checkInDate = tvCheckIn.getText().toString();
         checkOutDate = tvCheckOut.getText().toString();
         ivBack.setOnClickListener(v -> {
-            Intent intent = new Intent(BookDatesActivity.this, BookLocationActivity.class);
-            startActivity(intent);
+            finish();
         });
 
         cvCheckIn.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
@@ -59,7 +58,7 @@ public class BookDatesActivity extends AppCompatActivity {
 
 
             if (selectedLocation != null) {
-                switch (selectedLocation){
+                switch (selectedLocation) {
                     case "default":
                         intent.putExtra("selectedLocation", "default");
                         break;
@@ -71,17 +70,16 @@ public class BookDatesActivity extends AppCompatActivity {
                         break;
                 }
 
-            }
-            else {
+            } else {
                 intent.putExtra("selectedLocation", "default");
             }
 
             //dd/mm/yyyy to yyyy-mm-dd
-            String[] arrCheckInDate =  tvCheckIn.getText().toString().split("/");
+            String[] arrCheckInDate = tvCheckIn.getText().toString().split("/");
             String checkInDate = arrCheckInDate[2] + "/" + arrCheckInDate[1] + "/" + arrCheckInDate[0];
             intent.putExtra("checkInDate", checkInDate);
 
-            String[] arrCheckOutDate =  tvCheckOut.getText().toString().split("/");
+            String[] arrCheckOutDate = tvCheckOut.getText().toString().split("/");
             String checkOutDate = arrCheckOutDate[2] + "/" + arrCheckOutDate[1] + "/" + arrCheckOutDate[0];
             intent.putExtra("checkOutDate", checkOutDate);
 
