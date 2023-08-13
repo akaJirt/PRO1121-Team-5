@@ -1,10 +1,10 @@
 package com.example.hotel_luxvoy.fragment;
 
 
-
 import static com.example.hotel_luxvoy.ServiceAPI.APIService.BASE_URL;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +25,7 @@ import com.example.hotel_luxvoy.adapter.TripsAdapter;
 import com.example.hotel_luxvoy.models.Hotel;
 import com.example.hotel_luxvoy.models.Trips;
 import com.example.hotel_luxvoy.models.UserAfterCheckLG;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,24 +41,31 @@ public class FragmentCancelled extends Fragment {
     LinearLayout llNoData;
     ArrayList<Trips> tripsList;
     Button btnBook;
+    UserAfterCheckLG userAfterCheckLG;
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_cancelled, container, false);
         rvCancelled = rootView.findViewById(R.id.rvCancelled);
         rvCancelled.setHasFixedSize(true);
         llNoData = rootView.findViewById(R.id.llNoData);
         btnBook = rootView.findViewById(R.id.btnBook);
         Intent intent = getActivity().getIntent();
-        UserAfterCheckLG userAfterCheckLG = (UserAfterCheckLG) intent.getSerializableExtra("user");
-        for(int i =0 ; i<userAfterCheckLG.getBills().size();i++){
-            if(userAfterCheckLG.getBills().get(i).getBillStatus().equals("pending")){
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl(BASE_URL)
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
+
+        //get data from Shared Preferences
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user", getActivity().MODE_PRIVATE);
+        String user = sharedPreferences.getString("user", "");
+        userAfterCheckLG = new UserAfterCheckLG();
+        if (!user.isEmpty()) {
+            Gson gson = new Gson();
+            userAfterCheckLG = gson.fromJson(user, UserAfterCheckLG.class);
+        } else {
+            Toast.makeText(getActivity(), "Please login first", Toast.LENGTH_SHORT).show();
+        }
+        for (int i = 0; i < userAfterCheckLG.getBills().size(); i++) {
+            if (userAfterCheckLG.getBills().get(i).getBillStatus().equals("cancelled")) {
+                Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
 
                 APIService apiService = retrofit.create(APIService.class);
                 Call<ArrayList<Hotel>> call = apiService.getHotel();
@@ -74,13 +82,7 @@ public class FragmentCancelled extends Fragment {
                                     String hotelIdinBill = userAfterCheckLG.getBills().get(i).getRoom().getHotelId().toString();
 
                                     if (hotels.get(j).get_id().toString().equals(userAfterCheckLG.getBills().get(i).getRoom().getHotelId().toString())) {
-                                        tripsList.add(new Trips(
-                                                hotels.get(j).getImage().get(0),
-                                                hotels.get(j).getHotelName(),
-                                                userAfterCheckLG.getBills().get(i).getCheckInDate() + " - " + userAfterCheckLG.getBills().get(i).getCheckOutDate(),
-                                                "Confirmation number: " + userAfterCheckLG.getBills().get(i).get_id(),
-                                                "Cancellation number: " + userAfterCheckLG.getBills().get(i).get_id()
-                                        ));
+                                        tripsList.add(new Trips(hotels.get(j).getImage().get(0), hotels.get(j).getHotelName(), userAfterCheckLG.getBills().get(i).getCheckInDate() + " - " + userAfterCheckLG.getBills().get(i).getCheckOutDate(), "Confirmation number: " + userAfterCheckLG.getBills().get(i).get_id(), "Cancellation number: " + userAfterCheckLG.getBills().get(i).get_id()));
                                     }
                                 }
                             }
@@ -110,8 +112,8 @@ public class FragmentCancelled extends Fragment {
 
                 });
             }
-        }
 
+        }
 //        tripsList.add(new Trips(R.drawable.img_trips, "Luxvoy Luxury Hotel South Sai Gon", "Sep 11-14 (3 nights)", "Confirmation number: 98581885", "Cancellation number: 98581885"));
 //        tripsList.add(new Trips(R.drawable.img_trips, "Luxvoy Luxury Hotel South Sai Gon 2", "Sep 11-14 (3 nights)", "Confirmation number: 98581885", "Cancellation number: 98581885"));
 

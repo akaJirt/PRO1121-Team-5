@@ -63,9 +63,7 @@ public class FragmentCurrent extends Fragment {
         else {
             Toast.makeText(getActivity(), "User null", Toast.LENGTH_SHORT).show();
         }
-//        tripsList.add(new Trips(R.drawable.img_trips, "Luxvoy Luxury Hotel South Sai Gon", "Sep 11-14 (3 nights)", "Confirmation number: 98581885", null));
-//        tripsList.add(new Trips(R.drawable.img_trips, "Luxvoy Luxury Hotel South Sai Gon 2", "Sep 11-14 (3 nights)", "Confirmation number: 98581885", null));
-//        tripsList.add(new Trips(R.drawable.img_trips, "Luxvoy Luxury Hotel South Sai Gon 3", "Sep 11-14 (3 nights)", "Confirmation number: 98581885", null));
+
 
         for(int i =0 ; i<userAfterCheckLG.getBills().size();i++){
             if(userAfterCheckLG.getBills().get(i).getBillStatus().equals("pending")){
@@ -127,16 +125,7 @@ public class FragmentCurrent extends Fragment {
             }
 
         }
-//        if (tripsList == null || tripsList.size() == 0) {
-//            llNoData.setVisibility(View.VISIBLE);
-//            rvCurrent.setVisibility(View.GONE);
-//        } else {
-//            llNoData.setVisibility(View.GONE);
-//            rvCurrent.setVisibility(View.VISIBLE);
-//
-//            TripsAdapter tripsAdapter = new TripsAdapter(tripsList, getActivity(), TripsAdapter.FragmentType.CURRENT);
-//            rvCurrent.setAdapter(tripsAdapter);
-//        }
+
 
         btnBook.setOnClickListener(new View.OnClickListener() {
             @Override

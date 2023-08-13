@@ -38,7 +38,7 @@ public interface APIService {
     @GET("{hotelId}/get-rooms")
       Call<ArrayList<Room>> getRoomByHotel(@Path("hotelId") String hotelId);
 
-    @PUT("book-hotel")
+    @POST("book-hotel")
     Call<Book> bookHotel(@Body Book book);
 
 }
