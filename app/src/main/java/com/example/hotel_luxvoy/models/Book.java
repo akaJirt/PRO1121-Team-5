@@ -1,5 +1,7 @@
 package com.example.hotel_luxvoy.models;
 
+import java.util.Date;
+
 public class Book implements java.io.Serializable{
 //    "hotelId": "string",
 //            "roomId": "string",
@@ -12,8 +14,8 @@ public class Book implements java.io.Serializable{
     private String roomId;
     private String bookedBy;
     private String paymentMethod;
-    private String checkInDate;
-    private String checkOutDate;
+    private Date checkInDate;
+    private Date checkOutDate;
 
     private String totalPrice;
 
@@ -21,7 +23,7 @@ public class Book implements java.io.Serializable{
     }
 
 
-    public Book(String hotelId, String roomId, String bookedBy, String paymentMethod, String checkInDate, String checkOutDate, String totalPrice) {
+    public Book(String hotelId, String roomId, String bookedBy, String paymentMethod, Date checkInDate, Date checkOutDate, String totalPrice) {
         this.hotelId = hotelId;
         this.roomId = roomId;
         this.bookedBy = bookedBy;
@@ -63,19 +65,19 @@ public class Book implements java.io.Serializable{
         this.paymentMethod = paymentMethod;
     }
 
-    public String getCheckInDate() {
+    public Date getCheckInDate() {
         return checkInDate;
     }
 
-    public void setCheckInDate(String checkInDate) {
+    public void setCheckInDate(Date checkInDate) {
         this.checkInDate = checkInDate;
     }
 
-    public String getCheckOutDate() {
+    public Date getCheckOutDate() {
         return checkOutDate;
     }
 
-    public void setCheckOutDate(String checkOutDate) {
+    public void setCheckOutDate(Date checkOutDate) {
         this.checkOutDate = checkOutDate;
     }
 

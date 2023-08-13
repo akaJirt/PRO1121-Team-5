@@ -333,8 +333,10 @@ public class ConfirmAndPayActivity extends AppCompatActivity {
 
                     APIService apiService = retrofit.create(APIService.class);
                     Book book = new Book();
-                    book.setCheckInDate(intent.getStringExtra("checkInDate"));
-                    book.setCheckOutDate(intent.getStringExtra("checkOutDate"));
+                    Date checkInDate = convertDate(intent.getStringExtra("checkInDate"));
+                    Date checkOutDate = convertDate(intent.getStringExtra("checkOutDate"));
+                    book.setCheckInDate(checkInDate);
+                    book.setCheckOutDate(checkOutDate);
                     book.setHotelId(hotel.get_id());
                     book.setRoomId(room.get_id());
                     book.setBookedBy(user.get_id());
@@ -400,5 +402,27 @@ public class ConfirmAndPayActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "message: 4", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private Date convertDate(String dateInString) {
+
+        SimpleDateFormat inputDateFormat = new SimpleDateFormat("dd/M/yyyy");
+
+        try {
+            Date date = inputDateFormat.parse(dateInString);
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            calendar.set(Calendar.HOUR_OF_DAY, 17);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
+            calendar.set(Calendar.MILLISECOND, 0);
+
+            Date outputDate = calendar.getTime();
+            return outputDate;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

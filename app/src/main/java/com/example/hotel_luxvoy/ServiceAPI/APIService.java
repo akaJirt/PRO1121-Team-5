@@ -19,6 +19,7 @@ import retrofit2.http.Path;
 
 public interface APIService {
    public static final String BASE_URL = "https://luxvoy-hotel-be.vercel.app/auth/";
+//    public static final String BASE_URL = "http://192.168.1.50:3000/auth/";
     @GET("users")
     Call<ArrayList<UserModel>> getData();
 
@@ -38,7 +39,7 @@ public interface APIService {
     @GET("{hotelId}/get-rooms")
       Call<ArrayList<Room>> getRoomByHotel(@Path("hotelId") String hotelId);
 
-    @PUT("book-hotel")
+    @POST("book-hotel")
     Call<Book> bookHotel(@Body Book book);
 
 }
