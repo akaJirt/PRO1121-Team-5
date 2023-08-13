@@ -2,7 +2,7 @@ package com.example.hotel_luxvoy.models;
 
 import java.util.Date;
 
-public class Book implements java.io.Serializable {
+public class Book implements java.io.Serializable{
 //    "hotelId": "string",
 //            "roomId": "string",
 //            "bookedBy": "string",

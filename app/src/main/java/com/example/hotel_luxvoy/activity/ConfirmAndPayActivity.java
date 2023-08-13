@@ -325,6 +325,47 @@ public class ConfirmAndPayActivity extends AppCompatActivity {
             if (data != null) {
                 if (data.getIntExtra("status", -1) == 0) {
 
+                    APIService apiService = retrofit.create(APIService.class);
+                    Book book = new Book();
+                    Date checkInDate = convertDate(intent.getStringExtra("checkInDate"));
+                    Date checkOutDate = convertDate(intent.getStringExtra("checkOutDate"));
+                    book.setCheckInDate(checkInDate);
+                    book.setCheckOutDate(checkOutDate);
+                    book.setHotelId(hotel.get_id());
+                    book.setRoomId(room.get_id());
+                    book.setBookedBy(user.get_id());
+                    book.setPaymentMethod("Momo");
+                    String total = tvTotalPrice.getText().toString();
+                    String[] parts = total.split(" ");
+                    String part1 = parts[0];
+                    book.setTotalPrice(String.valueOf(Integer.parseInt(part1)));
+
+                    Call<Book> call = apiService.bookHotel(book);
+                    call.enqueue(new Callback<Book>() {
+                        @Override
+                        public void onResponse(Call<Book> call, Response<Book> response) {
+                            Toast.makeText(ConfirmAndPayActivity.this, "Đặt phòng thành công", Toast.LENGTH_SHORT).show();
+                            llConfirm.setVisibility(View.VISIBLE);
+                            llInfoPrice.setVisibility(View.GONE);
+                            rbMomo.setVisibility(View.GONE);
+                            tvPaymentInfo.setText("Thanks for using MoMo.\nYour payment is successful");
+                            tvPaymentInfo.setTextColor(Color.parseColor("#008000"));
+                            btnBookNow.setVisibility(View.VISIBLE);
+                            btnBookNow.setText("Done");
+                            btnBookNow.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent = new Intent(ConfirmAndPayActivity.this, HomeActivity.class);
+                                    startActivity(intent);
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onFailure(Call<Book> call, Throwable t) {
+                            Toast.makeText(ConfirmAndPayActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                     String token = data.getStringExtra("data"); //Token response
                     String phoneNumber = data.getStringExtra("phonenumber");
                     String env = data.getStringExtra("env");
@@ -391,5 +432,27 @@ public class ConfirmAndPayActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "message: 4", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private Date convertDate(String dateInString) {
+
+        SimpleDateFormat inputDateFormat = new SimpleDateFormat("dd/M/yyyy");
+
+        try {
+            Date date = inputDateFormat.parse(dateInString);
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            calendar.set(Calendar.HOUR_OF_DAY, 17);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
+            calendar.set(Calendar.MILLISECOND, 0);
+
+            Date outputDate = calendar.getTime();
+            return outputDate;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
