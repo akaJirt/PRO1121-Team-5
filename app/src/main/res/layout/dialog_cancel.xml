@@ -44,7 +44,6 @@
             android:layout_height="50sp"
             android:layout_marginLeft="1sp"
             android:text="No"
-
             android:textSize="20sp" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -53,9 +52,7 @@
             android:layout_marginLeft="-5sp"
             android:text="Yes"
             android:textColor="#E91E63"
-            android:textSize="20sp"
-
-            />
+            android:textSize="20sp" />
     </LinearLayout>
 
 </LinearLayout>

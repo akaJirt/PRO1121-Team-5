@@ -24,7 +24,7 @@
 
                 <ImageView
                     android:id="@+id/ivHotel"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:src="@drawable/img_1" />
@@ -95,7 +95,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Check-in" />
+                    android:text="Check-out" />
 
                 <TextView
                     android:id="@+id/tvCheckout"

@@ -33,10 +33,10 @@ import java.util.Locale;
 import java.util.SimpleTimeZone;
 
 public class FragmentBook extends Fragment {
-    private RecyclerView  recyclerView2;
+    private RecyclerView recyclerView2;
 
-    ImageView ivCancel, ivBack, ivFavorite,ivHotel;
-    TextView tvHotelName, tvCheckin,tvCheckout,tvConfirmation,tvTotaldate;
+    ImageView ivCancel, ivBack, ivFavorite, ivHotel;
+    TextView tvHotelName, tvCheckin, tvCheckout, tvConfirmation, tvTotaldate;
 
     @Nullable
     @Override
@@ -76,10 +76,7 @@ public class FragmentBook extends Fragment {
         tvCheckin.setText(formatDate(part1));
         tvCheckout.setText(formatDate(part2));
         tvConfirmation.setText(confirmation);
-        tvTotaldate.setText(totalDate(part1,part2));
-
-
-
+        tvTotaldate.setText(totalDate(part1, part2));
 
 
         ivBack.setOnClickListener(new View.OnClickListener() {
@@ -155,15 +152,15 @@ public class FragmentBook extends Fragment {
         String Nam1 = parts[0];
         String Thang1 = parts[1];
         String part13 = parts[2];
-        String ngay1 = part13.substring(0,2);
-        cal1.set(Integer.parseInt(Nam1),Integer.parseInt(Thang1),Integer.parseInt(ngay1));
+        String ngay1 = part13.substring(0, 2);
+        cal1.set(Integer.parseInt(Nam1), Integer.parseInt(Thang1), Integer.parseInt(ngay1));
         //tách date 2 lấy ngày tháng năm
         String[] parts2 = part2.split("-");
         String Nam2 = parts2[0];
         String Thang2 = parts2[1];
         String part23 = parts2[2];
-        String ngay2 = part23.substring(0,2);
-        cal2.set(Integer.parseInt(Nam2),Integer.parseInt(Thang2),Integer.parseInt(ngay2));
+        String ngay2 = part23.substring(0, 2);
+        cal2.set(Integer.parseInt(Nam2), Integer.parseInt(Thang2), Integer.parseInt(ngay2));
         // Trừ hai ngày với nhau
         long timeInMillis1 = cal1.getTimeInMillis();
         long timeInMillis2 = cal2.getTimeInMillis();
@@ -175,18 +172,17 @@ public class FragmentBook extends Fragment {
                 "January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"
         };
-        if(cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH)){
+        if (cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH)) {
 
 
             int monthNumber = cal1.get(Calendar.MONTH); // Số tháng (từ 1 đến 12)
 
             String monthName = monthNames[monthNumber - 1];
-            return monthName+", "+ngay1+"-"+ngay2+" ("+String.valueOf(daysDifference+1)+" Days)";
-        }
-        else {
+            return monthName + ", " + ngay1 + "-" + ngay2 + " (" + String.valueOf(daysDifference + 1) + " Days)";
+        } else {
             int monthNumber = cal1.get(Calendar.MONTH); // Số tháng (từ 1 đến 12)
             int monthNumber2 = cal2.get(Calendar.MONTH); // Số tháng (từ 1 đến 12)
-            return monthNumber+"-"+monthNumber2+", "+ngay1+"-"+ngay2+" ("+String.valueOf(daysDifference+1)+" Days)";
+            return monthNumber + "-" + monthNumber2 + ", " + ngay1 + "-" + ngay2 + " (" + String.valueOf(daysDifference + 1) + " Days)";
         }
 
     }
