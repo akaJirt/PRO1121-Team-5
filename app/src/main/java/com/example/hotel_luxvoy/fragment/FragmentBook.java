@@ -87,7 +87,7 @@ public class FragmentBook extends Fragment {
         String hotelString = sharedPreferences1.getString("hotel", "");
 //        Log.d("TAG>>>>>>>>>>>>>>>>>>>>", "onCreateView: "+hotelString);
         //cắt ký tự [ đầu và cuối của chuỗi
-        hotelString = hotelString.substring(1, hotelString.length() - 1);
+//        hotelString = hotelString.substring(1, hotelString.length() - 1);
 
         Hotel hotel = gson.fromJson(hotelString, Hotel.class);
 

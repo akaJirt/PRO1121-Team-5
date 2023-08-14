@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -109,9 +110,14 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripsViewHol
                         UserAfterCheckLG userAfterCheckLG = new UserAfterCheckLG();
                         Gson gson = new Gson();
                         userAfterCheckLG = gson.fromJson(user, UserAfterCheckLG.class);
+                        String[] parts = trips.getConfirmationNumber().split(" ");
+                        Log.d(">>>>>>>>>>>>>>>>>", "onClick: "+trips.getConfirmationNumber());
+                        String part1 = parts[2];
+                        Log.d(">>>>>>>>>>>>>>>>>>", "onClick: "+part1);
                         for (int i = 0; i < userAfterCheckLG.getBills().size(); i++) {
                             if (userAfterCheckLG.getBills().get(i).getBillStatus().equals("pending")) {
-                                if (userAfterCheckLG.getBills().get(i).get_id().equals(trips.getConfirmationNumber())) {
+
+                                if (userAfterCheckLG.getBills().get(i).get_id().equals(part1)) {
                                     String idHotel = userAfterCheckLG.getBills().get(i).getRoom().getHotelId();
                                     for (int j = 0; j < hotels.size(); j++) {
                                         if (hotels.get(j).get_id().equals(idHotel)) {
