@@ -26,8 +26,10 @@ import com.example.hotel_luxvoy.models.imageModel;
 import com.example.hotel_luxvoy.models.imageModel1;
 import com.squareup.picasso.Picasso;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomAdaterViewHolder> {
 
@@ -59,14 +61,15 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomAdaterView
 
         Room room = roomList.get(position);
         holder.tvTypeRoom.setText(room.getType());
-        holder.tvRoomPrice.setText(room.getPrice());
-        Log.d("TAG", "onBindViewHolder: "+room.get_id());
+        NumberFormat numberFormat = NumberFormat.getInstance(new Locale("vi", "VN"));
+        int price = Integer.parseInt(room.getPrice());
+        holder.tvRoomPrice.setText(numberFormat.format(price) + " VNĐ/ Night");
+        Log.d("TAG", "onBindViewHolder: " + room.get_id());
         ArrayList<String> images = room.getRoomImages();
         ArrayList<SlideModel> slideModels = new ArrayList<>();
         for (int i = 0; i < images.size(); i++) {
             slideModels.add(new SlideModel(images.get(i), ScaleTypes.FIT));
         }
-
 
 
         holder.imageSlider.setImageList(slideModels, ScaleTypes.FIT);
