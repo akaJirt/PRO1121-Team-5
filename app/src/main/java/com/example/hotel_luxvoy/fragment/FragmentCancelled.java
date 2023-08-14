@@ -96,7 +96,7 @@ public class FragmentCancelled extends Fragment {
                             llNoData.setVisibility(View.GONE);
                             rvCancelled.setVisibility(View.VISIBLE);
 
-                            TripsAdapter tripsAdapter = new TripsAdapter(tripsList, getActivity(), TripsAdapter.FragmentType.CURRENT);
+                            TripsAdapter tripsAdapter = new TripsAdapter(tripsList, getActivity(), TripsAdapter.FragmentType.CANCLED);
                             rvCancelled.setAdapter(tripsAdapter);
                         }
 

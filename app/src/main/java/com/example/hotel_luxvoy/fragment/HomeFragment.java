@@ -37,7 +37,7 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    TextView textView,tvUsername;
+    TextView textView, tvUsername;
     ImageView imgBookNow;
     RecyclerView recyclerViewViewed, recyclerViewMore, recyclerViewExplore;
 
@@ -52,11 +52,10 @@ public class HomeFragment extends Fragment {
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user", getActivity().MODE_PRIVATE);
         String user = sharedPreferences.getString("user", "");
         UserAfterCheckLG userAfterCheckLG = new UserAfterCheckLG();
-        if(!user.isEmpty()) {
+        if (!user.isEmpty()) {
             Gson gson = new Gson();
             userAfterCheckLG = gson.fromJson(user, UserAfterCheckLG.class);
-        }
-        else {
+        } else {
             userAfterCheckLG.setFullName("Guest");
         }
 
@@ -85,11 +84,8 @@ public class HomeFragment extends Fragment {
 
         List<Viewed> viewedList = new ArrayList<>();
         viewedList.add(new Viewed(R.drawable.img_viewed1, "Phu Quoc Beach, Luxvoy Collection"));
-        viewedList.add(new Viewed(R.drawable.img_viewed1, "Ha Long Bay, Luxvoy Collection"));
-        viewedList.add(new Viewed(R.drawable.img_viewed1, "Da Nang Beach, Luxvoy Collection"));
-        viewedList.add(new Viewed(R.drawable.img_viewed1, "Nha Trang Beach, Luxvoy Collection"));
-
-
+        viewedList.add(new Viewed(R.drawable.img_viewed2, "Ha Long Bay, Luxvoy Collection"));
+        viewedList.add(new Viewed(R.drawable.img_viewed3, "Ha Giang, Luxvoy Collection"));
 
         ViewedAdapter viewedAdapter = new ViewedAdapter(viewedList, getActivity());
         recyclerViewViewed.setAdapter(viewedAdapter);
@@ -99,14 +95,12 @@ public class HomeFragment extends Fragment {
         recyclerViewMore.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
         List<More> moreList = new ArrayList<>();
-        moreList.add(new More(R.drawable.img_more, "Resort relaxation await"));
-        moreList.add(new More(R.drawable.img_more, "A rewarded stay at Renaissance Saigon"));
-        moreList.add(new More(R.drawable.img_more, "A rewarded stay at Renaissance Saigon"));
-        moreList.add(new More(R.drawable.img_more, "A rewarded stay at Renaissance Saigon"));
+        moreList.add(new More(R.drawable.img_more, null));
+        moreList.add(new More(R.drawable.img_more2, null));
+        moreList.add(new More(R.drawable.img_more, null));
 
         MoreAdapter moreAdapter = new MoreAdapter(moreList, getActivity());
         recyclerViewMore.setAdapter(moreAdapter);
-
 
         recyclerViewExplore = rootView.findViewById(R.id.rvExplore);
         recyclerViewExplore.setHasFixedSize(true);
@@ -114,12 +108,11 @@ public class HomeFragment extends Fragment {
 
         List<Explore> exploreList = new ArrayList<>();
         exploreList.add(new Explore(R.drawable.img_explore, "Ha Noi explore"));
-        exploreList.add(new Explore(R.drawable.img_explore, "Da Nang explore"));
-        exploreList.add(new Explore(R.drawable.img_explore, "Nha Trang explore"));
+        exploreList.add(new Explore(R.drawable.img_explore2, "Ho Chi Minh explore"));
+        exploreList.add(new Explore(R.drawable.img_explore3, "Nha Trang explore"));
 
         ExploreAdaper exploreAdaper = new ExploreAdaper(exploreList, getActivity());
         recyclerViewExplore.setAdapter(exploreAdaper);
-
 
 
         return rootView;

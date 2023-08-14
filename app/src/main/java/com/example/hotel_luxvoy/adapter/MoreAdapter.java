@@ -34,7 +34,7 @@ public class MoreAdapter extends RecyclerView.Adapter<MoreAdapter.MoreViewHolder
     @Override
     public void onBindViewHolder(@NonNull MoreViewHolder holder, int position) {
         More more = moreList.get(position);
-        holder.tvtvMore.setText(more.getDescription());
+
         holder.imgMore.setImageResource(more.getImage());
     }
 
@@ -50,7 +50,6 @@ public class MoreAdapter extends RecyclerView.Adapter<MoreAdapter.MoreViewHolder
 
         public MoreViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvtvMore = itemView.findViewById(R.id.tvMore);
             imgMore = itemView.findViewById(R.id.imgMore);
         }
     }

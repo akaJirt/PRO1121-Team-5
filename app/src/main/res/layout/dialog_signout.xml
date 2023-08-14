@@ -3,39 +3,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="80sp"
-        android:orientation="vertical"
-        android:background="#D3CACA">
+        android:layout_gravity="center"
+        android:background="#D3CACA"
+        android:orientation="vertical">
+
         <TextView
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="Are you sure"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
+
         <TextView
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:textSize="17sp"
-            android:textColor="@color/black"
             android:layout_width="300sp"
             android:layout_height="wrap_content"
-            android:text="Are you sure want to sign out Luxvoy hotel?"/>
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Are you sure want to sign out Luxvoy hotel?"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
     </LinearLayout>
+
     <LinearLayout
 
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/white">
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnCancelDialog"
@@ -47,12 +49,13 @@
             android:textSize="20sp" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:text="Yes"
-            android:textSize="20sp"
-            android:textColor="#E91E63"
+            android:id="@+id/btnYesDialog"
             android:layout_width="157sp"
             android:layout_height="50sp"
             android:layout_marginLeft="-5sp"
+            android:text="Yes"
+            android:textColor="#E91E63"
+            android:textSize="20sp"
 
             />
     </LinearLayout>

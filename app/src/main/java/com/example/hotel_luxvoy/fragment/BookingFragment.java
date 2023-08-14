@@ -62,9 +62,8 @@ public class BookingFragment extends Fragment {
 
         List<Viewed> viewedList = new ArrayList<>();
         viewedList.add(new Viewed(R.drawable.img_viewed1, "Phu Quoc Beach, Luxvoy Collection"));
-        viewedList.add(new Viewed(R.drawable.img_viewed1, "Ha Long Bay, Luxvoy Collection"));
-        viewedList.add(new Viewed(R.drawable.img_viewed1, "Da Nang Beach, Luxvoy Collection"));
-        viewedList.add(new Viewed(R.drawable.img_viewed1, "Nha Trang Beach, Luxvoy Collection"));
+        viewedList.add(new Viewed(R.drawable.img_viewed2, "Ha Long Bay, Luxvoy Collection"));
+        viewedList.add(new Viewed(R.drawable.img_viewed3, "Ha Giang, Luxvoy Collection"));
 
         ViewedAdapter viewedAdapter = new ViewedAdapter(viewedList, getActivity());
         rvViewed.setAdapter(viewedAdapter);
@@ -75,8 +74,8 @@ public class BookingFragment extends Fragment {
 
         List<Explore> exploreList = new ArrayList<>();
         exploreList.add(new Explore(R.drawable.img_explore, "Ha Noi explore"));
-        exploreList.add(new Explore(R.drawable.img_explore, "Da Nang explore"));
-        exploreList.add(new Explore(R.drawable.img_explore, "Nha Trang explore"));
+        exploreList.add(new Explore(R.drawable.img_explore2, "Ho Chi Minh explore"));
+        exploreList.add(new Explore(R.drawable.img_explore3, "Ha Long explore"));
 
         ExploreAdaper exploreAdaper = new ExploreAdaper(exploreList, getActivity());
         rvDestination.setAdapter(exploreAdaper);
@@ -86,9 +85,9 @@ public class BookingFragment extends Fragment {
         rvLuxury.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
         List<Luxury> luxuryList = new ArrayList<>();
-        luxuryList.add(new Luxury(R.drawable.premium1, "Luxury Hotel 1"));
-        luxuryList.add(new Luxury(R.drawable.premium2, "Luxury Hotel 2"));
-        luxuryList.add(new Luxury(R.drawable.premium3, "Luxury Hotel 3"));
+        luxuryList.add(new Luxury(R.drawable.premium1, "Luxury Hotel Sai Gon"));
+        luxuryList.add(new Luxury(R.drawable.premium2, "Luxury Hotel Ha Noi"));
+        luxuryList.add(new Luxury(R.drawable.premium3, "Luxury Hotel Da Nang"));
 
         LuxuryAdapter luxuryAdapter = new LuxuryAdapter(luxuryList, getActivity());
         rvLuxury.setAdapter(luxuryAdapter);
@@ -97,10 +96,10 @@ public class BookingFragment extends Fragment {
         rvPremium.setHasFixedSize(true);
         rvPremium.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
-        List< Premium > premiumList = new ArrayList<>();
-        premiumList.add(new Premium(R.drawable.premium3, "Premium Hotel 1"));
-        premiumList.add(new Premium(R.drawable.premium4, "Premium Hotel 2"));
-        premiumList.add(new Premium(R.drawable.premium2, "Premium Hotel 3"));
+        List<Premium> premiumList = new ArrayList<>();
+        premiumList.add(new Premium(R.drawable.premium3, "Premium Hotel Sai Gon"));
+        premiumList.add(new Premium(R.drawable.premium4, "Premium Hotel Ha Noi"));
+        premiumList.add(new Premium(R.drawable.premium2, "Premium Hotel Da Nang"));
 
         PremiumAdapter premiumAdapter = new PremiumAdapter(premiumList, getActivity());
         rvPremium.setAdapter(premiumAdapter);

@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -83,7 +84,7 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripsViewHol
         String part1 = parts[0];
         String part2 = parts[1];
 
-        holder.tvDescription.setText(totalDate(part1,part2));
+        holder.tvDescription.setText(totalDate(part1, part2));
         holder.tvConfirmation.setText(trips.getConfirmationNumber());
         holder.tvCancellation.setText(trips.getCancellationNumber());
 //        holder.imgTrips.setImageResource(trips.getImage());
@@ -111,9 +112,9 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripsViewHol
                         Gson gson = new Gson();
                         userAfterCheckLG = gson.fromJson(user, UserAfterCheckLG.class);
                         String[] parts = trips.getConfirmationNumber().split(" ");
-                        Log.d(">>>>>>>>>>>>>>>>>", "onClick: "+trips.getConfirmationNumber());
+                        Log.d(">>>>>>>>>>>>>>>>>", "onClick: " + trips.getConfirmationNumber());
                         String part1 = parts[2];
-                        Log.d(">>>>>>>>>>>>>>>>>>", "onClick: "+part1);
+                        Log.d(">>>>>>>>>>>>>>>>>>", "onClick: " + part1);
                         for (int i = 0; i < userAfterCheckLG.getBills().size(); i++) {
                             if (userAfterCheckLG.getBills().get(i).getBillStatus().equals("pending")) {
 
@@ -124,8 +125,8 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripsViewHol
                                             SharedPreferences sharedPreferences1 = context.getSharedPreferences("hotel", Context.MODE_PRIVATE);
                                             SharedPreferences.Editor editor = sharedPreferences1.edit();
                                             Gson gson1 = new Gson();
-                                            Hotel test= hotels.get(j);
-                                            String hotel = gson1.toJson((Hotel)test);
+                                            Hotel test = hotels.get(j);
+                                            String hotel = gson1.toJson((Hotel) test);
 
                                             SharedPreferences sharedPreferences2 = context.getSharedPreferences("bill", Context.MODE_PRIVATE);
                                             SharedPreferences.Editor editor1 = sharedPreferences2.edit();
@@ -171,6 +172,8 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripsViewHol
                 break;
             case CANCLED:
                 holder.btnTrips.setText("Rebook a room");
+                holder.tvConfirmation.setText("This booking has been canceled");
+                holder.tvConfirmation.setTextColor(Color.RED);
                 holder.tvCancellation.setVisibility(View.VISIBLE);
                 holder.btnTrips.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -235,15 +238,15 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripsViewHol
         String Nam1 = parts[0];
         String Thang1 = parts[1];
         String part13 = parts[2];
-        String ngay1 = part13.substring(0,2);
-        cal1.set(Integer.parseInt(Nam1),Integer.parseInt(Thang1),Integer.parseInt(ngay1));
+        String ngay1 = part13.substring(0, 2);
+        cal1.set(Integer.parseInt(Nam1), Integer.parseInt(Thang1), Integer.parseInt(ngay1));
         //tách date 2 lấy ngày tháng năm
         String[] parts2 = part2.split("-");
         String Nam2 = parts2[0];
         String Thang2 = parts2[1];
         String part23 = parts2[2];
-        String ngay2 = part23.substring(0,2);
-        cal2.set(Integer.parseInt(Nam2),Integer.parseInt(Thang2),Integer.parseInt(ngay2));
+        String ngay2 = part23.substring(0, 2);
+        cal2.set(Integer.parseInt(Nam2), Integer.parseInt(Thang2), Integer.parseInt(ngay2));
         // Trừ hai ngày với nhau
         long timeInMillis1 = cal1.getTimeInMillis();
         long timeInMillis2 = cal2.getTimeInMillis();
@@ -255,23 +258,22 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripsViewHol
                 "January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"
         };
-        if(cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH)){
+        if (cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH)) {
 
 
             int monthNumber = cal1.get(Calendar.MONTH); // Số tháng (từ 1 đến 12)
 
             String monthName = monthNames[monthNumber - 1];
-            return monthName+", "+ngay1+"-"+ngay2+" ("+String.valueOf(daysDifference+1)+" Days)";
-        }
-        else {
+            return monthName + ", " + ngay1 + "-" + ngay2 + " (" + String.valueOf(daysDifference + 1) + " Days)";
+        } else {
             int monthNumber = cal1.get(Calendar.MONTH); // Số tháng (từ 1 đến 12)
             int monthNumber2 = cal2.get(Calendar.MONTH); // Số tháng (từ 1 đến 12)
-            return monthNumber+"-"+monthNumber2+", "+ngay1+"-"+ngay2+" ("+String.valueOf(daysDifference+1)+" Days)";
+            return monthNumber + "-" + monthNumber2 + ", " + ngay1 + "-" + ngay2 + " (" + String.valueOf(daysDifference + 1) + " Days)";
         }
 
     }
 
-    private void getAllHotel(){
+    private void getAllHotel() {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
