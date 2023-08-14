@@ -24,6 +24,7 @@ import com.example.hotel_luxvoy.models.Hotel;
 import com.example.hotel_luxvoy.models.Room;
 import com.example.hotel_luxvoy.models.UserAfterCheckLG;
 import com.example.hotel_luxvoy.models.Book;
+import com.example.hotel_luxvoy.models.UserLoginModel;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
@@ -363,6 +364,8 @@ public class ConfirmAndPayActivity extends AppCompatActivity {
                                     startActivity(intent);
                                 }
                             });
+                            reCheckLogin(user.getPhoneNumber(), user.getPassword());
+
                         }
 
                         @Override
@@ -421,5 +424,38 @@ public class ConfirmAndPayActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private void reCheckLogin(String userName, String password){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        APIService apiService = retrofit.create(APIService.class);
+        UserLoginModel userLoginModel = new UserLoginModel(userName, password);
+        Call<UserAfterCheckLG> call = apiService.checkLogin(userLoginModel);
+        call.enqueue(new Callback<UserAfterCheckLG>() {
+            @Override
+            public void onResponse(Call<UserAfterCheckLG> call, Response<UserAfterCheckLG> response) {
+                UserAfterCheckLG userAfterCheckLG = response.body();
+                if(userAfterCheckLG != null){
+                    SharedPreferences sharedPreferences = getSharedPreferences("user", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    Gson gson = new Gson();
+                    String json = gson.toJson(userAfterCheckLG);
+                    editor.putString("user", json);
+                    editor.apply();
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<UserAfterCheckLG> call, Throwable t) {
+                Toast.makeText(ConfirmAndPayActivity.this, "Lỗi kết nối", Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 }

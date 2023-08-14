@@ -110,6 +110,7 @@ public class FragmentCurrent extends Fragment {
                             TripsAdapter tripsAdapter = new TripsAdapter(tripsList, getActivity(), TripsAdapter.FragmentType.CURRENT);
                             rvCurrent.setAdapter(tripsAdapter);
                         }
+
                     }
 
                     @Override

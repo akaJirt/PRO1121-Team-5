@@ -123,6 +123,7 @@ public class HotelActivity extends AppCompatActivity {
                             tvResult.setText("Showing " + hotelList.size() + " results");
 
                         }
+
                     }
 
                     @Override
@@ -143,6 +144,7 @@ public class HotelActivity extends AppCompatActivity {
                             tvResult.setText("Showing " + hotelList.size() + " results");
 
                         }
+
                     }
 
                     @Override

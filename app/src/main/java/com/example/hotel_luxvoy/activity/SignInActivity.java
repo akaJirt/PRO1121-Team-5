@@ -16,9 +16,12 @@ import android.widget.Toast;
 import com.example.hotel_luxvoy.FullScreenHelper;
 import com.example.hotel_luxvoy.R;
 import com.example.hotel_luxvoy.ServiceAPI.APIService;
+import com.example.hotel_luxvoy.models.Hotel;
 import com.example.hotel_luxvoy.models.UserAfterCheckLG;
 import com.example.hotel_luxvoy.models.UserLoginModel;
 import com.google.gson.Gson;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -100,12 +103,14 @@ public class SignInActivity extends AppCompatActivity {
                     editor.apply();
                     //end save user to share preference
                     intent.putExtras(bundle);
+
                     startActivity(intent);
                 }
                 else {
                     Log.d("TAG", "onResponse: "+response.body());
                     Toast.makeText(SignInActivity.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
                 }
+
 
 
             }
@@ -119,4 +124,6 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

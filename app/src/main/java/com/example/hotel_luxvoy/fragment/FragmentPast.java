@@ -103,6 +103,7 @@ public class FragmentPast extends Fragment {
                             TripsAdapter tripsAdapter = new TripsAdapter(tripsList, getActivity(), TripsAdapter.FragmentType.CURRENT);
                             rvPast.setAdapter(tripsAdapter);
                         }
+
                     }
 
                     @Override

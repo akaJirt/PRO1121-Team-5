@@ -48,6 +48,7 @@
             android:textSize="20sp" />
 
         <androidx.appcompat.widget.AppCompatButton
+android:id="@+id/btnYesDialog"
             android:layout_width="157sp"
             android:layout_height="50sp"
             android:layout_marginLeft="-5sp"

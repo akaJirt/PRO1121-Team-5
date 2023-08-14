@@ -75,6 +75,7 @@ public class BookLocationActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ArrayList<Hotel>> call, Response<ArrayList<Hotel>> response) {
                 hotelArrayList = response.body();
+
             }
 
             @Override

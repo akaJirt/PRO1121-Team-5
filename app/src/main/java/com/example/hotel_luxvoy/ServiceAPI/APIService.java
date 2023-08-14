@@ -1,5 +1,7 @@
 package com.example.hotel_luxvoy.ServiceAPI;
 
+import com.example.hotel_luxvoy.models.Bill;
+import com.example.hotel_luxvoy.models.BillChangeSTT;
 import com.example.hotel_luxvoy.models.Hotel;
 import com.example.hotel_luxvoy.models.Room;
 import com.example.hotel_luxvoy.models.UserAfterCheckLG;
@@ -41,5 +43,14 @@ public interface APIService {
 
     @POST("book-hotel")
     Call<Book> bookHotel(@Body Book book);
+
+    @GET("get-all-hotels")
+    Call<ArrayList<Hotel>> getAllHotel();
+
+    @GET("bills/{billStatus}")
+    Call<ArrayList<Bill>> getBillByStatus(@Path("billStatus") String billStatus);
+
+    @PUT("changeBillStatus")
+    Call<BillChangeSTT> changeBillStatus(@Body BillChangeSTT billChangeSTT);
 
 }

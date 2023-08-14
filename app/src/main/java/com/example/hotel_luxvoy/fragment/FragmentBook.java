@@ -1,6 +1,9 @@
 package com.example.hotel_luxvoy.fragment;
 
+import static com.example.hotel_luxvoy.ServiceAPI.APIService.BASE_URL;
+
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,8 +23,14 @@ import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.hotel_luxvoy.R;
+import com.example.hotel_luxvoy.ServiceAPI.APIService;
 import com.example.hotel_luxvoy.adapter.RCV2Adapter;
+import com.example.hotel_luxvoy.models.ArrayListHotel;
+import com.example.hotel_luxvoy.models.Bill;
 import com.example.hotel_luxvoy.models.Gallery;
+import com.example.hotel_luxvoy.models.Hotel;
+import com.example.hotel_luxvoy.models.UserAfterCheckLG;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
@@ -32,11 +42,17 @@ import java.util.List;
 import java.util.Locale;
 import java.util.SimpleTimeZone;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class FragmentBook extends Fragment {
     private RecyclerView  recyclerView2;
 
     ImageView ivCancel, ivBack, ivFavorite,ivHotel;
-    TextView tvHotelName, tvCheckin,tvCheckout,tvConfirmation,tvTotaldate;
+    TextView tvHotelName, tvCheckin,tvCheckout,tvConfirmation,tvTotaldate,tvAddress;
 
     @Nullable
     @Override
@@ -52,6 +68,7 @@ public class FragmentBook extends Fragment {
         tvCheckout = view.findViewById(R.id.tvCheckout);
         tvConfirmation = view.findViewById(R.id.tvConfirmation);
         tvTotaldate = view.findViewById(R.id.tvTotaldate);
+        tvAddress = view.findViewById(R.id.tvAddress);
 
 
         //get data from bundle
@@ -61,6 +78,19 @@ public class FragmentBook extends Fragment {
         String confirmation = bundle.getString("confirmationNumber");
         String cancellation = bundle.getString("cancellationNumber");
         String image = bundle.getString("image");
+
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("bill", getActivity().MODE_PRIVATE);
+        String billString = sharedPreferences.getString("bill", "");
+        Gson gson = new Gson();
+        Bill bill = gson.fromJson(billString, Bill.class);
+        SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("hotel", getActivity().MODE_PRIVATE);
+        String hotelString = sharedPreferences1.getString("hotel", "");
+//        Log.d("TAG>>>>>>>>>>>>>>>>>>>>", "onCreateView: "+hotelString);
+        //cắt ký tự [ đầu và cuối của chuỗi
+        hotelString = hotelString.substring(1, hotelString.length() - 1);
+
+        Hotel hotel = gson.fromJson(hotelString, Hotel.class);
+
 
         //tách dữ liệu của description
         String[] parts = description.split(" - ");
@@ -77,6 +107,10 @@ public class FragmentBook extends Fragment {
         tvCheckout.setText(formatDate(part2));
         tvConfirmation.setText(confirmation);
         tvTotaldate.setText(totalDate(part1,part2));
+        tvAddress.setText(hotel.getStreet()+", "+hotel.getDistrict()+", "+hotel.getCity());
+
+
+
 
 
 
@@ -93,6 +127,48 @@ public class FragmentBook extends Fragment {
 
         ImageSlider imageSlider = view.findViewById(R.id.imageSlider);
         ArrayList<SlideModel> imageList = new ArrayList<>();
+//        if(bill == null){
+//            Retrofit retrofit = new Retrofit.Builder()
+//                    .baseUrl(BASE_URL)
+//                    .addConverterFactory(GsonConverterFactory.create())
+//                    .build();
+//
+//            APIService apiService = retrofit.create(APIService.class);
+//            Call<ArrayList<Bill>> call = apiService.getBillByStatus("pending");
+//            call.enqueue(new Callback<ArrayList<Bill>>() {
+//                @Override
+//                public void onResponse(Call<ArrayList<Bill>> call, Response<ArrayList<Bill>> response) {
+//                    ArrayList<Bill> bills = response.body();
+//                    SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user", getActivity().MODE_PRIVATE);
+//                    String user = sharedPreferences.getString("user", "");
+//                    Gson gson = new Gson();
+//                    UserAfterCheckLG userAfterCheckLG = gson.fromJson(user, UserAfterCheckLG.class);
+//                    for (int i = 0; i < bills.size(); i++) {
+//                        if (bills.get(i).getBookedBy().equals(userAfterCheckLG.get_id())&&bills.get(i).getBillStatus().equals("pending")&&bills.get(i).get_id().equals(tvConfirmation.getText().toString())) {
+//                            for (int j = 0; j < bills.get(i).getRoom().getRoomImages().size(); j++) {
+//                                imageList.add(new SlideModel(bills.get(i).getRoom().getRoomImages().get(j), ScaleTypes.FIT));
+//
+//                            }
+//                        }
+//                    }
+//                    Toast.makeText(getActivity(), "Call oke", Toast.LENGTH_SHORT).show();
+//                    Log.d(">>>>>>>>>>>>>>>>>>>", "onResponse: "+bill);
+//
+//                }
+//
+//                @Override
+//                public void onFailure(Call<ArrayList<Bill>> call, Throwable t) {
+//                    for (int i = 0; i < bill.getRoom().getRoomImages().size(); i++) {
+//                        imageList.add(new SlideModel(bill.getRoom().getRoomImages().get(i), ScaleTypes.FIT));
+//                    }
+//                }
+//            });
+//        }
+//        else {
+//            for (int i = 0; i < bill.getRoom().getRoomImages().size(); i++) {
+//                imageList.add(new SlideModel(bill.getRoom().getRoomImages().get(i), ScaleTypes.FIT));
+//            }
+//        }
         imageList.add(new SlideModel(R.drawable.room_1, ScaleTypes.FIT));
         imageList.add(new SlideModel(R.drawable.room_2, ScaleTypes.FIT));
         imageList.add(new SlideModel(R.drawable.room_3, ScaleTypes.FIT));
@@ -103,7 +179,10 @@ public class FragmentBook extends Fragment {
             @Override
             public void onClick(View v) {
 
-                FramentDialog dialog = new FramentDialog();
+                FramentDialog dialog = new FramentDialog(getContext());
+                Bundle bundle1 = new Bundle();
+                bundle1.putString("idbill", tvConfirmation.getText().toString());
+                dialog.setArguments(bundle1);
                 dialog.show(getChildFragmentManager(), "FragmentDialog");
 
             }

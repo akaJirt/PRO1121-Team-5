@@ -99,6 +99,7 @@ public class FragmentCancelled extends Fragment {
                             TripsAdapter tripsAdapter = new TripsAdapter(tripsList, getActivity(), TripsAdapter.FragmentType.CURRENT);
                             rvCancelled.setAdapter(tripsAdapter);
                         }
+
                     }
 
                     @Override

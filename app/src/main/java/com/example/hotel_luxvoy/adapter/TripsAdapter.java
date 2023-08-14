@@ -1,10 +1,13 @@
 package com.example.hotel_luxvoy.adapter;
 
+import static com.example.hotel_luxvoy.ServiceAPI.APIService.BASE_URL;
+
 import android.content.Context;
 
 import androidx.annotation.NonNull;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,22 +16,33 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hotel_luxvoy.R;
+import com.example.hotel_luxvoy.ServiceAPI.APIService;
 import com.example.hotel_luxvoy.activity.BookLocationActivity;
 import com.example.hotel_luxvoy.fragment.FragmentBook;
+import com.example.hotel_luxvoy.models.Bill;
+import com.example.hotel_luxvoy.models.Hotel;
 import com.example.hotel_luxvoy.models.Trips;
+import com.example.hotel_luxvoy.models.UserAfterCheckLG;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripsViewHolder> {
     public enum FragmentType {
@@ -42,6 +56,8 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripsViewHol
     public List<Trips> tripsList;
 
     public Context context;
+    public ArrayList<Hotel> hotels;
+
 
     public TripsAdapter(List<Trips> tripsList, Context context, FragmentType fragmentType) {
         this.tripsList = tripsList;
@@ -59,6 +75,7 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripsViewHol
     @Override
     public void onBindViewHolder(@NonNull TripsViewHolder holder, int position) {
         Trips trips = tripsList.get(position);
+        getAllHotel();
         holder.tvHotelName.setText(trips.getHotelName());
         String description = trips.getDescription();
         String[] parts = description.split(" - ");
@@ -87,6 +104,43 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripsViewHol
                         bundle.putString("confirmationNumber", trips.getConfirmationNumber());
                         bundle.putString("cancellationNumber", trips.getCancellationNumber());
                         bundle.putString("image", trips.getImage());
+                        SharedPreferences sharedPreferences = context.getSharedPreferences("user", Context.MODE_PRIVATE);
+                        String user = sharedPreferences.getString("user", "");
+                        UserAfterCheckLG userAfterCheckLG = new UserAfterCheckLG();
+                        Gson gson = new Gson();
+                        userAfterCheckLG = gson.fromJson(user, UserAfterCheckLG.class);
+                        for (int i = 0; i < userAfterCheckLG.getBills().size(); i++) {
+                            if (userAfterCheckLG.getBills().get(i).getBillStatus().equals("pending")) {
+                                if (userAfterCheckLG.getBills().get(i).get_id().equals(trips.getConfirmationNumber())) {
+                                    String idHotel = userAfterCheckLG.getBills().get(i).getRoom().getHotelId();
+                                    for (int j = 0; j < hotels.size(); j++) {
+                                        if (hotels.get(j).get_id().equals(idHotel)) {
+                                            SharedPreferences sharedPreferences1 = context.getSharedPreferences("hotel", Context.MODE_PRIVATE);
+                                            SharedPreferences.Editor editor = sharedPreferences1.edit();
+                                            Gson gson1 = new Gson();
+                                            Hotel test= hotels.get(j);
+                                            String hotel = gson1.toJson((Hotel)test);
+
+                                            SharedPreferences sharedPreferences2 = context.getSharedPreferences("bill", Context.MODE_PRIVATE);
+                                            SharedPreferences.Editor editor1 = sharedPreferences2.edit();
+                                            Gson gson2 = new Gson();
+                                            Bill bill1 = userAfterCheckLG.getBills().get(i);
+                                            String bill = gson2.toJson(bill1);
+                                            editor1.putString("bill", bill);
+                                            bundle.putSerializable("bill", bill1);
+                                            editor.putString("hotel", hotel);
+                                            editor.commit();
+                                            editor1.commit();
+
+
+                                        }
+
+                                    }
+
+                                }
+
+                            }
+                        }
                         fragmentBook.setArguments(bundle);
                         FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
 
@@ -210,4 +264,31 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.TripsViewHol
         }
 
     }
+
+    private void getAllHotel(){
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        APIService apiService = retrofit.create(APIService.class);
+        Call<ArrayList<Hotel>> call = apiService.getAllHotel();
+        call.enqueue(new Callback<ArrayList<Hotel>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Hotel>> call, Response<ArrayList<Hotel>> response) {
+                hotels = response.body();
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Hotel>> call, Throwable t) {
+
+
+            }
+        });
+
+
+    }
+
+
 }

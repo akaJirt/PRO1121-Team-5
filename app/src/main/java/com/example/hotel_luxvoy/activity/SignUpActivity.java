@@ -137,6 +137,7 @@ public class SignUpActivity extends AppCompatActivity {
                     intent.putExtra("user", userPostModel);
                     startActivity(intent);
                 }
+
             }
 
             @Override
