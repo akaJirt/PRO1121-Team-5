@@ -68,7 +68,7 @@ public class FragmentPast extends Fragment {
             Toast.makeText(getActivity(), "Please login first", Toast.LENGTH_SHORT).show();
         }
         for (int i = 0; i < userAfterCheckLG.getBills().size(); i++) {
-            if (userAfterCheckLG.getBills().get(i).getBillStatus().equals("accepted")) {
+            if (userAfterCheckLG.getBills().get(i).getBillStatus().equals("past")) {
                 Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
 
                 APIService apiService = retrofit.create(APIService.class);
@@ -80,7 +80,7 @@ public class FragmentPast extends Fragment {
                         tripsList = new ArrayList<>();
 
                         for (int i = 0; i < userAfterCheckLG.getBills().size(); i++) {
-                            if (userAfterCheckLG.getBills().get(i).getBillStatus().equals("accepted")) {
+                            if (userAfterCheckLG.getBills().get(i).getBillStatus().equals("past")) {
                                 for (int j = 0; j < hotels.size(); j++) {
                                     String hotelId = hotels.get(j).get_id().toString();
                                     String hotelIdinBill = userAfterCheckLG.getBills().get(i).getRoom().getHotelId().toString();

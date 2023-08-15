@@ -56,7 +56,7 @@ public class HotelActivity extends AppCompatActivity {
         tvHotelName = findViewById(R.id.tvHotelName);
         tvResult = findViewById(R.id.tvResult);
         spSort = findViewById(R.id.spSort);
-        tvHotelName.setText(hotelName);
+        tvHotelName.setText(intent.getStringExtra("location"));
 
         ImageView ivBack = findViewById(R.id.ivBack);
         ivBack.setOnClickListener(v -> {

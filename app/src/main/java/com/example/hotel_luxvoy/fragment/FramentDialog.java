@@ -34,7 +34,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FramentDialog extends DialogFragment {
-    private static final  String TAG = "FramentDialog";
+    private static final String TAG = "FramentDialog";
     private AppCompatButton btnCanncelDiaLog, btnYesDialog;
     private Context context;
 
@@ -45,7 +45,7 @@ public class FramentDialog extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.dialog_cancel,container,false);
+        View view = inflater.inflate(R.layout.dialog_cancel, container, false);
         btnCanncelDiaLog = view.findViewById(R.id.btnCancelDialog);
         btnYesDialog = view.findViewById(R.id.btnYesDialog);
 
@@ -61,7 +61,7 @@ public class FramentDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = getArguments();
-                if (bundle != null){
+                if (bundle != null) {
                     String id = bundle.getString("idbill");
                     //tách chuỗi
                     String[] parts = id.split(" ");
@@ -74,23 +74,23 @@ public class FramentDialog extends DialogFragment {
                             .build();
 
                     APIService apiService = retrofit.create(APIService.class);
-                    BillChangeSTT billChangeSTT = new BillChangeSTT(part3,"cancelled");
+                    BillChangeSTT billChangeSTT = new BillChangeSTT(part3, "cancelled");
                     Call<BillChangeSTT> call = apiService.changeBillStatus(billChangeSTT);
                     call.enqueue(new Callback<BillChangeSTT>() {
                         @Override
                         public void onResponse(Call<BillChangeSTT> call, Response<BillChangeSTT> response) {
-                            Log.d(TAG, "onResponse: "+response.body());
+                            Log.d(TAG, "onResponse: " + response.body());
                             SharedPreferences sharedPreferences = context.getSharedPreferences("user", MODE_PRIVATE);
                             Gson gson = new Gson();
                             String json = sharedPreferences.getString("user", "");
                             UserAfterCheckLG userAfterCheckLG = gson.fromJson(json, UserAfterCheckLG.class);
                             reCheckLogin(userAfterCheckLG.getPhoneNumber(), userAfterCheckLG.getPassword());
-
+                            Toast.makeText(context, "Cancelled", Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
                         public void onFailure(Call<BillChangeSTT> call, Throwable t) {
-                            Log.d(TAG, "onFailure: "+t.getMessage());
+                            Log.d(TAG, "onFailure: " + t.getMessage());
                         }
                     });
 
@@ -102,12 +102,10 @@ public class FramentDialog extends DialogFragment {
         });
 
 
-
-
         return view;
     }
 
-    private void reCheckLogin(String userName, String password){
+    private void reCheckLogin(String userName, String password) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -120,7 +118,7 @@ public class FramentDialog extends DialogFragment {
             @Override
             public void onResponse(Call<UserAfterCheckLG> call, Response<UserAfterCheckLG> response) {
                 UserAfterCheckLG userAfterCheckLG = response.body();
-                if(userAfterCheckLG != null){
+                if (userAfterCheckLG != null) {
                     SharedPreferences sharedPreferences = context.getSharedPreferences("user", MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     Gson gson = new Gson();

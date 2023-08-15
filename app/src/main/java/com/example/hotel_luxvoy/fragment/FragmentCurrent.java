@@ -66,7 +66,7 @@ public class FragmentCurrent extends Fragment {
 
 
         for(int i =0 ; i<userAfterCheckLG.getBills().size();i++){
-            if(userAfterCheckLG.getBills().get(i).getBillStatus().equals("pending")){
+            if(userAfterCheckLG.getBills().get(i).getBillStatus().equals("accepted")){
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl(BASE_URL)
                         .addConverterFactory(GsonConverterFactory.create())
@@ -81,7 +81,7 @@ public class FragmentCurrent extends Fragment {
                         tripsList = new ArrayList<>();
 
                         for (int i = 0; i < userAfterCheckLG.getBills().size(); i++) {
-                            if (userAfterCheckLG.getBills().get(i).getBillStatus().equals("pending")) {
+                            if (userAfterCheckLG.getBills().get(i).getBillStatus().equals("accepted")) {
                                 for (int j = 0; j < hotels.size(); j++) {
                                     String hotelId = hotels.get(j).get_id().toString();
                                     String hotelIdinBill = userAfterCheckLG.getBills().get(i).getRoom().getHotelId().toString();
